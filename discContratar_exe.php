@@ -53,19 +53,15 @@ Abril/2020
 		$nome    = $_POST['Nome'];
 		$ementa = $_POST['Ementa'];
 		
-
 		// Cria conexão
-		$host="127.0.0.1";
-		$port=3306;
-		$socket="";
-		$user="root";
-		$password="root";
-		$dbname="ie_exemplo";
-		
-		// Verifica conexão
-		$conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
-		or die ('Could not connect to the database server' . mysqli_connect_error());
-
+		$conn = mysqli_connect($servername, $username, $password, $database);
+                    
+		// Verifica conexão 
+		if (!$conn) {
+			echo "</table>";
+			echo "</div>";
+			die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
+		}
 		
 		// Configura para trabalhar com caracteres acentuados do português
 			mysqli_query($conn,"SET NAMES 'utf8'");

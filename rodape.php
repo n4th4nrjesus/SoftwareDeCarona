@@ -22,7 +22,7 @@ Novembro/2018
                 <p class="w3-small">Profa. Cristina Verçosa Pérez Barrios de Souza</p>
             </div>
             <footer class="w3-container w3-theme ">
-                <p>PUCPR 2018</p>
+                <p>PUCPR 2020 (revisão) </p>
             </footer>
         </div>
     </div>
