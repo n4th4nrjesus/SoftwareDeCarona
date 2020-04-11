@@ -52,7 +52,7 @@
 
                 <!-- Acesso ao BD-->
                 <?php
-                    $servername = "localhost:3306";
+                    $servername = "localhost:3307";
                     $username = "usu@IE_Exe";
                     $password = "php@PUCPR";
                     $database = "IE_Exemplo";
