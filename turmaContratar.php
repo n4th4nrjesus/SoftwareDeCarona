@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!--
-Desenvolvimento Web
-PUCPR
-Profa. Cristina V. P. B. Souza
-Abril/2020
+Software de Carona
 -->
 <html>
 <head>

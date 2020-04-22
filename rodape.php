@@ -1,10 +1,8 @@
 <!-------------------------------------------------------------------------------
-Oficina Desenvolvimento Web
-PUCPR
-
+Oficina Software de Carona
 RODAPE.PHP
 
-Profa. Cristina V. P. B. Souza
+
 Novembro/2018
 ---------------------------------------------------------------------------------->
 
@@ -18,7 +16,7 @@ Novembro/2018
                 <h2>IE Exemplo</h2>
             </header>
             <div class="w3-container">
-                <p>Site exemplo: <b>Desenvolvimento Web com PHP</b></p>
+                <p>Site exemplo: <b>Software de Carona com PHP</b></p>
                 <p class="w3-small">Profa. Cristina Verçosa Pérez Barrios de Souza</p>
             </div>
             <footer class="w3-container w3-theme ">

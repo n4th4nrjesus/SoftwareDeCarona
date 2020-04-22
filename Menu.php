@@ -1,11 +1,8 @@
 <!-------------------------------------------------------------------------------
-Oficina Desenvolvimento Web
-PUCPR
+Software de Carnona
+
 
 MENU.PHP
-
-Profa. Cristina V. P. B. Souza
-Novembro/2018
 ---------------------------------------------------------------------------------->
 	<!-- Top -->
 	<div class="w3-top">

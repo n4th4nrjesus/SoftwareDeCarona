@@ -1,11 +1,9 @@
 <html lang="pt">
 <!-------------------------------------------------------------------------------
-Oficina Desenvolvimento Web
-PUCPR
-
+Oficina Software de Carona
 INDEX.PHP
 
-Profa. Cristina V. P. B. Souza
+
 Novembro/2018
 *** Para o correto funcionamento do CSS, o equipamento precisa de internet ***
 ---------------------------------------------------------------------------------->
