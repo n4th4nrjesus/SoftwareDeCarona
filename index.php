@@ -1,13 +1,11 @@
 <html lang="pt">
 <!-------------------------------------------------------------------------------
-Oficina Software de Carona
+Software de Carona
+
+
 INDEX.PHP
-
-
-Novembro/2018
-*** Para o correto funcionamento do CSS, o equipamento precisa de internet ***
 ---------------------------------------------------------------------------------->
-	<title>IE - Instituição de Ensino</title>
+	<title>Software de Carona</title>
 	<link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -30,7 +28,7 @@ Novembro/2018
 		}
 	</style>
 
-	<body  onload="w3_show_nav('menuProf')">
+	<body  onload="w3_show_nav('menuPassag')">
 
 		<!-- Inclui MENU.PHP  -->
 		<?php require 'menu.php'; ?>

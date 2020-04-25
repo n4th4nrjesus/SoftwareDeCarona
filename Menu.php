@@ -4,6 +4,7 @@ Software de Carnona
 
 MENU.PHP
 ---------------------------------------------------------------------------------->
+
 	<!-- Top -->
 	<div class="w3-top">
 		<div class="w3-row w3-white w3-padding">
@@ -15,48 +16,44 @@ MENU.PHP
 		</div>
 		<div class="w3-bar w3-theme w3-large" style="z-index:4;">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuProf')">PROFESSORES</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuDisc')">DISCIPLINAS</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTurma')">TURMAS</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
 		</div>
 	</div>
 
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-bar-block w3-collapse w3-animate-left" style="z-index:3;width:270px" id="mySidebar">
 		<div class="w3-bar w3-hide-large w3-large">
-			<a href="javascript:void(0)" onclick="w3_show_nav('menuProf')"
-			   class="w3-bar-item w3-button w3-theme w3-hover-white w3-padding-16" style="width:50%">Professores</a>
-			<a href="javascript:void(0)" onclick="w3_show_nav('menuDisc')"
-			   class="w3-bar-item w3-button w3-theme w3-hover-white w3-padding-16" style="width:50%">Disciplinas</a>
-			<a href="javascript:void(0)" onclick="w3_show_nav('menuTurma')"
-			   class="w3-bar-item w3-button w3-theme w3-hover-white w3-padding-16" style="width:50%">Turma</a>
+			<a href="javascript:void(0)" onclick="w3_show_nav('menuPassag')"
+			   class="w3-bar-item w3-button w3-theme w3-hover-white w3-padding-16">PASSAGEIRO</a>
+			<a href="javascript:void(0)" onclick="w3_show_nav('menuMotor')"
+			   class="w3-bar-item w3-button w3-theme w3-hover-white w3-padding-16">MOTORISTA</a>
+			<a href="javascript:void(0)" onclick="w3_show_nav('menuFeed')"
+			   class="w3-bar-item w3-button w3-theme w3-hover-white w3-padding-16">FEED</a>
 		</div>
 		<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-right w3-xlarge w3-hide-large"
-		   title="Close Menu">×</a>
-		<div id="menuProf" class="myMenu">
+		   title="Close Menu">x</a>
+		<div id="menuPassag" class="myMenu">
 			<div class="w3-container">
-				<h3>Professores</h3>
+				<h3>Passageiro</h3>
 			</div>
-			<a class="w3-bar-item w3-button" href="profListar.php">Relação de Professores</a>
-			<a class="w3-bar-item w3-button" href="profContratar.php">Contratação de Novos </a>
-
-
+			<a class="w3-bar-item w3-button" href="profListar.php">Caronas oferecidas</a>
+			<a class="w3-bar-item w3-button" href="profContratar.php">Pedir carona</a>
 		</div>
-		<div id="menuDisc" class="myMenu" >
+		<div id="menuMotor" class="myMenu" >
 			<div class="w3-container">
-				<h3>Disciplinas</h3>
+				<h3>Motorista</h3>
 			</div>
-			<a class="w3-bar-item w3-button" href='discListar.php'>Relação de Disciplinas</a>
-			<a class="w3-bar-item w3-button" href='discContratar.php'>Criar Nova Disciplina</a>
-
+			<a class="w3-bar-item w3-button" href='discListar.php'>Pedidos de carona</a>
+			<a class="w3-bar-item w3-button" href='discContratar.php'>Oferecer carona</a>
 		</div>
-		<div id="menuTurma" class="myMenu" >
+		<div id="menuFeed" class="myMenu" >
 			<div class="w3-container">
-				<h3>Turmas</h3>
+				<h3>Feed</h3>
 			</div>
-			<a class="w3-bar-item w3-button" href='turmaListar.php'>Relação de Turmas</a>
-			<a class="w3-bar-item w3-button" href='turmaContratar.php'>Criar Nova Turma</a>
-
+			<a class="w3-bar-item w3-button" href='turmaListar.php'>Posts</a>
+			<a class="w3-bar-item w3-button" href='turmaContratar.php'>Novo post</a>
 		</div>
 	</div>
 
