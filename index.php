@@ -28,37 +28,38 @@ INDEX.PHP
 		}
 	</style>
 
-	<body  onload="w3_show_nav('menuPassag')">
+	<body onload="w3_show_nav('menuPassag')">
 
-		<!-- Inclui MENU.PHP  -->
 		<?php require 'menu.php'; ?>
 
-
-		<!-- Conteúdo PRINCIPAL: deslocado para direita em 270 pixels quando a sidebar é visível -->
 		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
-			<div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-				<h1 class="w3-jumbo">Controle Acadêmico</h1>
-				<p class="w3-xlarge">Cadastros de Professores e Disciplinas</p>
+			<div class="w3-panel w3-padding w3-card-4 w3-light-grey">
+				<h1 class="w3-xxxlarge">Software de Carona</h1>
 
-				<img src="imagens/cadastro.jpg" class="w3-circle">
-
-				<img src="imagens/quadro.jpg" class="w3-circle">
-
-
-				<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
-					<p>
-						<nav>
-							<a class="w3-button w3-theme w3-hover-white"
-							   onclick="document.getElementById('id01').style.display='block'">Sobre</a>
-						</nav>
-					</p>
+				<footer class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
+                <p>
+                    Integrantes do curso de BES da PUCPR criaram este software com o principal
+                    objetivo de aumentar a interação entre os integrantes do curso de uma maneira
+                    ao mesmo tempo rentável e agradável! <br/><br/>
+                    Se você é um desses que quer conversar com alguém legal no caminho de casa ou
+                    se simplemente cansou de ter que andar de ônibus o tempo inteiro (ou as duas
+                    coisas, também vale), use este site ao ser favor! Aqui você pode receber e dar
+                    caronas para outros integrantes do curso enquanto bate um papo legal com quem
+                    está junto contigo! <br/><br/>
+                    "Ah, mas eu não tenho problema com isso e prefiro ficar na minha no  meu carro"
+                    <br/><br/>
+                    Tudo bem... mas esse site também é para você! Na aba "feed", você pode estar
+                    acompanhando as novidades sobre o trânsito e tudo mais que o pessoal postar lá!
+                    Seria legal se você também desse uma olhada e contribuísse com os outros, não acha?
+                    Afinal, você também não gosta de chegar num ponto do caminho e perceber que vai se
+                    atrasar algumas horas para o almoço, certo? <br/><br/>
+                    Aproveite este site!
+                </p>
 				</footer>
-
-		<!-- FIM PRINCIPAL -->
 			</div>
 
-		<!-- Inclui RODAPE.PHP  -->
 		<?php require 'rodape.php';?>
+
 	</body>
 </html>

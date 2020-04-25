@@ -10,8 +10,8 @@ MENU.PHP
 		<div class="w3-row w3-white w3-padding">
 			<div class="w3-half" style="margin:4px 0 6px 0"><a href="."><img src='imagens/logo.png' alt=' IE Exemplo '></a>
 			</div>
-			<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">
-				<div class="w3-right">INSTITUIÇÃO DE ENSINO</div>
+			<div class="w3-half w3-margin-top w3-hide-medium w3-hide-small">
+				<div class="w3-right">(AQUI VAI O NOME DA PESSOA QUE SE LOGA)</div>
 			</div>
 		</div>
 		<div class="w3-bar w3-theme w3-large" style="z-index:4;">
@@ -56,7 +56,3 @@ MENU.PHP
 			<a class="w3-bar-item w3-button" href='turmaContratar.php'>Novo post</a>
 		</div>
 	</div>
-
-
-
-

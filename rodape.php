@@ -12,7 +12,7 @@ Novembro/2018
         <div class="w3-modal-content">
             <header class="w3-container w3-theme">
                 <span onclick="document.getElementById('id01').style.display='none'"
-                      class="w3-button w3-display-topright">&times;</span>
+                      class="w3-button w3-display-topright">x</span>
                 <h2>Software de Carona</h2>
             </header>
             <div class="w3-container">
@@ -47,12 +47,10 @@ Novembro/2018
         // Script para abrir e fechar o sidebar
         function w3_open() {
             document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("myOverlay").style.display = "block";
         }
 
         function w3_close() {
             document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("myOverlay").style.display = "none";
         }
 
         function w3_show_nav(name) {
