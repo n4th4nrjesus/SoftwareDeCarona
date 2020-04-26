@@ -8,7 +8,9 @@ MENU.PHP
 	<!-- Top -->
 	<div class="w3-top">
 		<div class="w3-row w3-dark-grey w3-padding">
+
 			<div class="w3-half w3-padding-large" style="margin:4px 0 6px 0;"><b>Software de Carona</b>
+
 			</div>
 			<div class="w3-half w3-margin-top w3-hide-medium w3-hide-small">
 				<div class="w3-right">(AQUI VAI O NOME DA PESSOA QUE SE LOGA)</div>

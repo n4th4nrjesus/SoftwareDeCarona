@@ -64,6 +64,7 @@
 							   pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" title="(11)1111-1111." required></p>
 						<p>
 						<label class="w3-text-teal"><h6><b>Selecione o gênero de preferência do motorista</b></h6></label>
+
                         <select class="w3-input w3-border w3-light-grey" name="DataNasc">
                             <option value="qualquer">Qualquer</option>
                             <option value="masculino">Masculino</option>
