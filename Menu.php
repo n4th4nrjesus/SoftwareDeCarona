@@ -7,18 +7,18 @@ MENU.PHP
 
 	<!-- Top -->
 	<div class="w3-top">
-		<div class="w3-row w3-white w3-padding">
+		<div class="w3-row w3-dark-grey w3-padding">
 			<div class="w3-half" style="margin:4px 0 6px 0"><a href="."><img src='imagens/logo.png' alt=' IE Exemplo '></a>
 			</div>
 			<div class="w3-half w3-margin-top w3-hide-medium w3-hide-small">
 				<div class="w3-right">(AQUI VAI O NOME DA PESSOA QUE SE LOGA)</div>
 			</div>
 		</div>
-		<div class="w3-bar w3-theme w3-large" style="z-index:4;">
+		<div class="w3-bar w3-dark-grey w3-large" style="z-index:4;">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
 		</div>
 	</div>
 
