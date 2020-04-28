@@ -71,18 +71,20 @@
                     mysqli_query($conn,'SET character_set_connection=utf8');
                     mysqli_query($conn,'SET character_set_client=utf8');
                     mysqli_query($conn,'SET character_set_results=utf8');
-
+                    
+                    // hemres: arrumar echos
+                    
                     // Faz Select na Base de Dados
-                    $sql = "SELECT CodProfessor, Nome, Celular, DataNasc, Login FROM professor";
+                    $sql = "SELECT Local_partida, Local_destino, Genero FROM carona";
+                    $sql = "SELECT Nome FROM usuario";
+
                     echo "<div class='w3-responsive w3-card-4'>";
                     if ($result = mysqli_query($conn, $sql)) {
                         echo "<table class='w3-table-all'>";
                         echo "	<tr>";
-                        echo "	  <th>Código</th>";
                         echo "	  <th>Nome</th>";
-                        echo "	  <th>Celular</th>";
-                        echo "	  <th>Data Nascimento</th>";
-                        echo "	  <th>Login</th>";
+                        echo "	  <th>Local de partida</th>";
+                        echo "	  <th>Local de destino</th>";
                         echo "	  <th> </th>";
                         echo "	  <th> </th>";
                         echo "	</tr>";
@@ -101,11 +103,11 @@
                                 echo "</td><td>";
                                 echo $row["Nome"];
                                 echo "</td><td>";
-                                echo $row["Celular"];
+                                echo $row["Local_partida"];
                                 echo "</td><td>";
-                                echo $nova_data;
+                                echo $row["Local_destino"];
                                 echo "</td><td>";
-                                echo $row["Login"];
+                                echo $row["Genero"];
                                 echo "</td><td>";
                                 //Atualizar e Excluir registro de prof
                 ?>
