@@ -19,7 +19,7 @@ USE `ie_exemplo`;
 -- Database: `ie_exemplo`
 --
 
--- precisa arrumar as tabelas quer foram criadas
+-- hermes: precisa arrumar as tabelas quer foram criadas colocar as chaves pimarias e estrangeiras
 
 -- --------------------------------------------------------
 
@@ -47,6 +47,7 @@ CREATE TABLE `usuario` (
 CREATE TABLE `carona` (
   `Local_partida` varchar(100) NOT NULL,
   `Local_destino` varchar(100) NOT NULL,
+  'Data' date NOT NULL,
   --Arrumar como chave estrangeira de usuario 'Genero' varchar (20) NOT NULL, 
   `Login` varchar(50) DEFAULT NULL,
   `Senha` varchar(40) DEFAULT NULL
