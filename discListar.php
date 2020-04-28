@@ -31,11 +31,6 @@
 <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
-
-
-
-// Hermes: mexendo na div para aprensentar os dados dos pedidos de carona
-
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
         <h1 class="w3-xxlarge">Pedidos de carona</h1>
 
@@ -52,7 +47,6 @@
             #echo $data;
             echo "</p> "
             ?>
-        // precisa ser auterado para aprecer na tela
             <!-- Acesso ao BD-->
             <?php
             $servername = "localhost:3307";
@@ -77,29 +71,39 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
+
+
+
+            // hermes: precisar selecionar certinho os dados
+
             // Faz Select na Base de Dados
-            $sql = "SELECT CodDisciplina, NomeDisc, Ementa FROM Disciplina";
+            $sql = "SELECT Local_partida, Local_destino, Genero FROM carona";
+            $sql = "SELECT Nome FROM usuario";
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
+
+                // hermes: arrumar os echos
+
                 echo "<table class='w3-table-all'>";
                 echo "	<tr>";
-                echo "	  <th>Código</th>";
+                echo "	  <th>Nome</th>";
                 echo "	  <th width='10%'>Nome</th>";
-				echo "	  <th>Ementa</th>";
-				echo "	  <th> </th>";
+				echo "	  <th>Local de partida</th>";
+                echo "	  <th>Local de destino</th>";
+                echo "	  <th> </th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     // Apresenta cada linha da tabela
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $cod = $row["CodDisciplina"];
+                        $cod = $row["Nome"];
                         echo "<tr>";
                         echo "<td>";
                         echo $cod;
                         echo "</td><td>";
-                        echo $row["NomeDisc"];
+                        echo $row["Local_partida"];
                         echo "</td><td>";
-                        echo $row["Ementa"];
+                        echo $row["Local_destino"];
                         echo "</td><td>";
 
 						//Atualizar e Excluir registro de prof
@@ -128,7 +132,7 @@
     <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
         <p>
             <nav>
-                <a class="w3-button w3-theme w3-hover-white"
+                <a class="w3-button w3-teal w3-hover-white"
                    onclick="document.getElementById('id01').style.display='block'">Sobre</a>
             </nav>
         </p>
