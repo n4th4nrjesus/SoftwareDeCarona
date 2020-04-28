@@ -19,6 +19,39 @@ USE `ie_exemplo`;
 -- Database: `ie_exemplo`
 --
 
+-- precisa arrumar as tabelas quer foram criadas
+
+-- --------------------------------------------------------
+
+--
+-- estrutura tabela usuario
+--
+
+CREATE TABLE `usuario` (
+  `Cod` int NOT NULL,
+  `Nome` varchar(100) NOT NULL,
+  `Celular` varchar(20) NOT NULL,
+  `DataNasc` date DEFAULT NULL,
+  `Genero` varchar (20) NOT NULL,
+  `CarteiraMotorista` bigint DEFAULT NULL,
+  `Login` varchar(50) DEFAULT NULL,
+  `Senha` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- estrutura tabela carona
+--
+
+CREATE TABLE `carona` (
+  `Local_partida` varchar(100) NOT NULL,
+  `Local_destino` varchar(100) NOT NULL,
+  --Arrumar como chave estrangeira de usuario 'Genero' varchar (20) NOT NULL, 
+  `Login` varchar(50) DEFAULT NULL,
+  `Senha` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +78,7 @@ CREATE TABLE `professor` (
   `Login` varchar(50) DEFAULT NULL,
   `Senha` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 --
 -- Incluindo dados da tabela `professor`
