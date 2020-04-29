@@ -44,7 +44,7 @@ INDEX.PHP
                     ao mesmo tempo rentável e agradável! <br/><br/>
                     Se você é um desses que quer conversar com alguém legal no caminho de casa ou
                     se simplemente cansou de ter que andar de ônibus o tempo inteiro (ou as duas
-                    coisas, também vale), use este site ao ser favor! Aqui você pode receber e dar
+                    coisas, também vale), use este site ao seu favor! Aqui você pode receber e dar
                     caronas para outros integrantes do curso enquanto bate um papo legal com quem
                     está junto contigo! <br/><br/>
                     "Ah, mas eu não tenho problema com isso e prefiro ficar na minha no  meu carro"
