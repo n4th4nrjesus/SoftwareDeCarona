@@ -56,36 +56,23 @@
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Contratar">
 						<p>
 						<label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
-						<input class="w3-input w3-border w3-light-grey" name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$"
+						<input class="w3-input w3-border w3-light-grey" name="local_partida" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$"
 							   title="Endereço entre 10 e 100 letras." required></p>
 						<p>
 						<label class="w3-text-teal"><h6><b>Insira o endereço de destino</b></h6></label>
-						<input class="w3-input w3-border w3-light-grey " name="Celular" type="text"
-							   pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" title="(11)1111-1111." required></p>
+						<input class="w3-input w3-border w3-light-grey " name="local_destino" type="text"
+							   title="Insira o endereço de destino." required></p>
 						<p>
 						<label class="w3-text-teal"><h6><b>Selecione o gênero de preferência do motorista</b></h6></label>
 
-                        <select class="w3-input w3-border w3-light-grey" name="DataNasc">
+                        <select class="w3-input w3-border w3-light-grey" name="motoristaGen">
                             <option value="qualquer">Qualquer</option>
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                         </select>
 						<p>
-						<label class="w3-text-teal"><h6>Login</h6></label>
-						<input class="w3-input w3-border w3-light-grey" name="Login" type="text"
-							   pattern="[a-zA-Z]{2,20}.[a-zA-Z]{2,20}" title="Formato: nome.sobrenome" required></p>
 						<p>
-						<label class="w3-text-teal"><h6>Senha</h6></label>
-						<input class="w3-input w3-border w3-light-grey" name="Senha" type="password"
-							   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"
-							   title="Deve conter ao menos um número, uma letra maiúscula e minúscula, um caracter especial, com 6 a 8 caracteres" required></p>
-						<p>
-						<label class="w3-text-teal"><h6>Confirma Senha</h6></label>
-						<input class="w3-input w3-border w3-light-grey" name="Senha2" type="password"
-							   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"
-							   title="Deve conter ao menos um número, uma letra maiúscula e minúscula, um caracter especial, com 6 a 8 caracteres" required> </p> 
-						<p>
-						<input type="submit" value="Registrar" class="w3-btn w3-teal" >
+						<input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedirCarona">
 						<input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='.'"></p>
 					</form>
 				</div>

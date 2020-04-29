@@ -16,7 +16,7 @@
         }
 
         .w3-code {
-            border-left: 4px solid #380077
+            border-left: 4px solid teal;
         }
 
         .myMenu {
@@ -32,7 +32,7 @@
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
         <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-            <h1 class="w3-xxlarge">Relação de Professores</h1>
+            <h1 class="w3-xxlarge">Histórico de Caronas</h1>
 
             <p class="w3-large">
             <p>
@@ -136,7 +136,7 @@
         <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
             <p>
                 <nav>
-                    <a class="w3-button w3-theme w3-hover-white"
+                    <a class="w3-button w3-teal w3-hover-white"
                     onclick="document.getElementById('id01').style.display='block'">Sobre</a>
                 </nav>
             </p>

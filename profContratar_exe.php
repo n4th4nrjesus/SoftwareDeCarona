@@ -11,8 +11,8 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	  <style>
-		.w3-theme {color:#ffff !important;background-color:#380077 !important}
-		.w3-code{border-left:4px solid #380077}
+		.w3-theme {color:#ffff !important; background-color:#380077 !important}
+		.w3-code{border-left:4px solid teal}
 		.myMenu {margin-bottom:150px}
       </style>
 	</head>
@@ -24,7 +24,7 @@
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Registro de Professor</h1>
+  <h1 class="w3-xxlarge">Carona Pedida</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
@@ -48,11 +48,10 @@
         $database = "IE_Exemplo";
 		
 		
-		$nome    = $_POST['Nome'];
-		$celular = $_POST['Celular'];
-		$login   = $_POST['Login'];
-		$dtNasc  = $_POST['DataNasc'];
-		$acao    = $_POST['acaoForm'];
+		$local_partida   = $_POST['local_partida'];
+		$local_destino = $_POST['local_destino'];
+		$motoristaGen   = $_POST['motoristaGen'];
+		$pedirCarona  = $_POST['pedirCarona'];
 		
 		if ($dtNasc != ""){
 			if (strpos($dtNasc,"-") != false){
@@ -70,8 +69,6 @@
 		else
 			$nova_data = "";
 		
-		//Criptografa Senha
-		$md5Senha = md5($_POST['Senha']);
 
 		// Cria conexão
 		$conn = mysqli_connect($servername, $username, $password, $database);
@@ -92,9 +89,9 @@
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
 			if ($acao == "Contratar")
-				echo "Um registro adicionado!";
+				echo "Uma carona foi adicionada!";
 			else
-				echo "Um registro alterado!";
+				echo "Uma carona foi alterada!";
 		} else {
 			echo "Erro executando INSERT: " . mysqli_error($conn);
 		}
@@ -108,7 +105,7 @@
 
 <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
   <p><nav>
-      <a class="w3-button w3-theme w3-hover-white" onclick="document.getElementById('id01').style.display='block'" >Sobre</a>
+      <a class="w3-button w3-teal w3-hover-white" onclick="document.getElementById('id01').style.display='block'" >Sobre</a>
   </nav></p>
 </footer>
 

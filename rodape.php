@@ -10,7 +10,7 @@ Novembro/2018
 
     <div id="id01" class="w3-modal w3-animate-opacity">
         <div class="w3-modal-content">
-            <header class="w3-container w3-theme">
+            <header class="w3-container w3-teal">
                 <span onclick="document.getElementById('id01').style.display='none'"
                       class="w3-button w3-display-topright">x</span>
                 <h2>Software de Carona</h2>
@@ -36,7 +36,7 @@ Novembro/2018
                     Aproveite este site!
                 </p>
             </div>
-            <footer class="w3-container w3-theme ">
+            <footer class="w3-container w3-teal ">
                 <p>PUCPR 2020</p>
             </footer>
         </div>
