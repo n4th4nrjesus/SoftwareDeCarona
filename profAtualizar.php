@@ -7,7 +7,7 @@
 <head>
 
     <title>Software de Carona</title>
-    <link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
+	<link rel="icon" type="image/png" href="imagens/LogoCarona.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
