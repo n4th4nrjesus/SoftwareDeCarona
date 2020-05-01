@@ -109,9 +109,9 @@
                                 //Atualizar e Excluir registro de prof
                 ?>
                             
-                            <a href='profAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Professor' width='32'></a>
+                            <a href='oferecidaAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Professor' width='32'></a>
                             </td><td>
-                            <a href='profExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Professor' width='32'></a>
+                            <a href='oferecidaExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Professor' width='32'></a>
                             </td>
                             </tr>
                 <?php

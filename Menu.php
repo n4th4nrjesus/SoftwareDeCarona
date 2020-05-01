@@ -40,21 +40,21 @@ MENU.PHP
 			<div class="w3-container w3-teal">
 				<h3 class="">Passageiro</h3>
 			</div>
-			<a class="w3-bar-item w3-button" href="caronasOferecidas.php">Caronas oferecidas</a>
+			<a class="w3-bar-item w3-button" href="oferecidasListar.php">Caronas oferecidas</a>
 			<a class="w3-bar-item w3-button" href="pedirCarona.php">Pedir carona</a>
 		</div>
 		<div id="menuMotor" class="myMenu" >
 			<div class="w3-container w3-teal">
 				<h3>Motorista</h3>
 			</div>
-			<a class="w3-bar-item w3-button" href='pedidosCarona.php'>Pedidos de carona</a>
-			<a class="w3-bar-item w3-button" href='oferecerCarona.php'>Oferecer carona</a>
+			<a class="w3-bar-item w3-button" href='pedidoListar.php'>Pedidos de carona</a>
+			<a class="w3-bar-item w3-button" href='oferecidasRegistrar.php'>Oferecer carona</a>
 		</div>
 		<div id="menuFeed" class="myMenu" >
 			<div class="w3-container w3-teal">
 				<h3>Feed</h3>
 			</div>
-			<a class="w3-bar-item w3-button" href='feedPosts.php'>Posts</a>
-			<a class="w3-bar-item w3-button" href='feedNovoPost.php'>Novo post</a>
+			<a class="w3-bar-item w3-button" href='postListar.php'>Posts</a>
+			<a class="w3-bar-item w3-button" href='postRegistrar.php'>Novo post</a>
 		</div>
 	</div>

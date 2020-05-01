@@ -103,7 +103,7 @@ Software de Carona
 						<div class="w3-container w3-theme">
 							<h2>Informe os dados da nova Turma</h2>
 						</div>
-						<form class="w3-container" action="TurmaContratar_exe.php" method="post" onsubmit="return check(this.form)">
+						<form class="w3-container" action="postRegistrar_exe.php" method="post" onsubmit="return check(this.form)">
 							<input type="hidden" id="acaoForm" name="acaoForm" value="Contratar">
 							<p><label class="w3-text-deep-purple"><b>Professor</b></label>
 								<select name="codProf" class="w3-input w3-border" required>
