@@ -52,9 +52,9 @@ Software de Carona
 				<?php
 					
 				$servername = "localhost:3307";
-				$username = "usu@IE_Exe";
-				$password = "php@PUCPR";
-				$database = "IE_Exemplo";
+				$username = "usu@SoftwareCarona";
+				$password = "caronadesoftware";
+				$database = "software_de_carona";
 				
 				// Cria conexão
 				$conn = mysqli_connect($servername, $username, $password, $database);
