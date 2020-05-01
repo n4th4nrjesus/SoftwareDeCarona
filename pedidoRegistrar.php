@@ -53,28 +53,32 @@
                         <h2>Informe os dados da sua carona</h2>
                     </div>
                     <form class="w3-container" action="pedidoRegistrar_exe.php" method="post" onsubmit="return check(this.form)">
-						<input type="hidden" id="acaoForm" name="acaoForm" value="Contratar">
-						<p>
-						<label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
-						<input class="w3-input w3-border w3-light-grey" name="localPartida" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$"
-							   title="Endereço entre 10 e 100 letras." required></p>
-						<p>
-						<label class="w3-text-teal"><h6><b>Insira o endereço de destino</b></h6></label>
-						<input class="w3-input w3-border w3-light-grey " name="localDestino" type="text"
-							   title="Insira o endereço de destino." required></p>
-						<p>
-						<label class="w3-text-teal"><h6><b>Selecione o gênero de preferência do motorista</b></h6></label>
+						<input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
+                        
+                        <div class="w3-dropdown-hover">
+                            <label class="w3-text-teal"><h6><b>Para Onde Deseja Ir?</b></h6></label>
+                            <button class="w3-button w3-light-grey">Selecione</button>
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                <a class="w3-bar-item w3-button">Puc</a>
+                                <a class="w3-bar-item w3-button">Personalizado</a>
 
-                        <select class="w3-input w3-border w3-light-grey" name="motoristaGen">
-                            <option value="qualquer">Qualquer</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
-                        </select>
-						<p>
-						<p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
+                            <input class="w3-input w3-border w3-light-grey" name="localPartida" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$"
+                                title="Endereço entre 10 e 100 letras." required></p>
+                        </div>
+                        <div>
+                            <label class="w3-text-teal"><h6><b>Insira o endereço de destino</b></h6></label>
+                            <input class="w3-input w3-border w3-light-grey " name="localDestino" type="text"
+                                title="Insira o endereço de destino." required></p>
+                        </div>
+                        <div>
 						<input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedidoRegistrar">
 						<input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='.'"></p>
-					</form>
+                        
+                    </form>
 				</div>
 
 			</div>

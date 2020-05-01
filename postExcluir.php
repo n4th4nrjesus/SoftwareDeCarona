@@ -16,7 +16,7 @@ Software de Carona
         }
 
         .w3-code {
-            border-left: 4px solid #380077
+            border-left: 4px solid teal;
         }
 
         .myMenu {

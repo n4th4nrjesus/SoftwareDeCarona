@@ -72,13 +72,8 @@
 			mysqli_query($conn,'SET character_set_results=utf8');
 
 
-
-
-            // hermes: precisar selecionar certinho os dados
-
             // Faz Select na Base de Dados
-            $sql = "SELECT Local_partida, Local_destino, Genero FROM carona";
-            //$sql = "SELECT Nome FROM usuario";
+            $sql = "SELECT LocalPartida, LocalDestino, DataCriacao FROM carona";
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
 
@@ -86,8 +81,6 @@
 
                 echo "<table class='w3-table-all'>";
                 echo "	<tr>";
-                echo "	  <th>Nome</th>";
-                echo "	  <th width='10%'>Nome</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
                 echo "	  <th> </th>";
@@ -96,14 +89,14 @@
                 if (mysqli_num_rows($result) > 0) {
                     // Apresenta cada linha da tabela
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $cod = $row["Nome"];
+                        $cod = $row["LocalPartida"];
                         echo "<tr>";
                         echo "<td>";
                         echo $cod;
                         echo "</td><td>";
-                        echo $row["Local_partida"];
+                        echo $row["LocalPartida"];
                         echo "</td><td>";
-                        echo $row["Local_destino"];
+                        echo $row["LocalDestino"];
                         echo "</td><td>";
 
 						//Atualizar e Excluir registro de prof
@@ -122,8 +115,7 @@
                 echo "Erro executando SELECT: " . mysqli_error($conn);
             }
 
-            mysqli_close($conn);  //Encerra conexao com o BD
-
+            mysqli_close($conn); 
             ?>
         </div>
     </div>

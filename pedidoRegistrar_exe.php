@@ -49,11 +49,10 @@
 
 		$localPartida   = $_POST['localPartida'];
 		$localDestino = $_POST['localDestino'];
-		$motoristaGen   = $_POST['motoristaGen'];
 		$pedidoRegistrar  = $_POST['pedidoRegistrar'];
 		
-		if ($localDestino != "" && $localPartida != ""){
-		
+		if ($localPartida != $localDestino) {
+						
 			$conn = mysqli_connect($servername, $username, $password, $database);
 
 			// Verifica conexão
@@ -70,10 +69,16 @@
 			$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida','$localDestino')";
 			echo "<div class='w3-responsive w3-card-4'>";
 
-			mysqli_close($conn);
-		} else 
-			die;
+			if (mysqli_query($conn, $sql)) {
+				echo "Carona Registrada";
+			} else {
+				echo "Erro: ".$sql."<br>".mysqli_error($conn);
+			}
 
+			mysqli_close($conn);
+			exit;
+
+		}
 	?>
   </div>
 </div>
