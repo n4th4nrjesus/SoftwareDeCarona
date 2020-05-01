@@ -41,7 +41,7 @@ MENU.PHP
 				<h3 class="">Passageiro</h3>
 			</div>
 			<a class="w3-bar-item w3-button" href="oferecidasListar.php">Caronas oferecidas</a>
-			<a class="w3-bar-item w3-button" href="pedirCarona.php">Pedir carona</a>
+			<a class="w3-bar-item w3-button" href="pedidoRegistrar.php">Pedir carona</a>
 		</div>
 		<div id="menuMotor" class="myMenu" >
 			<div class="w3-container w3-teal">

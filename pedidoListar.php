@@ -16,7 +16,7 @@
     }
 
     .w3-code {
-        border-left: 4px solid #380077
+        border-left: 4px solid teal;
     }
 
     .myMenu {
@@ -78,7 +78,7 @@
 
             // Faz Select na Base de Dados
             $sql = "SELECT Local_partida, Local_destino, Genero FROM carona";
-            $sql = "SELECT Nome FROM usuario";
+            //$sql = "SELECT Nome FROM usuario";
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
 

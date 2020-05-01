@@ -32,7 +32,7 @@
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
         <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-            <h1 class="w3-xxlarge">Caronas sem passageiros</h1>
+            <h1 class="w3-xxlarge">Aceite uma carona</h1>
 
             <p class="w3-large">
             <p>
@@ -75,7 +75,7 @@
                     
                     // Faz Select na Base de Dados
                     $sql = "SELECT LocalPartida, LocalDestino, Genero FROM usuario";
-                    $sql = "SELECT Nome FROM usuario";
+                    //$sql = "SELECT Nome FROM usuario";
 
                     echo "<div class='w3-responsive w3-card-4'>";
                     if ($result = mysqli_query($conn, $sql)) {

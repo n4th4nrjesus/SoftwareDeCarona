@@ -28,6 +28,7 @@
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
+  <!-- Acesso em:-->
 	<?php
 
 	date_default_timezone_set("America/Sao_Paulo");
@@ -49,52 +50,29 @@
 		$localPartida   = $_POST['localPartida'];
 		$localDestino = $_POST['localDestino'];
 		$motoristaGen   = $_POST['motoristaGen'];
-		$pedirCarona  = $_POST['pedirCarona'];
+		$pedidoRegistrar  = $_POST['pedidoRegistrar'];
 		
 		if ($localDestino != "" && $localPartida != ""){
-			if (strpos($data,"-") != false){
-				$strData = explode('-',$dtNasc);
-			}else {
-				$strData = explode('/',$dtNasc);
+		
+			$conn = mysqli_connect($servername, $username, $password, $database);
+
+			// Verifica conexão
+			if (!$conn) {
+				die("Connection failed: " . mysqli_connect_error());
 			}
-		
-			$ano = $strData[2];
-			$mes = $strData[1];
-			$dia = $strData[0];
+			// Configura para trabalhar com caracteres acentuados do português
+			mysqli_query($conn,"SET NAMES 'utf8'");
+			mysqli_query($conn,"SET NAMES 'utf8'");
+			mysqli_query($conn,'SET character_set_connection=utf8');
+			mysqli_query($conn,'SET character_set_client=utf8');
+			mysqli_query($conn,'SET character_set_results=utf8');
+	
+			$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida','$localDestino')";
+			echo "<div class='w3-responsive w3-card-4'>";
 
-			$nova_data = $ano.'-'.$mes.'-'.$dia;
-		}
-		else
-			$nova_data = "";
-		
-
-		// Cria conexão
-		$conn = mysqli_connect($servername, $username, $password, $database);
-
-		// Verifica conexão
-		if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
-		// Configura para trabalhar com caracteres acentuados do português
-		mysqli_query($conn,"SET NAMES 'utf8'");
-		mysqli_query($conn,"SET NAMES 'utf8'");
-		mysqli_query($conn,'SET character_set_connection=utf8');
-		mysqli_query($conn,'SET character_set_client=utf8');
-		mysqli_query($conn,'SET character_set_results=utf8');
-
-		// Faz Select na Base de Dados
-		$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$nome','$localPartida','$localDestino')";
-		echo "<div class='w3-responsive w3-card-4'>";
-		if ($result = mysqli_query($conn, $sql)) {
-			if ($acao == "Contratar")
-				echo "Uma carona foi adicionada!";
-			else
-				echo "Uma carona foi alterada!";
-		} else {
-			echo "Erro executando INSERT: " . mysqli_error($conn);
-		}
-        echo "</div>";
-		mysqli_close($conn);  //Encerra conexao com o BD
+			mysqli_close($conn);
+		} else 
+			die;
 
 	?>
   </div>

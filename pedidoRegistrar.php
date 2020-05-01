@@ -52,7 +52,7 @@
                     <div class="w3-container w3-teal">
                         <h2>Informe os dados da sua carona</h2>
                     </div>
-                    <form class="w3-container" action="pedirCarona_exe.php" method="post" onsubmit="return check(this.form)">
+                    <form class="w3-container" action="pedidoRegistrar_exe.php" method="post" onsubmit="return check(this.form)">
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Contratar">
 						<p>
 						<label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
@@ -72,7 +72,7 @@
                         </select>
 						<p>
 						<p>
-						<input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedirCarona">
+						<input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedidoRegistrar">
 						<input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='.'"></p>
 					</form>
 				</div>
