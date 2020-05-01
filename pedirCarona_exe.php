@@ -28,7 +28,6 @@
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
-  <!-- Acesso em:-->
 	<?php
 
 	date_default_timezone_set("America/Sao_Paulo");
@@ -39,7 +38,6 @@
 	echo "</p> "
 	?>
 
-	<!-- Acesso ao BD-->
 	<?php
 		
 		$servername = "localhost:3307";
@@ -47,7 +45,7 @@
         $password = "caronadesoftware";
         $database = "software_de_carona";
 		
-		
+
 		$localPartida   = $_POST['localPartida'];
 		$localDestino = $_POST['localDestino'];
 		$motoristaGen   = $_POST['motoristaGen'];

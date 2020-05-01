@@ -32,7 +32,7 @@
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
         <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-            <h1 class="w3-xxlarge">Histórico de Caronas</h1>
+            <h1 class="w3-xxlarge">Caronas sem passageiros</h1>
 
             <p class="w3-large">
             <p>
@@ -72,10 +72,9 @@
                     mysqli_query($conn,'SET character_set_client=utf8');
                     mysqli_query($conn,'SET character_set_results=utf8');
                     
-                    // hemres: arrumar echos
                     
                     // Faz Select na Base de Dados
-                    $sql = "SELECT Local_partida, Local_destino, Genero FROM carona";
+                    $sql = "SELECT LocalPartida, LocalDestino, Genero FROM usuario";
                     $sql = "SELECT Nome FROM usuario";
 
                     echo "<div class='w3-responsive w3-card-4'>";
@@ -85,8 +84,6 @@
                         echo "	  <th>Nome</th>";
                         echo "	  <th>Local de partida</th>";
                         echo "	  <th>Local de destino</th>";
-                        echo "	  <th> </th>";
-                        echo "	  <th> </th>";
                         echo "	</tr>";
                         if (mysqli_num_rows($result) > 0) {
                             // Apresenta cada linha da tabela
