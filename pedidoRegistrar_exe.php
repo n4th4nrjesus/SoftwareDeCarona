@@ -47,37 +47,62 @@
         $database = "software_de_carona";
 		
 
-		$localPartida   = $_POST['localPartida'];
-		$localDestino = $_POST['localDestino'];
+		$localPartida_Puc   = $_POST['localPartida_Puc'];
+		$localDestino_Puc = $_POST['localDestino_Puc'];
+		$localPartida_Personal   = $_POST['localPartida_Personal'];
+		$localDestino_Personal = $_POST['localDestino_Personal'];
 		$pedidoRegistrar  = $_POST['pedidoRegistrar'];
 		
-		if ($localPartida != $localDestino) {
+		if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
 						
 			$conn = mysqli_connect($servername, $username, $password, $database);
 
-			// Verifica conexão
 			if (!$conn) {
 				die("Connection failed: " . mysqli_connect_error());
 			}
-			// Configura para trabalhar com caracteres acentuados do português
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 	
-			$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida','$localDestino')";
+			$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida_Personal','$localDestino_Personal')";
 			echo "<div class='w3-responsive w3-card-4'>";
 
 			if (mysqli_query($conn, $sql)) {
 				echo "Carona Registrada";
 			} else {
 				echo "Erro: ".$sql."<br>".mysqli_error($conn);
+				echo "Carona não registrada";
 			}
 
 			mysqli_close($conn);
 			exit;
 
+		} else {
+			$conn = mysqli_connect($servername, $username, $password, $database);
+
+			if (!$conn) {
+				die("Connection failed: " . mysqli_connect_error());
+			}
+			mysqli_query($conn,"SET NAMES 'utf8'");
+			mysqli_query($conn,"SET NAMES 'utf8'");
+			mysqli_query($conn,'SET character_set_connection=utf8');
+			mysqli_query($conn,'SET character_set_client=utf8');
+			mysqli_query($conn,'SET character_set_results=utf8');
+	
+			$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida_Puc','$localDestino_Puc')";
+			echo "<div class='w3-responsive w3-card-4'>";
+
+			if (mysqli_query($conn, $sql)) {
+				echo "Carona Registrada";
+			} else {
+				echo "Erro: ".$sql."<br>".mysqli_error($conn);
+				echo "Carona não registrada";
+			}
+
+			mysqli_close($conn);
+			exit;
 		}
 	?>
   </div>

@@ -94,8 +94,6 @@
                         echo "<td>";
                         echo $cod;
                         echo "</td><td>";
-                        echo $row["LocalPartida"];
-                        echo "</td><td>";
                         echo $row["LocalDestino"];
                         echo "</td><td>";
 
