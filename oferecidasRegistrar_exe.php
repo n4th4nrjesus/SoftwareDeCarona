@@ -17,13 +17,16 @@ Software de Carona
 	</head>
 <body onload="w3_show_nav('menuMotor')">
 <!-- Inclui MENU.PHP  -->
-<?php require 'menu.php';?>
+<?php 
+	require 'menu.php';
+	session_start();
+?>
 
 <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Exclusão de Disciplina</h1>
+  <h1 class="w3-xxlarge">Oferecer Carona</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
@@ -45,37 +48,68 @@ Software de Carona
 		$username = "usu@SoftwareCarona";
 		$password = "caronadesoftware";
 		$database = "software_de_carona";
-		$Cod = "Cod"
-		
-		$id      = $_POST['Id'];
 
-		
-		// Cria conexão
-		$conn = mysqli_connect($servername, $username, $password, $database);
+		$localPartida_Puc   = $_POST['localPartida_Puc'];
+		$localDestino_Puc = $_POST['localDestino_Puc'];
+		$localPartida_Personal   = $_POST['localPartida_Personal'];
+		$localDestino_Personal = $_POST['localDestino_Personal'];
 
-		// Verifica conexão
-		if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
-		// Configura para trabalhar com caracteres acentuados do português
+		if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
+
+			// Cria conexão
+			$conn = mysqli_connect($servername, $username, $password, $database);
+
+			// Verifica conexão
+			if (!$conn) {
+				die("Connection failed: " . mysqli_connect_error());
+			}
+			// Configura para trabalhar com caracteres acentuados do português
+				mysqli_query($conn,"SET NAMES 'utf8'");
+				mysqli_query($conn,"SET NAMES 'utf8'");
+				mysqli_query($conn,'SET character_set_connection=utf8');
+				mysqli_query($conn,'SET character_set_client=utf8');
+				mysqli_query($conn,'SET character_set_results=utf8');
+
+			// Faz Select na Base de Dados
+			$matricula = $_SESSION['usuario_matri'];
+			$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) VALUES ('$matricula','$localPartida_Personal','$localDestino_Personal')";
+			echo "<div class='w3-responsive w3-card-4'>";
+
+				if (mysqli_query($conn, $sql)) {
+					echo "Carona Registrada";
+				} else {
+					echo "Erro: ".$sql."<br>".mysqli_error($conn);
+					echo "Carona não registrada";
+				}
+			mysqli_close($conn);  //Encerra conexao com o BD
+			exit;
+
+		} else {
+			$conn = mysqli_connect($servername, $username, $password, $database);
+
+			if (!$conn) {
+				die("Connection failed: " . mysqli_connect_error());
+			}
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-		// Faz Select na Base de Dados
-		$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida_Personal','$localDestino_Personal')";
+			$matricula = $_SESSION['usuario_matri'];
+			$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) VALUES ('$matricula','$localPartida_Puc','$localDestino_Puc')";
+			echo "<div class='w3-responsive w3-card-4'>";
 
-		echo "<div class='w3-responsive w3-card-4'>";
-		if ($result = mysqli_query($conn, $sql)) {
-				echo "Um registro excluído!";
-		} else {
-			echo "Erro executando DELETE: " . mysqli_error($conn);
+			if (mysqli_query($conn, $sql)) {
+				echo "Carona Registrada";
+			} else {
+				echo "Erro: ".$sql."<br>".mysqli_error($conn);
+				echo "Carona não registrada";
+			}
+
+			mysqli_close($conn);
+			exit;
 		}
-        echo "</div>";
-		mysqli_close($conn);  //Encerra conexao com o BD
-
 	?>
   </div>
 </div>

@@ -56,12 +56,6 @@
                     $database = "software_de_carona";
                     $Cod = "Cod";
 
-                    $localPartida_Puc   = $_POST['localPartida_Puc'];
-                    $localDestino_Puc = $_POST['localDestino_Puc'];
-                    $localPartida_Personal   = $_POST['localPartida_Personal'];
-                    $localDestino_Personal = $_POST['localDestino_Personal'];
-                    $pedidoRegistrar  = $_POST['pedidoRegistrar'];
-
                     // Cria conexão
                     $conn = mysqli_connect($servername, $username, $password, $database);
                     
@@ -81,42 +75,34 @@
                     
                     
                     // Faz Select na Base de Dados
-                    $sql = "SELECT c.LocalPartida, c.LocalDestino, u.Genero, u.Nome, u.Matricula FROM Carona as c, Usuario as u WHERE Cod = $Cod AND c.fk_Passageiro_Matricula = null ";
+                    $sql = "SELECT c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, u.Nome as Motorista FROM Carona as c 
+                            INNER JOIN Usuario as u ON u.Matricula = c.fk_Motorista_Matricula 
+                            WHERE c.fk_Passageiro_Matricula = null";
                     //$sql = "SELECT Nome FROM usuario";
 
                     echo "<div class='w3-responsive w3-card-4'>";
                     if ($result = mysqli_query($conn, $sql)) {
                         echo "<table class='w3-table-all'>";
                         echo "	<tr>";
-                        echo "	  <th>Nome</th>";
+                        echo "	  <th>Motorista</th>";
                         echo "	  <th>Local de partida</th>";
                         echo "	  <th>Local de destino</th>";
                         echo "	</tr>";
                         if (mysqli_num_rows($result) > 0) {
-                            // Apresenta cada linha da tabela
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $dataN = explode('-', $row["DataNasc"]);
-                                $ano = $dataN[0];
-                                $mes = $dataN[1];
-                                $dia = $dataN[2];
-                                $cod = $row["CodProfessor"];
-                                $nova_data = $dia . '/' . $mes . '/' . $ano;
+                                echo $row["Motorista"];
                                 echo "<tr>";
                                 echo "<td>";
-                                echo $cod;
                                 echo "</td><td>";
-                                echo $row["Nome"];
+                                echo $row["LocalPartida"];
+                                echo "<tr>";
+                                echo "<td>";
                                 echo "</td><td>";
-                                echo $row["Local_partida"];
+                                echo $row["LocalDestino"];
                                 echo "</td><td>";
-                                echo $row["Local_destino"];
-                                echo "</td><td>";
-                                echo $row["Genero"];
-                                echo "</td><td>";
-                                //Atualizar e Excluir registro de prof
                 ?>
                             
-                            <a href='oferecidaAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Professor' width='32'></a>
+                            <a href='oferecidaConfirmar.php?id=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar carona' width='32'></a>
                             </td><td>
                             <a href='oferecidaExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Professor' width='32'></a>
                             </td>

@@ -51,7 +51,7 @@ Software de Carona
                     <div class="w3-container w3-teal">
                         <h2>Informe os dados da sua carona</h2>
                     </div>
-                    <form class="w3-container" action="pedidoRegistrar_exe.php" method="post">
+                    <form class="w3-container" action="oferecidasRegistrar_exe.php" method="post">
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
                         
                         <div>
@@ -79,7 +79,7 @@ Software de Carona
                             <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
                                 title="Insira o endereço de destino."></p>
                         </div>
-                        
+
 						</br>
 						<input type="submit" value="Oferecer Carona" class="w3-btn w3-teal" name="oferecerCarona">
 						<input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='.'"></p>
