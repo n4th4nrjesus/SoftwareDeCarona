@@ -27,7 +27,7 @@ MENU.PHP
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-teal w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')" style="display: none;">FEED</a>
 		</div>
 	</div>
 
@@ -39,7 +39,7 @@ MENU.PHP
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuMotor')"
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MOTORISTA</a>
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuFeed')"
-			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">FEED</a>
+			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16" style="display: none;">FEED</a>
 		</div>
 		<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-right w3-xlarge w3-hide-large w3-teal"
 		   title="Close Menu">x</a>
