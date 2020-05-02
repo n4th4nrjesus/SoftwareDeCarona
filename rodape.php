@@ -6,14 +6,6 @@ RODAPE.PHP
 Novembro/2018
 ---------------------------------------------------------------------------------->
 
-<?php
-    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
-        session_unset();
-        session_destroy();
-    }
-    $_SESSION['LAST_ACTIVITY'] = time();
-?>
-
     <div id="id01" class="w3-modal w3-animate-opacity">
         <div class="w3-modal-content">
             <header class="w3-container w3-teal">
