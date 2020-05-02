@@ -29,35 +29,38 @@ INDEX.PHP
 	</style>
 
 	<?php 
-		session_start(); 
-		$_SESSION['usuario_email'] = '';
-		$_SESSION['usuario_senha'] = '';
+		session_start();
+		if (isset($_SESSION['usuario_matri']))
+			header("Location: oferecidasListar.php");
 	?>
 
 	<body class="w3-dark-grey">
 
-		<div class="w3-main w3-container">
-			<div class="w3-panel w3-padding-small w3-card-4 w3-light-grey">
-				<div class="w3-half w3-padding-large">
-					<form class="w3-container" action="login_exe.php" method="post" onsubmit="return check(this.form)">
+		<div class="w3-main w3-container w3-padding" style="display: flex; height: 100%;">
+			<div class="w3-panel w3-padding w3-card-4 w3-light-grey" style="margin: auto;">
+				<div class="w3-padding-large w3-light-grey w3-half">
+					<div class="w3-container w3-dark-grey">
+						<h3>Realize seu login se for um estudante de BES da PUCPR!</h3>
+					</div>
+					<form action="login_exe.php" method="post" onsubmit="return check(this.form)">
 						<input type="hidden" id="login" name="login" value="Login">
 						<p>
-							<label class="w3-text-deep-purple"><b>Email</b></label>
+							<label class="w3-text-dark-grey"><b>Email</b></label>
 							<input class="w3-input w3-border w3-light-grey" name="Email" type="text"
-									pattern="[a-zA-Z]{2,20}.[a-zA-Z]{2,20}" title="Formato: nome.sobrenome" required>
+								pattern="[a-zA-Z]{2,20}.[a-zA-Z]{2,20}@[a-zA-Z]{2,20}.[a-zA-Z]{2,20}" title="Formato: nome.sobrenome@email.sufixo" required>
 						</p>
 						<p>
-							<label class="w3-text-deep-purple"><b>Senha</b></label>
+							<label class="w3-text-dark-grey"><b>Senha</b></label>
 							<input class="w3-input w3-border w3-light-grey" name="Senha" type="password" required>
 						</p>
 						<p class="w3-center">
-							<input type="submit" value="Entrar" class="w3-btn w3-theme" >
-							<input type="reset" value="Limpar campos" class="w3-btn w3-theme">
+							<input type="submit" value="Entrar" class="w3-btn w3-teal w3-section" >
+							<input type="reset" value="Limpar campos" class="w3-btn w3-teal">
 						</p>
 					</form>
 				</div>
-				<div class="w3-panel w3-padding-large w3-card-4 w3-light-grey w3-half">
-					<h1 class="w3-xxlarge">Software de Carona</h1>
+				<div class="w3-padding-large w3-card-4 w3-light-grey w3-half">
+					<h1>Software de Carona</h1>
 					<p>
 						Integrantes do curso de BES da PUCPR criaram este software com o principal
 						objetivo de aumentar a interação entre os integrantes do curso de uma maneira

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $_SESSION['usuario_email'] = $_POST['Email'];
     $_SESSION['usuario_senha'] = $_POST['Senha'];
 
@@ -18,17 +19,26 @@
     mysqli_query($conn,'SET character_set_client=utf8');
     mysqli_query($conn,'SET character_set_results=utf8');
 
-    $sql = "SELECT COUNT(*) FROM Usuario WHERE Email = '$usuario_email' AND Senha = '$usuario_senha'";
+    $sql = "SELECT Matricula, Nome, Email, Senha FROM Usuario WHERE Email = '$usuario_email' AND Senha = '$usuario_senha'";
     
     if (!$result = mysqli_query($conn, $sql)) {
 ?>
-    <script>alert("Erro executando SELECT: " . mysqli_error($conn));</script>
+    <script>console.log("Erro executando SELECT: " . mysqli_error($conn));</script>
 <?php
     } else {
         if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+        		$_SESSION['usuario_matri'] = $row['Matricula'];
+        		$_SESSION['usuario_nome'] = $row['Nome'];
+            }
+            header("Location: oferecidasListar.php");
+        } else {
 ?>
-    <script>alert("Deu certo!");</script>
-<?php         
+    <script>
+        alert("Login inválido.");
+        window.location.href = ".";
+    </script>
+<?php
         }
     }
 ?>
