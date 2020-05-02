@@ -6,7 +6,7 @@ Software de Carona
 INDEX.PHP
 ---------------------------------------------------------------------------------->
 	<title>Software de Carona</title>
-	<link rel="icon" type="image/png" href="imagens/IconeCarona.png" />
+	<link rel="icon" type="image/png" href="imagens/logoSoftwareCarona.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<style>

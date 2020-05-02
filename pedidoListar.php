@@ -7,7 +7,7 @@
 <head>
 
 <title>Software de Carona</title>
-<link rel="icon" type="image/png" href="imagens/IconeCarona.png" />
+<link rel="icon" type="image/png" href="imagens/logoSoftwareCarona.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
@@ -70,8 +70,9 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-            $sql = "SELECT LocalPartida as LocalPartida, LocalDestino as LocalDestino
-            FROM Carona";
+            $sql = "SELECT u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+                    FROM Carona c INNER JOIN Usuario u 
+                    ON u.Matricula = c.fk_Passageiro_Matricula";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -86,13 +87,11 @@
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $cod = $row["LocalPartida"];
                         echo "<tr>";
                         echo "<td>";
-                        echo $cod;
+                        echo $row["Passageiro"];
                         echo "</td><td>";
                         echo $row["LocalPartida"];
-                        echo "</td><td>";
                         echo "</td><td>";
                         echo $row["LocalDestino"];
                         echo "</td><td>";
