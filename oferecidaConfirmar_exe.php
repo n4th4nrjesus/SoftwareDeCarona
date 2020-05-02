@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <!--
-Software de Carona
+Desenvolvimento Web
+PUCPR
+Profa. Cristina V. P. B. Souza
+Abril/2020
 -->
 <html>
 	<head>
 
-	  <title>Software de Carona</title>
-	  <link rel="icon" type="image/png" href="imagens/LogoCarona.png" />
+	  <title>IE - Instituição de Ensino</title>
+	  <link rel="icon" type="image/png" href="imagens/IE_favicon.png" />
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	  <style>
@@ -15,7 +18,7 @@ Software de Carona
 		.myMenu {margin-bottom:150px}
       </style>
 	</head>
-<body onload="w3_show_nav('menuMotor')">
+<body onload="w3_show_nav('menuDisc')">
 <!-- Inclui MENU.PHP  -->
 <?php require 'menu.php';?>
 
@@ -41,14 +44,12 @@ Software de Carona
 	<!-- Acesso ao BD-->
 	<?php
 		
-		$servername = "localhost:3307";
-		$username = "usu@SoftwareCarona";
-		$password = "caronadesoftware";
-		$database = "software_de_carona";
-		$Cod = "Cod"
+		$servername = "localhost:3306";
+		$username = "usu@IE_Exe";
+		$password = "php@PUCPR";
+		$database = "IE_Exemplo";
 		
 		$id      = $_POST['Id'];
-
 		
 		// Cria conexão
 		$conn = mysqli_connect($servername, $username, $password, $database);
@@ -65,7 +66,7 @@ Software de Carona
 			mysqli_query($conn,'SET character_set_results=utf8');
 
 		// Faz Select na Base de Dados
-		$sql = "INSERT INTO Carona (localPartida, localDestino) VALUES ('$localPartida_Personal','$localDestino_Personal')";
+        $sql = "UPDATE Carona SET fk_Passageiro_Matricula = '123' WHERE Cod = $cod";
 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
