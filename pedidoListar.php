@@ -72,7 +72,7 @@
 
             $sql = "SELECT u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
                     FROM Carona c INNER JOIN Usuario u 
-                    ON u.Matricula = c.fk_Passageiro_Matricula";
+                    ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
