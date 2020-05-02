@@ -54,6 +54,13 @@
                     $username = "usu@SoftwareCarona";
                     $password = "caronadesoftware";
                     $database = "software_de_carona";
+                    $Cod = "Cod";
+
+                    $localPartida_Puc   = $_POST['localPartida_Puc'];
+                    $localDestino_Puc = $_POST['localDestino_Puc'];
+                    $localPartida_Personal   = $_POST['localPartida_Personal'];
+                    $localDestino_Personal = $_POST['localDestino_Personal'];
+                    $pedidoRegistrar  = $_POST['pedidoRegistrar'];
 
                     // Cria conexão
                     $conn = mysqli_connect($servername, $username, $password, $database);
@@ -74,7 +81,7 @@
                     
                     
                     // Faz Select na Base de Dados
-                    $sql = "SELECT LocalPartida, LocalDestino, Genero FROM usuario";
+                    $sql = "SELECT c.LocalPartida, c.LocalDestino, u.Genero, u.Nome, u.Matricula FROM Carona as c, Usuario as u WHERE Cod = $Cod AND c.fk_Passageiro_Matricula = null ";
                     //$sql = "SELECT Nome FROM usuario";
 
                     echo "<div class='w3-responsive w3-card-4'>";
