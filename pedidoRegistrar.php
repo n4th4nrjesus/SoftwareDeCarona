@@ -23,6 +23,9 @@
         .myMenu {
             margin-bottom: 150px
         }
+        select {
+            width:200px;
+        }
     </style>
 </head>
 <body  onload="w3_show_nav('menuPassag')">
@@ -52,32 +55,44 @@
                     <div class="w3-container w3-teal">
                         <h2>Informe os dados da sua carona</h2>
                     </div>
-                    <form class="w3-container" action="pedidoRegistrar_exe.php" method="post" onsubmit="return check(this.form)">
+                    <form class="w3-container" action="pedidoRegistrar_exe.php" method="post">
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
                         
-                        <div class="w3-dropdown-hover">
+                        <div>
                             <label class="w3-text-teal"><h6><b>Para Onde Deseja Ir?</b></h6></label>
-                            <button class="w3-button w3-light-grey">Selecione</button>
-                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                                <a class="w3-bar-item w3-button">Puc</a>
-                                <a class="w3-bar-item w3-button">Personalizado</a>
+                            <input type="button" value="Puc" class="w3-button w3-dark-grey w3-hover-white" onclick="destinoPuc()" id="btnPuc">
+                            <input type="button" value="Personalizado" class="w3-button w3-dark-grey w3-hover-white" onclick="partidaPuc()" id="btnPersonal">
+                        </div>
 
-                            </div>
-                        </div>
-                        <div>
+
+                        <div id='optPuc_EndAtual' style="display:none">
                             <label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
-                            <input class="w3-input w3-border w3-light-grey" name="localPartida" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$"
-                                title="Endereço entre 10 e 100 letras." required></p>
+                            <input id="inputPuc_EndAtual" class="w3-input w3-border w3-light-grey" name="localPartida_Puc" type="text"
+                                title="Insira o endereço de partida."></p>
                         </div>
-                        <div>
+                        <div id="optPuc_Bloco" style="display: none">
+                            <label class="w3-text-teal"><h6><b>Para qual bloco deseja</b></h6></label>
+                            <input id="inputPuc_Bloco" class="w3-input w3-border w3-light-grey " name="localDestino_Puc" type="text"
+                                title="Insira o endereço de destino."></p>
+                        </div>
+
+                        <div id="optPersonal_Bloco" style="display: none">
+                            <label class="w3-text-teal"><h6><b>Qual Portão/Bloco você está?</b></h6></label>
+                            <input id="inputPersonal_Bloco" class="w3-input w3-border w3-light-grey " name="localPartida_Personal" type="text"
+                                title="Insira o endereço de partida." ></p>
+                        </div>
+                        <div id="optPersonal_Destino" style="display: none">
                             <label class="w3-text-teal"><h6><b>Insira o endereço de destino</b></h6></label>
-                            <input class="w3-input w3-border w3-light-grey " name="localDestino" type="text"
-                                title="Insira o endereço de destino." required></p>
+                            <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
+                                title="Insira o endereço de destino."></p>
                         </div>
+
+                        </br>
                         <div>
-						<input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedidoRegistrar">
-						<input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='.'"></p>
-                        
+                        <div id="divButtons" style="display: none">
+                            <input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedidoRegistrar">
+                            <input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='oferecidasListar.php'"></p>
+                        </div>
                     </form>
 				</div>
 
@@ -97,6 +112,28 @@
 
 <!-- FIM PRINCIPAL -->
 </div>
+
+<script>
+        function destinoPuc(){
+            document.getElementById('optPuc_EndAtual').style.display='block';
+            document.getElementById('optPuc_Bloco').style.display='block';
+            document.getElementById('divButtons').style.display='block';
+            document.getElementById('inputPuc_EndAtual').setAttribute("required", "required");
+            document.getElementById('inputPuc_Bloco').setAttribute("required", "required");
+            document.getElementById('btnPersonal').remove();
+            
+        }
+        function partidaPuc(){
+            document.getElementById('optPersonal_Bloco').style.display='block';
+            document.getElementById('optPersonal_Destino').style.display='block';
+            document.getElementById('divButtons').style.display='block';
+            document.getElementById('inputPersonal_Bloco').setAttribute("required", "required");
+            document.getElementById('inputPersonal_Destino').setAttribute("required", "required");
+            document.getElementById('btnPuc').remove();
+
+        }
+     
+</script>
 
 <!-- Inclui RODAPE.PHP  -->
 <?php require 'rodape.php';?>
