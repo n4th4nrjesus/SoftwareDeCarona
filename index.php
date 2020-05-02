@@ -46,8 +46,7 @@ INDEX.PHP
 						<input type="hidden" id="login" name="login" value="Login">
 						<p>
 							<label class="w3-text-dark-grey"><b>Email</b></label>
-							<input class="w3-input w3-border w3-light-grey" name="Email" type="text"
-								pattern="[a-zA-Z]{2,20}.[a-zA-Z]{2,20}@[a-zA-Z]{2,20}.[a-zA-Z]{2,20}" title="Formato: nome.sobrenome@email.sufixo" required>
+							<input class="w3-input w3-border w3-light-grey" name="Email" type="text" title="Formato: nome.sobrenome@sufixo" required>
 						</p>
 						<p>
 							<label class="w3-text-dark-grey"><b>Senha</b></label>
