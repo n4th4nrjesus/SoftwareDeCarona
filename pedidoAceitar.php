@@ -31,7 +31,7 @@ Software de Carona
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xxlarge">Atualização Disciplina</h1>
+        <h1 class="w3-xxlarge">Pedidos Aceitos</h1>
 
         <p class="w3-large">
             <div class="w3-code cssHigh notranslate">

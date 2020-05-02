@@ -96,11 +96,9 @@
                         echo $row["LocalDestino"];
                         echo "</td><td>";
 
-						//Atualizar e Excluir registro de prof
 				?>
-                        <a href='pedidoAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Disciplina' width='32'></a>
+                        <a href='pedidoAceitar.php'><img src='imagens/Aceitar.png' title='Aceitar Carona' width='32'></a>
                         </td><td>
-                        <a href='pedidoExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Disciplina' width='32'></a>
                         </td>
                         </tr>
 				 <?php
