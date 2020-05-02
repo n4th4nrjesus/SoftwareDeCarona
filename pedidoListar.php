@@ -5,6 +5,7 @@
     -->
 <html>
 <head>
+
 <title>Software de Carona</title>
 <link rel="icon" type="image/png" href="imagens/IconeCarona.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +40,6 @@
         <div class="w3-code cssHigh notranslate">
             <!-- Acesso em:-->
             <?php
-
             date_default_timezone_set("America/Sao_Paulo");
             $data = date("d/m/Y H:i:s", time());
             echo "<p class='w3-small' > ";
@@ -64,35 +64,35 @@
                 die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
             }
 			
-			// Configura para trabalhar com caracteres acentuados do português
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-
-            // Faz Select na Base de Dados
-            $sql = "SELECT LocalPartida, LocalDestino, DataCriacao FROM carona";
+            $sql = "SELECT LocalPartida as LocalPartida, LocalDestino as LocalDestino
+            FROM Carona";
+            
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
 
-                // hermes: arrumar os echos
-
                 echo "<table class='w3-table-all'>";
                 echo "	<tr>";
+				echo "	  <th>Passageiro</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
                 echo "	  <th> </th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
-                    // Apresenta cada linha da tabela
                     while ($row = mysqli_fetch_assoc($result)) {
                         $cod = $row["LocalPartida"];
                         echo "<tr>";
                         echo "<td>";
                         echo $cod;
+                        echo "</td><td>";
+                        echo $row["LocalPartida"];
+                        echo "</td><td>";
                         echo "</td><td>";
                         echo $row["LocalDestino"];
                         echo "</td><td>";

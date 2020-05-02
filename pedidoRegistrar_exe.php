@@ -51,7 +51,6 @@
 		$localDestino_Puc = $_POST['localDestino_Puc'];
 		$localPartida_Personal   = $_POST['localPartida_Personal'];
 		$localDestino_Personal = $_POST['localDestino_Personal'];
-		$pedidoRegistrar  = $_POST['pedidoRegistrar'];
 		
 		if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
 						
