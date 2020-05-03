@@ -84,7 +84,6 @@
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
                 echo "	  <th> </th>";
-				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -98,7 +97,6 @@
                         echo $row["LocalDestino"];
                         echo "</td><td>";
 
-						//Atualizar e Excluir registro de prof
 				?>
                         <a href='oferecidaConfirmar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar carona' width='32'></a>
                         </td>

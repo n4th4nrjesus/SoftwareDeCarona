@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-    <!--
-     Software de Carona          
-     
-    -->
+
+
+
 <html>
 	<head>
 
@@ -17,10 +16,8 @@
       </style>
 	</head>
 <body onload="w3_show_nav('menuPassag')">
-<!-- Inclui MENU.PHP  -->
 <?php require 'menu.php';?>
 
-<!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">

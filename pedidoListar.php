@@ -70,7 +70,7 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-            $sql = "SELECT u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL";
             
@@ -82,11 +82,11 @@
 				echo "	  <th>Passageiro</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
-                echo "	  <th> </th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $cod = $row["Cod"];
                         echo "<tr>";
                         echo "<td>";
                         echo $row["Passageiro"];
@@ -97,8 +97,7 @@
                         echo "</td><td>";
 
 				?>
-                        <a href='pedidoAceitar.php'><img src='imagens/Aceitar.png' title='Aceitar Carona' width='32'></a>
-                        </td><td>
+                        <a href='pedidoAceitar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar Carona' width='32'></a>
                         </td>
                         </tr>
 				 <?php

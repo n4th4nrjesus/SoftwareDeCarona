@@ -66,7 +66,8 @@
                 $sql = "SELECT c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cod as Cod, u.Nome as Motorista
 				FROM Carona as c
 				INNER JOIN Usuario as u ON u.Matricula = c.fk_Motorista_Matricula
-				WHERE Cod = $cod";    
+				WHERE Cod = $cod";   
+				 
 				echo "<div class='w3-responsive w3-card-4'>";
 				 if ($result = mysqli_query($conn, $sql)) {
 						if (mysqli_num_rows($result) > 0) {
