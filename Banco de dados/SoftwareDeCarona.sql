@@ -6,7 +6,7 @@ USE Software_De_Carona;
 
 DROP TABLE IF EXISTS Software_De_Carona.Usuario;
 CREATE TABLE Software_De_Carona.Usuario (
-    Matricula int PRIMARY KEY,
+    Matricula varchar(50) PRIMARY KEY,
     Genero char(1) NOT NULL,
     Nome varchar(250) NOT NULL,
     Email varchar(250) NOT NULL,
@@ -20,8 +20,8 @@ CREATE TABLE Software_De_Carona.Carona (
     DataCriacao date NOT NULL,
     LocalPartida varchar(250) NOT NULL,
     LocalDestino varchar(250) NOT NULL,
-    fk_Passageiro_Matricula int,
-    fk_Motorista_Matricula int
+    fk_Passageiro_Matricula varchar(50),
+    fk_Motorista_Matricula varchar(50)
 );
 
 DROP TABLE IF EXISTS Software_De_Carona.Postagem;
@@ -30,12 +30,12 @@ CREATE TABLE Software_De_Carona.Postagem (
     DataCriacao date NOT NULL,
     Texto varchar(500),
     UriFoto varchar(500),
-    fk_Usuario_Matricula int
+    fk_Usuario_Matricula varchar(50)
 );
 
 DROP TABLE IF EXISTS Software_De_Carona.AvaliacaoCarona;
 CREATE TABLE Software_De_Carona.AvaliacaoCarona (
-    fk_Passageiro_Matricula int,
+    fk_Passageiro_Matricula varchar(50),
     fk_Carona_Cod int,
     Cod int PRIMARY KEY AUTO_INCREMENT,
     Comentario varchar(250),
@@ -44,7 +44,7 @@ CREATE TABLE Software_De_Carona.AvaliacaoCarona (
 
 DROP TABLE IF EXISTS Software_De_Carona.AvaliacaoPostagem;
 CREATE TABLE Software_De_Carona.AvaliacaoPostagem (
-    fk_Usuario_Matricula int,
+    fk_Usuario_Matricula varchar(50),
     fk_Postagem_Cod int,
     Cod int PRIMARY KEY AUTO_INCREMENT,
     Comentario varchar(250),

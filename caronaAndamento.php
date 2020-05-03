@@ -100,7 +100,7 @@
                         echo "</td><td>";
 
 				?>
-                        <a href='pedidoAceitar.php'><img src='imagens/cancel.webp' title='Cancelar carona' width='25'></a>
+                        <a href='pedidoAceitar.php'><img src='imagens/cancel.webp' title='Finalizar carona' width='25'></a>
                         </td>
                         </tr>
 				 <?php
