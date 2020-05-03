@@ -71,13 +71,13 @@
                                 title="Insira o endereço de partida."></p>
                         </div>
                         <div id="optPuc_Bloco" style="display: none">
-                            <label class="w3-text-teal"><h6><b>Para qual bloco deseja</b></h6></label>
+                            <label class="w3-text-teal"><h6><b>Para qual Portão/Bloco deseja ir?</b></h6></label>
                             <input id="inputPuc_Bloco" class="w3-input w3-border w3-light-grey " name="localDestino_Puc" type="text"
                                 title="Insira o endereço de destino."></p>
                         </div>
 
                         <div id="optPersonal_Bloco" style="display: none">
-                            <label class="w3-text-teal"><h6><b>Qual Portão/Bloco você está?</b></h6></label>
+                            <label class="w3-text-teal"><h6><b>Em qual Portão/Bloco você está?</b></h6></label>
                             <input id="inputPersonal_Bloco" class="w3-input w3-border w3-light-grey " name="localPartida_Personal" type="text"
                                 title="Insira o endereço de partida." ></p>
                         </div>

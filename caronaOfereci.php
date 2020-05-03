@@ -84,9 +84,10 @@
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $cod = $row["Cod"];
                         echo "<tr>";
                         echo "<td>";
-                        echo $row["Cod"];
+                        echo $cod;
                         echo "</td><td>";
                         echo $row["LocalPartida"];
                         echo "</td><td>";
@@ -94,7 +95,7 @@
                         echo "</td><td>";
 
 				?>
-                        <a href='pedidoAceitar.php'><img src='imagens/cancel.webp' title='Cancelar carona' width='25'></a>
+                        <a href='oferecidaExcluir.php?Cod=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Cancelar Carona' width='32'></a>
                         </td>
                         </tr>
 				 <?php
