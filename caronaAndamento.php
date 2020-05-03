@@ -88,6 +88,7 @@
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $cod = $row['Cod'];
                         echo "<tr>";
                         echo "<td>";
                         echo $row["Passageiro"];
@@ -100,7 +101,7 @@
                         echo "</td><td>";
 
 				?>
-                        <a href='pedidoAceitar.php'><img src='imagens/cancel.webp' title='Finalizar carona' width='25'></a>
+                        <a href='andamentoFinalizar.php?Cod=<?= $cod ?>'><img src='imagens/cancel.webp' title='Finalizar carona' width='25'></a>
                         </td>
                         </tr>
 				 <?php

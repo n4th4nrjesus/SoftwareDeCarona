@@ -77,7 +77,7 @@
 							while ($row = mysqli_fetch_assoc($result)) {
 				?>
 								<div class="w3-container w3-teal w3-responsive">
-									<h2>Confirmar carona: <?php echo $row['Cod']; ?></h2>
+									<h2>Carona: <?php echo $row['Cod']; ?></h2>
 								</div>
 								<form class="w3-container" action="oferecidaConfirmar_exe.php?Cod= <?php echo $row['Cod'] ?>" method="post" onsubmit="return check(this.form)">
 									<p>
@@ -97,7 +97,7 @@
 						}
 				}
 				else {
-					echo "Erro executando UPDATE: " . mysqli_error($conn);
+					echo "Erro executando SELECT: " . mysqli_error($conn);
 				}
 				echo "</div>";
 				mysqli_close($conn);

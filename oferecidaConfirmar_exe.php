@@ -73,7 +73,7 @@
 		if ($result = mysqli_query($conn, $sql)) {
 				echo "Carona confirmada com sucesso!";
 		} else {
-			echo "Erro executando DELETE: " . mysqli_error($conn);
+			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
         echo "</div>";
 		mysqli_close($conn);

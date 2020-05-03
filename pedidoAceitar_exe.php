@@ -18,7 +18,7 @@
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Carona Aceita</h1>
+  <h1 class="w3-xxlarge">Aceitar carona</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
@@ -56,9 +56,9 @@
 		 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
-				echo "Carona confirmada com sucesso!";
+				echo "Carona aceita com sucesso!";
 		} else {
-			echo "Erro executando DELETE: " . mysqli_error($conn);
+			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
         echo "</div>";
 		mysqli_close($conn);
@@ -66,7 +66,6 @@
 	?>
         </div>
     </div>
-
 
     <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
         <p>

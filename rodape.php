@@ -42,7 +42,6 @@ Novembro/2018
 
 
     <script>
-        // Script para abrir e fechar o sidebar
         function w3_open() {
             document.getElementById("mySidebar").style.display = "block";
         }
