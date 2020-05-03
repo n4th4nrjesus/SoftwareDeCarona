@@ -56,21 +56,7 @@ MENU.PHP
 			</div>
 			<a class="w3-bar-item w3-button" href='pedidoListar.php'>Pedidos de carona</a>
 			<a class="w3-bar-item w3-button" href='oferecidasRegistrar.php'>Oferecer carona</a>
-			<!-- Arrumar para que o menu carona só apareça quando for clicado no Andamento da carona-->
-			<a href="javascript:void(0)" onclick="w3_show_nav('menuCarona')"
-			   class="w3-bar-item w3-button">Andamento da carona</a>
 		</div>
-		
-<!-- Arrumar a visualização-->
-		<div id="menuCarona" class="myMenu" >
-			<div class="w3-container w3-teal">
-				<h3 class="w3-border-dark-grey w3-padding"></h3>
-			</div>
-			<a class="w3-bar-item w3-button" href='caronaPedi.php'>Que pedi</a>
-			<a class="w3-bar-item w3-button" href='caronaOfereci.php'>Que ofereci</a>
-			<a class="w3-bar-item w3-button" href='caronaAndamento.php'>Já estão em andamento</a>
-		</div>
-
 		<div id="menuFeed" class="myMenu" >
 			<div class="w3-container w3-teal">
 				<h3 class="w3-border-dark-grey w3-padding">Feed</h3>
