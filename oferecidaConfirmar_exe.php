@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+	<!--
+	Software de Carona		
+	
+	-->
 <html>
 <head>
 
@@ -14,7 +17,7 @@
         }
 
         .w3-code {
-            border-left: 4px solid #380077
+			border-left:4px solid teal
         }
 
         .myMenu {
