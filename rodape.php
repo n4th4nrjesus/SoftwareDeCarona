@@ -55,6 +55,7 @@ Novembro/2018
             document.getElementById("menuPassag").style.display = "none";
             document.getElementById("menuMotor").style.display = "none";
 			document.getElementById("menuFeed").style.display = "none";
+			document.getElementById("menuMinhas").style.display = "none";
             document.getElementById(name).style.display = "block";
 
         }

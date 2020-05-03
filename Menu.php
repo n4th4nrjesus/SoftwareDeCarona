@@ -28,6 +28,7 @@ MENU.PHP
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')" style="display: none;">FEED</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMinhas')">MINHAS CARONAS</a>
 		</div>
 	</div>
 
@@ -40,6 +41,8 @@ MENU.PHP
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MOTORISTA</a>
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuFeed')"
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16" style="display: none;">FEED</a>
+			<a href="javascript:void(0)" onclick="w3_show_nav('menuMinhas')"
+			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MINHAS CARONAS</a>
 		</div>
 		<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-right w3-xlarge w3-hide-large w3-teal"
 		   title="Close Menu">x</a>
@@ -63,6 +66,14 @@ MENU.PHP
 			</div>
 			<a class="w3-bar-item w3-button" href='postListar.php'>Posts</a>
 			<a class="w3-bar-item w3-button" href='postRegistrar.php'>Novo post</a>
+		</div>
+		<div id="menuMinhas" class="myMenu" >
+			<div class="w3-container w3-teal">
+				<h3 class="w3-border-dark-grey w3-padding">Minhas caronas</h3>
+			</div>
+			<a class="w3-bar-item w3-button" href='caronaPedi.php'>Pedidas pendentes</a>
+			<a class="w3-bar-item w3-button" href='caronaOfereci.php'>Oferecidas pendentes</a>
+			<a class="w3-bar-item w3-button" href='caronaAndamento.php'>Em andamento</a>
 		</div>
 		<div class="w3-bottom w3-padding">
 			<?= $_SESSION['usuario_nome'] ?>
