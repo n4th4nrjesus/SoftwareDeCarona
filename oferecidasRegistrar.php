@@ -28,7 +28,7 @@
         }
     </style>
 </head>
-<body  onload="w3_show_nav('menuPassag')">
+<body  onload="w3_show_nav('menuMotor')">
 <!-- Inclui MENU.PHP  -->
 <?php require 'menu.php';?>
 
