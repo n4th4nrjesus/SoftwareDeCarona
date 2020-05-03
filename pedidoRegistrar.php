@@ -101,7 +101,7 @@
 	</div>
 
 
-	<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
+	<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
     <p>
         <nav>
             <a class="w3-button w3-teal w3-hover-white"

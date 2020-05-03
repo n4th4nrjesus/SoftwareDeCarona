@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<!--
-Software de Carona
--->
+    <!--
+     Software de Carona          
+     
+    -->
 <html>
 <head>
 
@@ -22,9 +23,12 @@ Software de Carona
         .myMenu {
             margin-bottom: 150px
         }
+        select {
+            width:200px;
+        }
     </style>
 </head>
-<body onload="w3_show_nav('menuMotor')">
+<body  onload="w3_show_nav('menuPassag')">
 <!-- Inclui MENU.PHP  -->
 <?php require 'menu.php';?>
 
@@ -32,7 +36,7 @@ Software de Carona
 <div class="w3-main w3-container w3-light-grey" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xlarge">Ofereça uma carona</h1>
+        <h1 class="w3-xlarge">Peça uma carona</h1>
 
         <p class="w3-large">
             <div class="w3-code cssHigh notranslate">
@@ -59,6 +63,8 @@ Software de Carona
                             <input type="button" value="Puc" class="w3-button w3-dark-grey w3-hover-white" onclick="destinoPuc()" id="btnPuc">
                             <input type="button" value="Personalizado" class="w3-button w3-dark-grey w3-hover-white" onclick="partidaPuc()" id="btnPersonal">
                         </div>
+
+
                         <div id='optPuc_EndAtual' style="display:none">
                             <label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
                             <input id="inputPuc_EndAtual" class="w3-input w3-border w3-light-grey" name="localPartida_Puc" type="text"
@@ -69,6 +75,7 @@ Software de Carona
                             <input id="inputPuc_Bloco" class="w3-input w3-border w3-light-grey " name="localDestino_Puc" type="text"
                                 title="Insira o endereço de destino."></p>
                         </div>
+
                         <div id="optPersonal_Bloco" style="display: none">
                             <label class="w3-text-teal"><h6><b>Qual Portão/Bloco você está?</b></h6></label>
                             <input id="inputPersonal_Bloco" class="w3-input w3-border w3-light-grey " name="localPartida_Personal" type="text"
@@ -80,10 +87,13 @@ Software de Carona
                                 title="Insira o endereço de destino."></p>
                         </div>
 
-						</br>
-						<input type="submit" value="Oferecer Carona" class="w3-btn w3-teal" name="oferecerCarona">
-						<input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='.'"></p>
-					</form>
+                        </br>
+                        <div>
+                        <div id="divButtons" style="display: none">
+                            <input type="submit" value="Oferecer" class="w3-btn w3-teal" name="pedidoRegistrar">
+                            <input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='oferecidasListar.php'"></p>
+                        </div>
+                    </form>
 				</div>
 
 			</div>
@@ -91,9 +101,7 @@ Software de Carona
 	</div>
 
 
-
-
-	<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
+	<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
     <p>
         <nav>
             <a class="w3-button w3-teal w3-hover-white"

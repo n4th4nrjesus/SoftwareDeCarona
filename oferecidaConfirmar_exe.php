@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<!--
-Desenvolvimento Web
-PUCPR
-Profa. Cristina V. P. B. Souza
-Abril/2020
--->
+    <!--
+     Software de Carona          
+     
+    -->
 <html>
-	<head>
+<head>
 
-	  <title>IE - Instituição de Ensino</title>
-	  <link rel="icon" type="image/png" href="imagens/IE_favicon.png" />
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	  <style>
-		.w3-theme {color:#ffff !important;background-color:#380077 !important}
-		.w3-code{border-left:4px solid #380077}
-		.myMenu {margin-bottom:150px}
-      </style>
-	</head>
+    <title>Software de Carona</title>
+	<link rel="icon" type="image/png" href="imagens/logoSoftwareCarona.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .w3-theme {
+            color: #ffff !important;
+            background-color: #380077 !important
+        }
+
+        .w3-code {
+            border-left: 4px solid #380077
+        }
+
+        .myMenu {
+            margin-bottom: 150px
+        }
+    </style>
+</head>
 <body onload="w3_show_nav('menuDisc')">
 <!-- Inclui MENU.PHP  -->
 <?php require 'menu.php';?>
@@ -82,9 +89,9 @@ Abril/2020
 </div>
 
 
-<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center w3-opacity">
+<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
   <p><nav>
-      <a class="w3-button w3-theme w3-hover-white" onclick="document.getElementById('id01').style.display='block'" >Sobre</a>
+      <a class="w3-button w3-teal" onclick="document.getElementById('id01').style.display='block'" >Sobre</a>
   </nav></p>
 </footer>
 

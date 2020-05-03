@@ -24,7 +24,7 @@ Novembro/2018
                     coisas, também vale), use este site ao seu favor! Aqui você pode receber e dar
                     caronas para outros integrantes do curso enquanto bate um papo legal com quem
                     está junto contigo! <br/><br/>
-                    "Ah, mas eu não tenho problema com isso e prefiro ficar na minha no  meu carro"
+                    "Ah, mas eu não tenho problema com isso e prefiro ficar na minha no meu carro"
                     <br/><br/>
                     Tudo bem... mas esse site também é para você! Na aba "feed", você pode estar
                     acompanhando as novidades sobre o trânsito e tudo mais que o pessoal postar lá!
