@@ -20,6 +20,7 @@ CREATE TABLE Software_De_Carona.Carona (
     DataCriacao date NOT NULL,
     LocalPartida varchar(250) NOT NULL,
     LocalDestino varchar(250) NOT NULL,
+    prefGenero char(1),
     fk_Passageiro_Matricula varchar(50),
     fk_Motorista_Matricula varchar(50)
 );
@@ -95,3 +96,6 @@ ALTER TABLE Software_De_Carona.Postagem
 
 ALTER TABLE Software_De_Carona.AvaliacaoPostagem 
     ALTER DataCriacao SET DEFAULT NOW();
+
+ALTER TABLE Software_De_Carona.Carona 
+    ALTER prefGenero SET DEFAULT NULL;

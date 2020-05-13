@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-    <!--
-     Software de Carona          
-     
-    -->
+
+
 <html>
 <head>
 
@@ -36,7 +34,7 @@
 <div class="w3-main w3-container w3-light-grey" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xlarge">Peça uma carona</h1>
+        <h1 class="w3-xlarge">Edite sua carona</h1>
 
         <p class="w3-large">
             <div class="w3-code cssHigh notranslate">
@@ -55,7 +53,7 @@
                     <div class="w3-container w3-teal">
                         <h2>Informe os dados da sua carona</h2>
                     </div>
-                    <form class="w3-container" action="pedidoRegistrar_exe.php" method="post">
+                    <form class="w3-container" action="caronasModificar_exe.php" method="post">
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
                         
                         <div>
@@ -86,19 +84,11 @@
                             <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
                                 title="Insira o endereço de destino."></p>
                         </div>
-                        <div id=divGenero style="display: none">
-                            <label class="w3-text-teal"><h6><b>Preferência de gênero do motorista</b></h6></label>
-                            <select id="selectGenero" name="selectGenero">
-                                <option> Qualquer </option>
-                                <option value="F"> Feminino </option>
-                                <option value="M"> Masculino </option>
-                            </select>   
-                        </div>
 
                         </br>
                         <div>
                         <div id="divButtons" style="display: none">
-                            <input type="submit" value="Pedir Carona" class="w3-btn w3-teal" name="pedidoRegistrar">
+                            <input type="submit" value="Finalizar Edição" class="w3-btn w3-teal" name="Modificar Carona">
                             <input type="button" value="Cancelar" class="w3-btn w3-teal" onclick="window.location.href='oferecidasListar.php'"></p>
                         </div>
                     </form>
@@ -126,7 +116,6 @@
             document.getElementById('optPuc_EndAtual').style.display='block';
             document.getElementById('optPuc_Bloco').style.display='block';
             document.getElementById('divButtons').style.display='block';
-            document.getElementById('divGenero').style.display='block';
             document.getElementById('inputPuc_EndAtual').setAttribute("required", "required");
             document.getElementById('inputPuc_Bloco').setAttribute("required", "required");
             document.getElementById('btnPersonal').remove();
@@ -136,7 +125,6 @@
             document.getElementById('optPersonal_Bloco').style.display='block';
             document.getElementById('optPersonal_Destino').style.display='block';
             document.getElementById('divButtons').style.display='block';
-            document.getElementById('divGenero').style.display='block';
             document.getElementById('inputPersonal_Bloco').setAttribute("required", "required");
             document.getElementById('inputPersonal_Destino').setAttribute("required", "required");
             document.getElementById('btnPuc').remove();
