@@ -4,7 +4,7 @@
     $_SESSION['usuario_senha'] = $_POST['Senha'];
 
     $usuario_email = $_SESSION['usuario_email'];
-    $usuario_senha = $_SESSION['usuario_senha'];
+    $usuario_senha_md5 = md5($_SESSION['usuario_senha']);
 
     $servername = "localhost:3307";
     $username = "usu@SoftwareCarona";
@@ -19,7 +19,7 @@
     mysqli_query($conn,'SET character_set_client=utf8');
     mysqli_query($conn,'SET character_set_results=utf8');
 
-    $sql = "SELECT Matricula, Nome, Email, Senha FROM Usuario WHERE Email = '$usuario_email' AND Senha = '$usuario_senha'";
+    $sql = "SELECT Matricula, Nome, Email, Senha FROM Usuario WHERE Email = '$usuario_email' AND Senha = '$usuario_senha_md5'";
     
     if (!$result = mysqli_query($conn, $sql)) {
 ?>

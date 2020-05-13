@@ -10,7 +10,7 @@ CREATE TABLE Software_De_Carona.Usuario (
     Genero char(1) NOT NULL,
     Nome varchar(250) NOT NULL,
     Email varchar(250) NOT NULL,
-    Senha varchar(20) NOT NULL,
+    Senha varchar(40) NOT NULL,
     CNH varchar(11)
 );
 
