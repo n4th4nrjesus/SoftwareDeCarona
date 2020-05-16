@@ -71,10 +71,11 @@
             mysqli_query($conn,'SET character_set_results=utf8');
             $matricula = $_SESSION['usuario_matri'];
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+            $sql = "SELECT c.Cod as Cod, u.Nome as Motorista, c.LocalPartida as LocalPartida
+                    , c.LocalDestino as LocalDestino, c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Motorista_Matricula WHERE c.fk_Passageiro_Matricula IS NULL
-                    AND u.Matricula = $matricula";
+                    AND u.Matricula != $matricula";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -84,6 +85,7 @@
 				echo "	  <th>Motorista</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
+                echo "	  <th>DataCriacao</th>";
                 echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
@@ -97,7 +99,8 @@
                         echo "</td><td>";
                         echo $row["LocalDestino"];
                         echo "</td><td>";
-
+                        echo $row["DataCriacao"];
+                        echo "</td><td>";
 				?>
                         <a href='oferecidaConfirmar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar carona' width='32'></a>
                         </td>

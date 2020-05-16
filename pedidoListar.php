@@ -74,11 +74,11 @@
             $genero = $_SESSION['usuario_genero'];
 
             $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
-                    , c.prefGenero as PrefGenero
+                    , c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL
                     AND u.Matricula != $matricula
-                    AND c.prefGenero = '$genero'";
+                    AND c.prefGenero = '$genero' OR c.prefGenero IS NULL";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -88,6 +88,7 @@
 				echo "	  <th>Passageiro</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
+                echo "    <th>Data de Criação</th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
@@ -101,6 +102,8 @@
                         echo $row["LocalPartida"];
                         echo "</td><td>";
                         echo $row["LocalDestino"];
+                        echo "</td><td>";
+                        echo $row["DataCriacao"];
                         echo "</td><td>";
 
 				?>

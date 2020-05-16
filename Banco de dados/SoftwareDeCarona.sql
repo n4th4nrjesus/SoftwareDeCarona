@@ -17,7 +17,7 @@ CREATE TABLE Software_De_Carona.Usuario (
 DROP TABLE IF EXISTS Software_De_Carona.Carona;
 CREATE TABLE Software_De_Carona.Carona (
     Cod int PRIMARY KEY AUTO_INCREMENT,
-    DataCriacao date NOT NULL,
+    DataCriacao datetime NOT NULL,
     LocalPartida varchar(250) NOT NULL,
     LocalDestino varchar(250) NOT NULL,
     prefGenero char(1),

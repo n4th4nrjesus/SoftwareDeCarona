@@ -94,7 +94,7 @@
                             <div id=divGenero style="display: none">
                             <label class="w3-text-teal"><h6><b>Preferência de gênero do motorista</b></h6></label>
                             <select class="w3-white w3-border w3-padding" id="selectGenero" name="selectGenero">
-                                <option> Qualquer </option>
+                                <option value="Q"> Qualquer </option>
                                 <option value="F"> Feminino </option>
                                 <option value="M"> Masculino </option>
                             </select> 
