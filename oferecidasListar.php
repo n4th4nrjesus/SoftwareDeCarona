@@ -85,7 +85,7 @@
 				echo "	  <th>Motorista</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
-                echo "	  <th>DataCriacao</th>";
+                echo "	  <th>Data de Criacao</th>";
                 echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
