@@ -86,15 +86,21 @@
                             <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
                                 title="Insira o endereço de destino."></p>
                         </div>
-                        <div id=divGenero style="display: none">
+
+                        <?php
+                            $usuarioGenero = $_SESSION['usuario_genero'];
+                            if($usuarioGenero == 'F') {
+                        ?>
+                            <div id=divGenero style="display: none">
                             <label class="w3-text-teal"><h6><b>Preferência de gênero do motorista</b></h6></label>
-                            <select id="selectGenero" name="selectGenero">
+                            <select class="w3-white w3-border w3-padding" id="selectGenero" name="selectGenero">
                                 <option> Qualquer </option>
                                 <option value="F"> Feminino </option>
                                 <option value="M"> Masculino </option>
-                            </select>   
-                        </div>
-
+                            </select> 
+                            </div>
+                        <?php } ?>
+                        
                         </br>
                         <div>
                         <div id="divButtons" style="display: none">

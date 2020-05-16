@@ -68,12 +68,13 @@
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
-			mysqli_query($conn,'SET character_set_results=utf8');
+            mysqli_query($conn,'SET character_set_results=utf8');
+            $matricula = $_SESSION['usuario_matri'];
 
             $sql = "SELECT c.Cod as Cod, u.Nome as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
                     FROM Carona c INNER JOIN Usuario u 
-                    ON u.Matricula = c.fk_Motorista_Matricula
-                    WHERE c.fk_Passageiro_Matricula IS NULL";
+                    ON u.Matricula = c.fk_Motorista_Matricula WHERE c.fk_Passageiro_Matricula IS NULL
+                    AND u.Matricula = $matricula";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {

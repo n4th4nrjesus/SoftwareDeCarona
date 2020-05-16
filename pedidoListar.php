@@ -53,7 +53,7 @@
             $username = "usu@SoftwareCarona";
             $password = "caronadesoftware";
             $database = "software_de_carona";
-			
+
 			// Verifica conexão
             $conn = mysqli_connect($servername, $username, $password, $database);
 			
@@ -68,11 +68,17 @@
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
-			mysqli_query($conn,'SET character_set_results=utf8');
+            mysqli_query($conn,'SET character_set_results=utf8');
+
+            $matricula = $_SESSION['usuario_matri'];
+            $genero = $_SESSION['usuario_genero'];
 
             $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+                    , c.prefGenero as PrefGenero
                     FROM Carona c INNER JOIN Usuario u 
-                    ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL";
+                    ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL
+                    AND u.Matricula != $matricula
+                    AND c.prefGenero = '$genero'";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -85,6 +91,7 @@
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
+
                     while ($row = mysqli_fetch_assoc($result)) {
                         $cod = $row["Cod"];
                         echo "<tr>";
