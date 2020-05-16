@@ -9,7 +9,7 @@ CREATE TABLE Software_De_Carona.Usuario (
     Matricula varchar(50) PRIMARY KEY,
     Genero char(1) NOT NULL,
     Nome varchar(250) NOT NULL,
-    Email varchar(250) NOT NULL,
+    Email varchar(250) NOT NULL UNIQUE,
     Senha varchar(40) NOT NULL,
     CNH varchar(11)
 );
@@ -52,9 +52,6 @@ CREATE TABLE Software_De_Carona.AvaliacaoPostagem (
     Agradecimento tinyint,
     DataCriacao date NOT NULL
 );
-
-ALTER TABLE Software_De_Carona.Usuario 
-    ADD CONSTRAINT UNIQUE_Usuario_email UNIQUE (Email);
 
 ALTER TABLE Software_De_Carona.Carona ADD CONSTRAINT FK_Carona_Passageiro
     FOREIGN KEY (fk_Passageiro_Matricula)
