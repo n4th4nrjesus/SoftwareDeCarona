@@ -83,7 +83,7 @@ MENU.PHP
 				<h3 class="w3-border-dark-grey w3-padding">Minhas conversas</h3>
 			</div>
 			<a class="w3-bar-item w3-button" href='menssagemCriar.php'>Criar conversa</a>
-			<a class="w3-bar-item w3-button" href='menssagemListar.php'>Chat</a>
+			<a class="w3-bar-item w3-button" href='menssagemListar.php'>Meus chats</a>
 		</div>
 		<div class="w3-bottom w3-padding">
 			<?= $_SESSION['usuario_nome'] ?>
