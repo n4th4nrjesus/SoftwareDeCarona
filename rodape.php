@@ -55,7 +55,6 @@ Novembro/2018
             document.getElementById("menuMotor").style.display = "none";
 			document.getElementById("menuFeed").style.display = "none";
 			document.getElementById("menuMinhas").style.display = "none";
-            document.getElementById("menuConversas").style.display = "none";
             document.getElementById(name).style.display = "block";
 
         }
