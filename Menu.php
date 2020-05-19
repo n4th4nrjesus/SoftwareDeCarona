@@ -29,6 +29,7 @@ MENU.PHP
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMinhas')">MINHAS CARONAS</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuConversas')">MINHAS CONVERSAS</a>
 		</div>
 	</div>
 
@@ -76,6 +77,13 @@ MENU.PHP
 			<a class="w3-bar-item w3-button" href='caronaPedi.php'>Pedidas pendentes</a>
 			<a class="w3-bar-item w3-button" href='caronaOfereci.php'>Oferecidas pendentes</a>
 			<a class="w3-bar-item w3-button" href='caronaAndamento.php'>Em andamento</a>
+		</div>
+		<div id="menuConversas" class="myMenu" >
+			<div class="w3-container w3-teal">
+				<h3 class="w3-border-dark-grey w3-padding">Minhas conversas</h3>
+			</div>
+			<a class="w3-bar-item w3-button" href='menssagemCriar.php'>Criar conversa</a>
+			<a class="w3-bar-item w3-button" href='menssagemListar.php'>Meus chats</a>
 		</div>
 		<div class="w3-bottom w3-padding">
 			<?= $_SESSION['usuario_nome'] ?>

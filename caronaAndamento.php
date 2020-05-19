@@ -101,7 +101,6 @@
                         echo "</td><td>";
 
 				?>
-                        <a href='menssagemChat.php?Cod=<?= $cod ?>'><img src='imagens/chat.png' title='Chat' width='28'></a>
                         <a href='andamentoFinalizar.php?Cod=<?= $cod ?>'><img src='imagens/cancel.webp' title='Finalizar carona' width='25'></a>
                         </td>
                         </tr>

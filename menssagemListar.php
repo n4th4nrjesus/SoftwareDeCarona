@@ -32,7 +32,7 @@
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xxlarge">Conversa</h1>
+        <h1 class="w3-xxlarge">Chats de caronas em andamento</h1>
 
         <p class="w3-large">
         <p>
@@ -66,7 +66,7 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as Motorista
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
                     FROM Carona c 
                     INNER JOIN Usuario u 
                         ON u.Matricula = c.fk_Passageiro_Matricula 
@@ -77,10 +77,13 @@
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
-                
+
                 echo "<table class='w3-table-all'>";
                 echo "	<tr>";
                 echo "	  <th>Passageiro</th>";
+				echo "	  <th>Local de partida</th>";
+                echo "	  <th>Local de destino</th>";
+                echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -89,8 +92,13 @@
                         echo "<td>";
                         echo $row["Passageiro"];
                         echo "</td><td>";
+                        echo $row["LocalPartida"];
+                        echo "</td><td>";
+                        echo $row["LocalDestino"];
+                        echo "</td><td>";
 
 				?>
+                        <a href='menssagemChat.php?Cod=<?= $cod ?>'><img src='imagens/cancel.webp' title='Chat' width='25'></a>
                         </td>
                         </tr>
 				 <?php
