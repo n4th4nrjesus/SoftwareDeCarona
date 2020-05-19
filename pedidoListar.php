@@ -53,7 +53,7 @@
             $username = "usu@SoftwareCarona";
             $password = "caronadesoftware";
             $database = "software_de_carona";
-
+			
 			// Verifica conexão
             $conn = mysqli_connect($servername, $username, $password, $database);
 			
@@ -68,17 +68,11 @@
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
-            mysqli_query($conn,'SET character_set_results=utf8');
-
-            $matricula = $_SESSION['usuario_matri'];
-            $genero = $_SESSION['usuario_genero'];
+			mysqli_query($conn,'SET character_set_results=utf8');
 
             $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
-                    , c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
-                    ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL
-                    AND u.Matricula != $matricula
-                    AND c.prefGenero = '$genero' OR c.prefGenero IS NULL";
+                    ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -88,11 +82,9 @@
 				echo "	  <th>Passageiro</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
-                echo "    <th>Data de Criação</th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
-
                     while ($row = mysqli_fetch_assoc($result)) {
                         $cod = $row["Cod"];
                         echo "<tr>";
@@ -102,8 +94,6 @@
                         echo $row["LocalPartida"];
                         echo "</td><td>";
                         echo $row["LocalDestino"];
-                        echo "</td><td>";
-                        echo $row["DataCriacao"];
                         echo "</td><td>";
 
 				?>

@@ -87,20 +87,6 @@
                                 title="Insira o endereço de destino."></p>
                         </div>
 
-                        <?php
-                            $usuarioGenero = $_SESSION['usuario_genero'];
-                            if($usuarioGenero == 'F') {
-                        ?>
-                            <div id=divGenero style="display: none">
-                            <label class="w3-text-teal"><h6><b>Preferência de gênero do motorista</b></h6></label>
-                            <select class="w3-white w3-border w3-padding" id="selectGenero" name="selectGenero">
-                                <option value="Q"> Qualquer </option>
-                                <option value="F"> Feminino </option>
-                                <option value="M"> Masculino </option>
-                            </select> 
-                            </div>
-                        <?php } ?>
-                        
                         </br>
                         <div>
                         <div id="divButtons" style="display: none">
@@ -132,7 +118,6 @@
             document.getElementById('optPuc_EndAtual').style.display='block';
             document.getElementById('optPuc_Bloco').style.display='block';
             document.getElementById('divButtons').style.display='block';
-            document.getElementById('divGenero').style.display='block';
             document.getElementById('inputPuc_EndAtual').setAttribute("required", "required");
             document.getElementById('inputPuc_Bloco').setAttribute("required", "required");
             document.getElementById('btnPersonal').remove();
@@ -142,7 +127,6 @@
             document.getElementById('optPersonal_Bloco').style.display='block';
             document.getElementById('optPersonal_Destino').style.display='block';
             document.getElementById('divButtons').style.display='block';
-            document.getElementById('divGenero').style.display='block';
             document.getElementById('inputPersonal_Bloco').setAttribute("required", "required");
             document.getElementById('inputPersonal_Destino').setAttribute("required", "required");
             document.getElementById('btnPuc').remove();

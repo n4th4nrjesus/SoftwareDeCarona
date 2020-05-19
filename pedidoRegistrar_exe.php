@@ -55,79 +55,30 @@
 		$localDestino_Puc = $_POST['localDestino_Puc'];
 		$localPartida_Personal   = $_POST['localPartida_Personal'];
 		$localDestino_Personal = $_POST['localDestino_Personal'];
-		$generoUsuario = $_SESSION['usuario_genero'];
-		
 
 		if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 		} else {
-			
 			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
-				if($generoUsuario == "F") {
-					$generoMotorista = $_POST['selectGenero'];
+				$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) VALUES ('$passageiro_matricula', '$localPartida_Personal','$localDestino_Personal')";
+				echo "<div class='w3-responsive w3-card-4'>";
 
-					if($generoMotorista != "Q") {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero) 
-								VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal', '$generoMotorista')";
-					} else {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-								VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal')";	
-					}
-					echo "<div class='w3-responsive w3-card-4'>";
-	
-					if (mysqli_query($conn, $sql)) {
+				if (mysqli_query($conn, $sql)) {
 					echo "Carona Registrada";
-					} else {
+				} else {
 					echo "Erro: ".$sql."<br>".mysqli_error($conn);
 					echo "Carona não registrada";
-					}			
-				} else {
-					$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-							VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal')";
-
-					echo "<div class='w3-responsive w3-card-4'>";
-
-					if (mysqli_query($conn, $sql)) {
-					echo "Carona Registrada";
-					} else {
-					echo "Erro: ".$sql."<br>".mysqli_error($conn);
-					echo "Carona não registrada"; 
-					}
 				}
-
 			} else {
-				if($generoUsuario == "F") {
-					$generoMotorista = $_POST['selectGenero'];
+				$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) VALUES ('$passageiro_matricula', '$localPartida_Puc','$localDestino_Puc')";
+				echo "<div class='w3-responsive w3-card-4'>";
 
-					if($generoMotorista != "Q") {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero) 
-								VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc', '$generoMotorista')";
-					} else {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-								VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc')";
-					}
-					echo "<div class='w3-responsive w3-card-4'>";
-	
-					if (mysqli_query($conn, $sql)) {
-						echo "Carona Registrada";
-					} else {
-						echo "Erro: ".$sql."<br>".mysqli_error($conn);
-						echo "Carona não registrada";
-					}
+				if (mysqli_query($conn, $sql)) {
+					echo "Carona Registrada";
 				} else {
-					$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-							VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc')";
-
-					echo "<div class='w3-responsive w3-card-4'>";
-					
-					if (mysqli_query($conn, $sql)) {
-						echo "Carona Registrada";
-					} else {
-						echo "Erro: ".$sql."<br>".mysqli_error($conn);
-						echo "Carona não registrada"; 
-					}
+					echo "Erro: ".$sql."<br>".mysqli_error($conn);
+					echo "Carona não registrada";
 				}
-				
 			}
 		}
 		mysqli_close($conn);
