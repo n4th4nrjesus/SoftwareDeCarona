@@ -25,87 +25,52 @@
     }
 </style>
 </head>
-<body onload="w3_show_nav('menuConversas')">
+<body onload="w3_show_nav('menuMinhas')">
 
 <?php require 'menu.php'; ?>
 
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
+    
+<div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
 
-    <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xxlarge">Conversa</h1>
-
-        <p class="w3-large">
-        <p>
+    <p class="w3-large">
         <div class="w3-code cssHigh notranslate">
-
+            <!-- Acesso em:-->
             <?php
+
             date_default_timezone_set("America/Sao_Paulo");
             $data = date("d/m/Y H:i:s", time());
             echo "<p class='w3-small' > ";
+            echo "Acesso em: ";
+            echo $data;
             echo "</p> "
             ?>
 
-            <?php
-            $servername = "localhost:3307";
-            $username = "usu@SoftwareCarona";
-            $password = "caronadesoftware";
-            $database = "software_de_carona";
-            $usuario_matricula = $_SESSION['usuario_matri'];
+            <!--criar div para aparecer as mensagens-->
 
-            $conn = mysqli_connect($servername, $username, $password, $database);
-			
-			if (!$conn) {
-                echo "</table>";
-                echo "</div>";
-                die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
-            }
-			
-			mysqli_query($conn,"SET NAMES 'utf8'");
-			mysqli_query($conn,"SET NAMES 'utf8'");
-			mysqli_query($conn,'SET character_set_connection=utf8');
-			mysqli_query($conn,'SET character_set_client=utf8');
-			mysqli_query($conn,'SET character_set_results=utf8');
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as Motorista
-                    FROM Carona c 
-                    INNER JOIN Usuario u 
-                        ON u.Matricula = c.fk_Passageiro_Matricula 
-                    INNER JOIN Usuario u2 
-                        ON u2.Matricula = c.fk_Motorista_Matricula 
-                    WHERE c.fk_Passageiro_Matricula IS NOT NULL
-                    AND c.fk_Motorista_Matricula IS NOT NULL";
-            
-            echo "<div class='w3-responsive w3-card-4'>";
-            if ($result = mysqli_query($conn, $sql)) {
+            <!--enviar mensagem-->
+            <div class="w3-responsive w3-card-4">
                 
-                echo "<table class='w3-table-all'>";
-                echo "	<tr>";
-                echo "	  <th>Passageiro</th>";
-                echo "	</tr>";
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $cod = $row['Cod'];
-                        echo "<tr>";
-                        echo "<td>";
-                        echo $row["Passageiro"];
-                        echo "</td><td>";
+                <form class="w3-container" action="pedidoRegistrar_exe.php" method="post">
+                    <input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
 
-				?>
-                        </td>
-                        </tr>
-				 <?php
-                    }
-                }
-                echo "</table>";
-                echo "</div>";
-            } else {
-                echo "Erro executando SELECT: " . mysqli_error($conn);
-            }
+                    <div id="escreverTesto">
+                        <label class="w3-text-teal"><h6><b>Insira a mensagem</b></h6></label>
+                        <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
+                            title="Insira o endereço de destino."></p>
+                    </div>
+                    <div>
+                    <div id="salvar Testo" >
+                        <input type="button" value="Enviar mensagem" class="w3-btn w3-teal">
+                        <input type="button" value="Voltar" class="w3-btn w3-teal" onclick="window.location.href='caronaAndamento.php'"></p>
+                    </div>
+                </form>
+            </div>
 
-            mysqli_close($conn); 
-            ?>
         </div>
-    </div>
+    </p>
+</div>
 
 
     <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
