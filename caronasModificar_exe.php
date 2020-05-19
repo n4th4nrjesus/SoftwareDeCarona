@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-    <!--
-     Software de Carona          
-     
-    -->
+
+
+
 <html>
 	<head>
 
@@ -17,19 +16,17 @@
       </style>
 	</head>
 <body onload="w3_show_nav('menuPassag')">
-<!-- Inclui MENU.PHP  -->
 <?php require 'menu.php';?>
 
-<!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Carona Oferecida</h1>
+  <h1 class="w3-xxlarge">Carona Pedida</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
-  <!-- Acesso em:-->
-	<?php
+
+  <?php
 		date_default_timezone_set("America/Sao_Paulo");
 		$data = date("d/m/Y H:i:s",time());
 		echo "<p class='w3-small' > ";
@@ -53,36 +50,35 @@
 		mysqli_query($conn,'SET character_set_client=utf8');
 		mysqli_query($conn,'SET character_set_results=utf8');
 
-		$motorista_matricula = $_SESSION['usuario_matri'];
+		$passageiro_matricula = $_SESSION['usuario_matri'];
 		$localPartida_Puc   = $_POST['localPartida_Puc'];
 		$localDestino_Puc = $_POST['localDestino_Puc'];
 		$localPartida_Personal   = $_POST['localPartida_Personal'];
 		$localDestino_Personal = $_POST['localDestino_Personal'];
 
 		if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
+            die("Connection failed: " . mysqli_connect_error());
+            
 		} else {
 			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
-				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
-						VALUES ('$motorista_matricula', '$localPartida_Personal','$localDestino_Personal')";
+				$sql = "UPDATE Carona SET localPartida = '$localPartida_Personal', localDestino = '$localDestino_Personal'";
 				echo "<div class='w3-responsive w3-card-4'>";
 
 				if (mysqli_query($conn, $sql)) {
-					echo "Carona Registrada";
+					echo "Carona Modificada";
 				} else {
 					echo "Erro: ".$sql."<br>".mysqli_error($conn);
-					echo "Carona não registrada";
+					echo "Carona não Modificada";
 				}
 			} else {
-				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
-						VALUES ('$motorista_matricula', '$localPartida_Puc','$localDestino_Puc')";
+				$sql = "UPDATE Carona SET localPartida = '$localPartida_Puc', localDestino = '$localDestino_Puc'";
 				echo "<div class='w3-responsive w3-card-4'>";
 
 				if (mysqli_query($conn, $sql)) {
-					echo "Carona Registrada";
+					echo "Carona Modificada";
 				} else {
 					echo "Erro: ".$sql."<br>".mysqli_error($conn);
-					echo "Carona não registrada";
+					echo "Carona não Modificada";
 				}
 			}
 		}

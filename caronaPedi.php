@@ -94,6 +94,7 @@
                         echo "</td><td>";
 
 				?>
+                        <a href='caronasModificar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Carona' width='32'></a>
                         <a href='pedidoExcluir.php?Cod=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Cancelar Carona' width='32'></a>
                         </td>
                         </tr>
