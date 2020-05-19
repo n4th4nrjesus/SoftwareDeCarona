@@ -43,8 +43,6 @@ MENU.PHP
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MINHAS CARONAS</a>
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuFeed')"
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">FEED</a>
-			<a href="javascript:void(0)" onclick="w3_show_nav('menuConversas')"
-			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MINHAS CONVERSAS</a>
 		</div>
 		<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-right w3-xlarge w3-hide-large w3-teal"
 		   title="Close Menu">x</a>
