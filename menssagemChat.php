@@ -93,37 +93,45 @@
             <!--Mostrar mensagem-->
             <div>
             <?php
-            $sql = "SELECT m.texto as texto, m.datahora as datahora, m.remetente as Remetente, destino
-                    FROM mensagens as m
+            $sql = "SELECT m.texto as texto, m.datahora as datahora, m.fk_Passageiro_Matricula as fk_Passageiro_Matricula, m.fk_Motorista_Matricula as fk_Motorista_Matricula
+                    FROM Mensagem as m
                     INNER JOIN Usuario as u ON u.Matricula = c.fk_Passageiro_Matricula
-                    INNER JOIN Usuario u2 ON u2.Matricula = c.fk_Motorista_Matricula 
+                    INNER JOIN Usuario as u2 ON u2.Matricula = c.fk_Motorista_Matricula 
                     WHERE Cod = $cod";
+
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+                    FROM Carona c 
+                    INNER JOIN Usuario u 
+                        ON u.Matricula = c.fk_Passageiro_Matricula 
+                    INNER JOIN Usuario u2 
+                        ON u2.Matricula = c.fk_Motorista_Matricula 
+                    WHERE c.fk_Passageiro_Matricula IS NOT NULL
+                    AND c.fk_Motorista_Matricula IS NOT NULL";
             
             $usuario_matricula = $_SESSION['usuario_matri'];
-            // verifica
+            $usuario_nome = $_SESSION['usuario_nome'];
 
+            $Texto = $row['Mensagem_texto'];
+            $Remetente = $usuario_nome;
 
             echo "<div class='w3-responsive w3-card-4'>";
-            if ($result = mysqli_query($conn, $sql)) {
-
-                if($usuario_matricula == $row["Passageiro"]){
-                }else{
+            if ($result = mysqli_query($conn, $sql)) { 
                     echo "<table class='w3-table-all'>";
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $cod = $row['Cod'];
                             echo "<tr>";
                             echo "<td>";
-                            echo $row["Rementente"];
-                            echo "</td><td>";
-                            echo $row["Texto"];
-                            echo "</td><td>";
+                            echo $Remetente;
+                            echo ":";
+                            echo "                                   "; // espaço para depois do nome
+                            echo $Texto;
                             echo "</td>";
                             echo "</tr>";
                         }
                     }
-                }
             }
+            
             ?>
             </div>
 
@@ -131,7 +139,7 @@
             <!--enviar mensagem-->
             <div class="w3-responsive w3-card-4">
                 
-                <form class="w3-container" action="mensagemChat_exe.php" method="post">
+                <form class="w3-container" action="menssagemChat.php" method="post">
                     <input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
 
                     <div id="escreverTesto">
@@ -141,37 +149,29 @@
                     </div>
 
                     <!-- salvar mensagem-->
-                    <div>
+                    <div id= "salvar_mensagem">
                         <?php
-                        $motorista_matricula = $_SESSION['usuario_matri'];
-
                         $mensagem_enviada = $_POST['mensagem_enviada'];
-                        $mensagem_edestino = $_POST[''];// 
+                        $Passageiro = "ai meu cu";
+                        $Motorista = "ai meu cu";
+                        /*
+                        if($usuario_matricula == $row['Motirista']{
+                            $mensagem_destino = $row['Passageiro'];
+                        }else{
+                            $mensagem_destino = $row['Motorista'];
+                        }
+                        */
 
                         if (!$conn) {
                             die("Connection failed: " . mysqli_connect_error());
                         } else {
-                            if ($mensagem_enviada == NULL && $destino == NULL) {
-                                $sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
-                                        VALUES ('$motori', '$localPartida_Personal','$localDestino_Personal')";
-                                echo "<div class='w3-responsive w3-card-4'>";
-
-                                if (mysqli_query($conn, $sql)) {
-                                    echo "echo";
-
+                            if ($mensagem_enviada == NULL) {
+                                $sql = "INSERT INTO Mensagem (texto, fk_Passageiro_Matricula,  fk_Motorista_Matricula) 
+                                        VALUES ('$mensagem_enviada', '$Passageiro','$Motorista')";
                             } else {
-                                $sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
-                                        VALUES ('$motorista_matricula', '$localPartida_Puc','$localDestino_Puc')";
-                                echo "<div class='w3-responsive w3-card-4'>";
-
-                                if (mysqli_query($conn, $sql)) {
-                                    
-                                } else {
-                                    echo "Erro: ".$sql."<br>".mysqli_error($conn);
-                                     
+                                echo "Erro: ".$sql."<br>".mysqli_error($conn);        
                                 }
                             }
-                        }
                         ?>
                     </div>
                     <div>
