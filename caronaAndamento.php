@@ -85,6 +85,7 @@
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
                 echo "	  <th> </th>";
+                echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -99,9 +100,9 @@
                         echo "</td><td>";
                         echo $row["LocalDestino"];
                         echo "</td><td>";
-
 				?>
                         <a href='menssagemChat.php?Cod=<?= $cod ?>'><img src='imagens/chat.png' title='Chat' width='28'></a>
+                        </td><td>
                         <a href='andamentoFinalizar.php?Cod=<?= $cod ?>'><img src='imagens/cancel.webp' title='Finalizar carona' width='25'></a>
                         </td>
                         </tr>
