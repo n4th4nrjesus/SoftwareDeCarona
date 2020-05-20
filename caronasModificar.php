@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html>
 <head>
 
@@ -27,10 +25,9 @@
     </style>
 </head>
 <body  onload="w3_show_nav('menuPassag')">
-<!-- Inclui MENU.PHP  -->
+
 <?php require 'menu.php';?>
 
-<!-- Conteúdo Principal: deslocado paa direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container w3-light-grey" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
@@ -38,7 +35,7 @@
 
         <p class="w3-large">
             <div class="w3-code cssHigh notranslate">
-                <!-- Acesso em:-->
+
                 <?php
 
                 date_default_timezone_set("America/Sao_Paulo");
@@ -51,9 +48,9 @@
 
                 <div class="w3-responsive w3-card-4">
                     <div class="w3-container w3-teal">
-                        <h2>Informe os dados da sua carona</h2>
+                        <h2>Informe os dados da carona <?= $_GET['Cod'] ?></h2>
                     </div>
-                    <form class="w3-container" action="caronasModificar_exe.php" method="post">
+                    <form class="w3-container" action="caronasModificar_exe.php?Cod=<?= $_GET['Cod'] ?>" method="post">
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
                         
                         <div>
