@@ -50,6 +50,7 @@
 		mysqli_query($conn,'SET character_set_client=utf8');
 		mysqli_query($conn,'SET character_set_results=utf8');
 
+		$cod = $_GET['Cod'];
 		$passageiro_matricula = $_SESSION['usuario_matri'];
 		$localPartida_Puc   = $_POST['localPartida_Puc'];
 		$localDestino_Puc = $_POST['localDestino_Puc'];
@@ -61,7 +62,10 @@
             
 		} else {
 			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
-				$sql = "UPDATE Carona SET localPartida = '$localPartida_Personal', localDestino = '$localDestino_Personal'";
+				$sql = "UPDATE Carona SET 
+						localPartida = '$localPartida_Personal', 
+						localDestino = '$localDestino_Personal'
+						WHERE Cod = $cod";
 				echo "<div class='w3-responsive w3-card-4'>";
 
 				if (mysqli_query($conn, $sql)) {
@@ -71,7 +75,10 @@
 					echo "Carona não Modificada";
 				}
 			} else {
-				$sql = "UPDATE Carona SET localPartida = '$localPartida_Puc', localDestino = '$localDestino_Puc'";
+				$sql = "UPDATE Carona SET 
+						localPartida = '$localPartida_Puc', 
+						localDestino = '$localDestino_Puc'
+						WHERE Cod = $cod";
 				echo "<div class='w3-responsive w3-card-4'>";
 
 				if (mysqli_query($conn, $sql)) {

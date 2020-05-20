@@ -81,6 +81,7 @@
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
                 echo "	  <th> </th>";
+                echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -95,6 +96,8 @@
                         echo "</td><td>";
 
 				?>
+                        <a href='caronasModificar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Carona' width='32'></a>
+                        </td><td>
                         <a href='oferecidaExcluir.php?Cod=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Cancelar Carona' width='32'></a>
                         </td>
                         </tr>

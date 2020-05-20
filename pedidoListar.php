@@ -76,9 +76,10 @@
             $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
                     , c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
-                    ON u.Matricula = c.fk_Passageiro_Matricula WHERE c.fk_Motorista_Matricula IS NULL
-                    AND u.Matricula != $matricula
-                    AND c.prefGenero = '$genero' OR c.prefGenero IS NULL";
+                    ON u.Matricula = c.fk_Passageiro_Matricula 
+                    WHERE c.fk_Motorista_Matricula IS NULL
+                    AND u.Matricula != '$matricula'
+                    AND (c.prefGenero = '$genero' OR c.prefGenero IS NULL)";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
