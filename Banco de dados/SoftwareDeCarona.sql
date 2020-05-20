@@ -53,6 +53,37 @@ CREATE TABLE Software_De_Carona.AvaliacaoPostagem (
     DataCriacao date NOT NULL
 );
 
+DROP TABLE IF EXISTS Software_De_Carona.Chat;
+CREATE TABLE Software_De_Carona.Chat (
+    Cod int PRIMARY KEY AUTO_INCREMENT,
+    datahora timestamp NOT NULL,
+    fk_Carona_Cod int NOT NULL
+);
+
+DROP TABLE IF EXISTS Software_De_Carona.mensagens;
+CREATE TABLE Software_De_Carona.Mensagens (
+    Cod int PRIMARY KEY AUTO_INCREMENT,
+    texto varchar(144) NOT NULL,
+    datahora timestamp NOT NULL,
+    fk_Passageiro_Matricula varchar(50),
+    fk_Motorista_Matricula varchar(50)
+);
+
+ALTER TABLE Software_De_Carona.Mensagens ADD CONSTRAINT FK_Mensagens_Usuario
+    FOREIGN KEY (fk_Passageiro_Matricula)
+    REFERENCES Software_De_Carona.Usuario (Matricula)
+    ON UPDATE CASCADE ON DELETE SET NULL;
+ 
+ALTER TABLE Software_De_Carona.Mensagens ADD CONSTRAINT FK_Mensagens_Usuario
+    FOREIGN KEY (fk_Motorista_Matricula)
+    REFERENCES Software_De_Carona.Usuario (Matricula)
+    ON UPDATE CASCADE ON DELETE SET NULL;
+
+ALTER TABLE Software_De_Carona.Chat ADD CONSTRAINT FK_Chat_Carona
+    FOREIGN KEY (fk_Carona_Cod)
+    REFERENCES Software_De_Carona.Carona (Cod)
+    ON UPDATE CASCADE ON DELETE SET NULL;
+
 ALTER TABLE Software_De_Carona.Carona ADD CONSTRAINT FK_Carona_Passageiro
     FOREIGN KEY (fk_Passageiro_Matricula)
     REFERENCES Software_De_Carona.Usuario (Matricula)
@@ -99,3 +130,9 @@ ALTER TABLE Software_De_Carona.AvaliacaoPostagem
 
 ALTER TABLE Software_De_Carona.Carona 
     ALTER prefGenero SET DEFAULT NULL;
+
+ALTER TABLE Software_De_Carona.Mensagens
+    ALTER datahora SET DEFAULT current_timestamp();
+
+ALTER TABLE Software_De_Carona.Chat
+    ALTER datahora SET DEFAULT current_timestamp();

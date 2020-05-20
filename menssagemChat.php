@@ -45,24 +45,138 @@
             echo $data;
             echo "</p> "
             ?>
+            <!-- Acesso ao BD-->
+            <?php
+            $servername = "localhost:3307";
+            $username = "usu@SoftwareCarona";
+            $password = "caronadesoftware";
+            $database = "software_de_carona";
+            $cod = $_GET["Cod"];
+			
+			// Verifica conexão
+            $conn = mysqli_connect($servername, $username, $password, $database);
+			
+			// Verifica conexão 
+			if (!$conn) {
+                echo "</table>";
+                echo "</div>";
+                die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
+            }
+            ?>
+            <!--pegar a carona em andamento e printar inicio e fim da corrida no topo-->
+            <div>
+            <?php
+            $sql = "SELECT c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cod as Cod, u.Nome as Passageiro
+                    FROM Carona as c
+                    INNER JOIN Usuario as u ON u.Matricula = c.fk_Passageiro_Matricula
+                    INNER JOIN Usuario u2 ON u2.Matricula = c.fk_Motorista_Matricula 
+                    WHERE Cod = $cod";  
+            
+            if ($result = mysqli_query($conn, $sql)) {
 
-            <!--criar div para aparecer as mensagens-->
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $cod = $row['Cod'];
+                        echo "<p class='w3-small' > ";
+                        echo $row["LocalPartida"];
+                        echo "</p> ";
+                        echo "<p class='w3-small' > ";
+                        echo $row["LocalDestino"];
+                        echo "</p> ";
+                    }
+                }
+            }
+            ?>
+            </div>
+
+
+            <!--Mostrar mensagem-->
+            <div>
+            <?php
+            $sql = "SELECT m.texto as texto, m.datahora as datahora, m.remetente as Remetente, destino
+                    FROM mensagens as m
+                    INNER JOIN Usuario as u ON u.Matricula = c.fk_Passageiro_Matricula
+                    INNER JOIN Usuario u2 ON u2.Matricula = c.fk_Motorista_Matricula 
+                    WHERE Cod = $cod";
+            
+            $usuario_matricula = $_SESSION['usuario_matri'];
+            // verifica
+
+
+            echo "<div class='w3-responsive w3-card-4'>";
+            if ($result = mysqli_query($conn, $sql)) {
+
+                if($usuario_matricula == $row["Passageiro"]){
+                }else{
+                    echo "<table class='w3-table-all'>";
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $cod = $row['Cod'];
+                            echo "<tr>";
+                            echo "<td>";
+                            echo $row["Rementente"];
+                            echo "</td><td>";
+                            echo $row["Texto"];
+                            echo "</td><td>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                }
+            }
+            ?>
+            </div>
 
 
             <!--enviar mensagem-->
             <div class="w3-responsive w3-card-4">
                 
-                <form class="w3-container" action="pedidoRegistrar_exe.php" method="post">
+                <form class="w3-container" action="mensagemChat_exe.php" method="post">
                     <input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
 
                     <div id="escreverTesto">
                         <label class="w3-text-teal"><h6><b>Insira a mensagem</b></h6></label>
-                        <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
-                            title="Insira o endereço de destino."></p>
+                        <input id="inputTexto" class="w3-input w3-border w3-light-grey " name="mensagem_enviada" type="text"
+                            title="Insira a mensagem."></p>
+                    </div>
+
+                    <!-- salvar mensagem-->
+                    <div>
+                        <?php
+                        $motorista_matricula = $_SESSION['usuario_matri'];
+
+                        $mensagem_enviada = $_POST['mensagem_enviada'];
+                        $mensagem_edestino = $_POST[''];// 
+
+                        if (!$conn) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        } else {
+                            if ($mensagem_enviada == NULL && $destino == NULL) {
+                                $sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
+                                        VALUES ('$motori', '$localPartida_Personal','$localDestino_Personal')";
+                                echo "<div class='w3-responsive w3-card-4'>";
+
+                                if (mysqli_query($conn, $sql)) {
+                                    echo "echo";
+
+                            } else {
+                                $sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
+                                        VALUES ('$motorista_matricula', '$localPartida_Puc','$localDestino_Puc')";
+                                echo "<div class='w3-responsive w3-card-4'>";
+
+                                if (mysqli_query($conn, $sql)) {
+                                    
+                                } else {
+                                    echo "Erro: ".$sql."<br>".mysqli_error($conn);
+                                     
+                                }
+                            }
+                        }
+                        ?>
                     </div>
                     <div>
                     <div id="salvar Testo" >
-                        <input type="button" value="Enviar mensagem" class="w3-btn w3-teal">
+                        <input type="submit" value="Enviar mensagem" class="w3-btn w3-teal" name="mensagemEnviar">
                         <input type="button" value="Voltar" class="w3-btn w3-teal" onclick="window.location.href='caronaAndamento.php'"></p>
                     </div>
                 </form>
