@@ -60,8 +60,8 @@ CREATE TABLE Software_De_Carona.Chat (
     fk_Carona_Cod int NOT NULL
 );
 
-DROP TABLE IF EXISTS Software_De_Carona.mensagens;
-CREATE TABLE Software_De_Carona.Mensagens (
+DROP TABLE IF EXISTS Software_De_Carona.Mensagem;
+CREATE TABLE Software_De_Carona.Mensagem (
     Cod int PRIMARY KEY AUTO_INCREMENT,
     texto varchar(144) NOT NULL,
     datahora timestamp NOT NULL,
@@ -69,12 +69,12 @@ CREATE TABLE Software_De_Carona.Mensagens (
     fk_Motorista_Matricula varchar(50)
 );
 
-ALTER TABLE Software_De_Carona.Mensagens ADD CONSTRAINT FK_Mensagens_Usuario
+ALTER TABLE Software_De_Carona.Mensagem ADD CONSTRAINT FK_Mensagem_Passageiro
     FOREIGN KEY (fk_Passageiro_Matricula)
     REFERENCES Software_De_Carona.Usuario (Matricula)
     ON UPDATE CASCADE ON DELETE SET NULL;
  
-ALTER TABLE Software_De_Carona.Mensagens ADD CONSTRAINT FK_Mensagens_Usuario
+ALTER TABLE Software_De_Carona.Mensagem ADD CONSTRAINT FK_Mensagem_Motorista
     FOREIGN KEY (fk_Motorista_Matricula)
     REFERENCES Software_De_Carona.Usuario (Matricula)
     ON UPDATE CASCADE ON DELETE SET NULL;
@@ -131,7 +131,7 @@ ALTER TABLE Software_De_Carona.AvaliacaoPostagem
 ALTER TABLE Software_De_Carona.Carona 
     ALTER prefGenero SET DEFAULT NULL;
 
-ALTER TABLE Software_De_Carona.Mensagens
+ALTER TABLE Software_De_Carona.Mensagem
     ALTER datahora SET DEFAULT current_timestamp();
 
 ALTER TABLE Software_De_Carona.Chat
