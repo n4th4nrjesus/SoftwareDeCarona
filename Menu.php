@@ -76,7 +76,7 @@ MENU.PHP
 			<a class="w3-bar-item w3-button" href='caronaAndamento.php'>Em andamento</a>
 		</div>
 		<div class="w3-bottom w3-padding">
-			<?= $_SESSION['usuario_nome'] ?>
+			<a href="loginAtualizar.php"><?= $_SESSION['usuario_nome'] ?></a>
 			<form action="login_sair_exe.php" style="display: inline-block;">
 				<input type="submit" value="Sair" 
 					class="w3-button w3-margin-left w3-dark-grey w3-hover-teal"/>

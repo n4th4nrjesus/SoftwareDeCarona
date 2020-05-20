@@ -46,11 +46,13 @@ INDEX.PHP
 						<input type="hidden" id="login" name="login" value="Login">
 						<p>
 							<label class="w3-text-teal"><b>Email</b></label>
-							<input class="w3-input w3-border w3-light-grey" name="Email" type="text" title="Formato: nome.sobrenome@sufixo" required>
+							<input class="w3-input w3-border w3-light-grey" name="Email" type="email" pattern=".{10,250}"
+								title="Email entre 10 e 250 letras." required>
 						</p>
 						<p>
 							<label class="w3-text-teal"><b>Senha</b></label>
-							<input class="w3-input w3-border w3-light-grey" name="Senha" type="password" required>
+							<input class="w3-input w3-border w3-light-grey" name="Senha" type="password"
+								pattern=".{10,40}" title="Senha entre 10 a 40 caracteres" required>
 						</p>
 						<p class="w3-center">
 							<input type="submit" value="Entrar" class="w3-btn w3-teal w3-section" >
