@@ -22,7 +22,9 @@ CREATE TABLE Software_De_Carona.Carona (
     LocalDestino varchar(250) NOT NULL,
     prefGenero char(1),
     fk_Passageiro_Matricula varchar(50),
-    fk_Motorista_Matricula varchar(50)
+    fk_Motorista_Matricula varchar(50),
+    Finalizada tinyint,
+    Cancelada tinyint
 );
 
 DROP TABLE IF EXISTS Software_De_Carona.Postagem;
@@ -36,9 +38,9 @@ CREATE TABLE Software_De_Carona.Postagem (
 
 DROP TABLE IF EXISTS Software_De_Carona.AvaliacaoCarona;
 CREATE TABLE Software_De_Carona.AvaliacaoCarona (
+    Cod int PRIMARY KEY AUTO_INCREMENT,
     fk_Passageiro_Matricula varchar(50),
     fk_Carona_Cod int,
-    Cod int PRIMARY KEY AUTO_INCREMENT,
     Comentario varchar(250),
     Estrelas int(5)
 );

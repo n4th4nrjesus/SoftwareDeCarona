@@ -68,11 +68,11 @@
 					$generoMotorista = $_POST['selectGenero'];
 
 					if($generoMotorista != "Q") {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero) 
-								VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal', '$generoMotorista')";
+						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero, Finalizada) 
+								VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal', '$generoMotorista', 0)";
 					} else {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-								VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal')";	
+						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, Finalizada) 
+								VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal', 0)";	
 					}
 					echo "<div class='w3-responsive w3-card-4'>";
 	
@@ -83,8 +83,8 @@
 					echo "Carona não registrada";
 					}			
 				} else {
-					$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-							VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal')";
+					$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, Finalizada, Cancelada) 
+							VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal', 0, 0)";
 
 					echo "<div class='w3-responsive w3-card-4'>";
 
@@ -101,11 +101,11 @@
 					$generoMotorista = $_POST['selectGenero'];
 
 					if($generoMotorista != "Q") {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero) 
-								VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc', '$generoMotorista')";
+						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero, Finalizada, Cancelada) 
+								VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc', '$generoMotorista', 0, 0)";
 					} else {
-						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-								VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc')";
+						$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, Finalizada, Cancelada) 
+								VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc', 0, 0)";
 					}
 					echo "<div class='w3-responsive w3-card-4'>";
 	
@@ -116,8 +116,8 @@
 						echo "Carona não registrada";
 					}
 				} else {
-					$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino) 
-							VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc')";
+					$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, Finalizada, Cancelada) 
+							VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc', 0, 0)";
 
 					echo "<div class='w3-responsive w3-card-4'>";
 					

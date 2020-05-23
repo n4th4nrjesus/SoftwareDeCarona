@@ -65,10 +65,11 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
             mysqli_query($conn,'SET character_set_results=utf8');
             
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cancelada as Cancelada
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Passageiro_Matricula 
                     WHERE c.fk_Motorista_Matricula IS NULL
+                    AND c.Cancelada = 0
                     AND c.fk_Passageiro_Matricula = '$usuario_matricula'";
             
             echo "<div class='w3-responsive w3-card-4'>";

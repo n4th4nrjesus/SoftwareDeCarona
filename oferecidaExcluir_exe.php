@@ -57,13 +57,15 @@ Software de Carona
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-		$sql = "DELETE FROM Carona WHERE Cod = $cod";
+		$sql = "UPDATE Carona SET 
+				Cancelada = 1
+				WHERE Cod = $cod";
 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
 				echo "Carona cancelada!";
 		} else {
-			echo "Erro executando DELETE: " . mysqli_error($conn);
+			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
         echo "</div>";
 		mysqli_close($conn);

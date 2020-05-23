@@ -66,13 +66,15 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+            $sql = "SELECT c.Cod as Cod, c.fk_Passageiro_Matricula as PassageiroMatricula, u.Nome as Passageiro, u2.Nome as Motorista, c.LocalPartida as LocalPartida, 
+                           c.LocalDestino as LocalDestino, c.Finalizada as Finalizada
                     FROM Carona c 
                     INNER JOIN Usuario u 
                         ON u.Matricula = c.fk_Passageiro_Matricula 
                     INNER JOIN Usuario u2 
                         ON u2.Matricula = c.fk_Motorista_Matricula 
                     WHERE c.fk_Passageiro_Matricula IS NOT NULL
+                    AND c.Finalizada = 0
                     AND c.fk_Motorista_Matricula IS NOT NULL";
             
             echo "<div class='w3-responsive w3-card-4'>";
@@ -103,7 +105,10 @@
 				?>
                         <a href='mensagemChat.php?Cod=<?= $cod ?>'><img src='imagens/chat.png' title='Chat' width='28'></a>
                         </td><td>
-                        <a href='andamentoFinalizar.php?Cod=<?= $cod ?>'><img src='imagens/finalizar.jpg' title='Finalizar carona' width='25'></a>
+                        
+                        <?php if ($row['PassageiroMatricula'] == $usuario_matricula ) { ?> 
+                            <a href='andamentoFinalizar.php?Cod=<?= $cod ?>'><img src='imagens/finalizar.jpg' title='Finalizar carona' width='25'></a>
+                        <?php } ?>
                         </td>
                         </tr>
 				 <?php

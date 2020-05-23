@@ -73,11 +73,12 @@
             $matricula = $_SESSION['usuario_matri'];
             $genero = $_SESSION['usuario_genero'];
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cancelada as Cancelada
                     , c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Passageiro_Matricula 
                     WHERE c.fk_Motorista_Matricula IS NULL
+                    AND c.Cancelada = 0
                     AND u.Matricula != '$matricula'
                     AND (c.prefGenero = '$genero' OR c.prefGenero IS NULL)";
             

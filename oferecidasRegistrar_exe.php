@@ -63,8 +63,8 @@
 			die("Connection failed: " . mysqli_connect_error());
 		} else {
 			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
-				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
-						VALUES ('$motorista_matricula', '$localPartida_Personal','$localDestino_Personal')";
+				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino, Finalizada, Cancelada) 
+						VALUES ('$motorista_matricula', '$localPartida_Personal','$localDestino_Personal', 0, 0)";
 				echo "<div class='w3-responsive w3-card-4'>";
 
 				if (mysqli_query($conn, $sql)) {
@@ -74,8 +74,8 @@
 					echo "Carona não registrada";
 				}
 			} else {
-				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino) 
-						VALUES ('$motorista_matricula', '$localPartida_Puc','$localDestino_Puc')";
+				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino, Finalizada, Cancelada) 
+						VALUES ('$motorista_matricula', '$localPartida_Puc','$localDestino_Puc', 0, 0)";
 				echo "<div class='w3-responsive w3-card-4'>";
 
 				if (mysqli_query($conn, $sql)) {

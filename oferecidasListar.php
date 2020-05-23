@@ -72,10 +72,11 @@
             $matricula = $_SESSION['usuario_matri'];
 
             $sql = "SELECT c.Cod as Cod, u.Nome as Motorista, c.LocalPartida as LocalPartida
-                    , c.LocalDestino as LocalDestino, c.DataCriacao as DataCriacao
+                    , c.LocalDestino as LocalDestino, c.DataCriacao as DataCriacao, c.Cancelada as Cancelada
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Motorista_Matricula 
                     WHERE c.fk_Passageiro_Matricula IS NULL
+                    AND c.Cancelada = 0
                     AND u.Matricula != '$matricula'";
             
             echo "<div class='w3-responsive w3-card-4'>";
