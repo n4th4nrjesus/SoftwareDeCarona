@@ -53,6 +53,9 @@
 		$password = "caronadesoftware";
 		$database = "software_de_carona";
 		$cod = $_GET["Cod"];
+		$usuario_matricula = $_SESSION['usuario_matri'];
+		$Avaliacao = $_POST["Avaliacao"];
+		$Comentario = $_POST["Comentario"];
 
 		$conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -65,15 +68,27 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-        $sql = "DELETE FROM Carona where Cod = $cod";
+		$sqlInserir = "INSERT INTO AvaliacaoCarona (fk_Passageiro_Matricula, fk_Carona_Cod, Comentario, Estrelas) 
+					   VALUES ('$usuario_matricula', '$cod', '$Comentario', '$Avaliacao')";
+
+		$sql = "UPDATE Carona SET 
+				Finalizada = 1
+				where Cod = $cod";
 
 		echo "<div class='w3-responsive w3-card-4'>";
-		if ($result = mysqli_query($conn, $sql)) {
+		if ($result = mysqli_query($conn,$sql)) {
 				echo "Carona finalizada com sucesso!";
 		} else {
-			echo "Erro executando DELETE: " . mysqli_error($conn);
+			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
         echo "</div>";
+
+		echo "<div class='w3-responsive w3-card-4'>";
+		if ($result = mysqli_query($conn,$sqlInserir)) {
+		} else {
+			echo "Erro executando INSERT: " . mysqli_error($conn);
+		}
+		echo "</div>";
 		mysqli_close($conn);
 
 	?>
