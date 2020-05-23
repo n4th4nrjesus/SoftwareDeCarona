@@ -72,14 +72,40 @@
                         </div>
                         <div id="optPuc_Bloco" style="display: none">
                             <label class="w3-text-teal"><h6><b>Para qual Portão/Bloco deseja ir?</b></h6></label>
-                            <input id="inputPuc_Bloco" class="w3-input w3-border w3-light-grey " name="localDestino_Puc" type="text"
-                                title="Insira o endereço de destino."></p>
+                            <select name="localDestino_Puc" id="inputPuc_Bloco">                       
+                                <optgroup label="Bloco">
+                                    <option value="PUC-Bloco Amarelo">Bloco Amarelo</option>
+                                    <option value="PUC-Bloco Azul">Bloco Azul</option>
+                                    <option value="PUC-Bloco Vermelho">Bloco Vermelho</option>
+                                    <option value="PUC-Bloco Laranja">Bloco Laranja</option>
+                                    <option value="PUC-Bloco Verde">Bloco Verde</option>
+                                </optgroup>
+                                <optgroup label="Portão">
+                                    <option value="PUC-Portão 1">Portão 1</option>
+                                    <option value="PUC-Portão 2">Portão 2</option>
+                                    <option value="PUC-Portão 3">Portão 3</option>
+                                    <option value="PUC-Portão 4">Portão 4</option>
+                                </optgroup>
+                            </select>
                         </div>
 
                         <div id="optPersonal_Bloco" style="display: none">
                             <label class="w3-text-teal"><h6><b>Em qual Portão/Bloco você está?</b></h6></label>
-                            <input id="inputPersonal_Bloco" class="w3-input w3-border w3-light-grey " name="localPartida_Personal" type="text"
-                                title="Insira o endereço de partida." ></p>
+                            <select name="localPartida_Personal" id="inputPersonal_Bloco">                       
+                                <optgroup label="Bloco">
+                                    <option value="PUC-Bloco Amarelo">Bloco Amarelo</option>
+                                    <option value="PUC-Bloco Azul">Bloco Azul</option>
+                                    <option value="PUC-Bloco Vermelho">Bloco Vermelho</option>
+                                    <option value="PUC-Bloco Laranja">Bloco Laranja</option>
+                                    <option value="PUC-Bloco Verde">Bloco Verde</option>
+                                </optgroup>
+                                <optgroup label="Portão">
+                                    <option value="PUC-Portão 1">Portão 1</option>
+                                    <option value="PUC-Portão 2">Portão 2</option>
+                                    <option value="PUC-Portão 3">Portão 3</option>
+                                    <option value="PUC-Portão 4">Portão 4</option>
+                                </optgroup>
+                            </select>
                         </div>
                         <div id="optPersonal_Destino" style="display: none">
                             <label class="w3-text-teal"><h6><b>Insira o endereço de destino</b></h6></label>
