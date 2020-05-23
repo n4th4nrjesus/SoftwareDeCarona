@@ -48,7 +48,6 @@ Software de Carona
 		$genero = $_POST['selectGenero'];
 		$nome = $_POST['Nome'];
         $email = $_POST['Email'];
-        $cnh = $_POST['CNH'];
         $senha = md5($_POST['Senha']);
 		
 		$conn = mysqli_connect($servername, $username, $password, $database);
@@ -63,22 +62,12 @@ Software de Carona
 		mysqli_query($conn,'SET character_set_client=utf8');
 		mysqli_query($conn,'SET character_set_results=utf8');
 
-        if ($cnh != '') {
-            $sql = "UPDATE Usuario SET 
-                Genero = '$genero',
-                Nome = '$nome',
-                Email = '$email',
-                CNH = '$cnh',
-                Senha = '$senha'
-                WHERE Matricula = '$matricula'";
-        } else {
-            $sql = "UPDATE Usuario SET 
-                Genero = '$genero',
-                Nome = '$nome',
-                Email = '$email',
-                Senha = '$senha'
-                WHERE Matricula = '$matricula'";
-        }
+		$sql = "UPDATE Usuario SET 
+			Genero = '$genero',
+			Nome = '$nome',
+			Email = '$email',
+			Senha = '$senha'
+			WHERE Matricula = '$matricula'";
 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
@@ -87,7 +76,7 @@ Software de Carona
 			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
         echo "</div>";
-		mysqli_close($conn);  //Encerra conexao com o BD
+		mysqli_close($conn);
 
 	?>
   </div>
@@ -100,9 +89,8 @@ Software de Carona
   </nav></p>
 </footer>
 
-<!-- FIM PRINCIPAL -->
 </div>
-<!-- Inclui RODAPE.PHP  -->
+
 <?php require 'rodape.php';?>
 </body>
 </html>

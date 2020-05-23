@@ -26,7 +26,9 @@ MENU.PHP
 		<div class="w3-bar w3-dark-grey w3-large" style="z-index:4;height:45px">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-teal w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
+			<?php if (isset($_SESSION['usuario_cnh'])) { ?>
+				<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
+			<?php } ?>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMinhas')">MINHAS CARONAS</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
 		</div>
@@ -37,8 +39,10 @@ MENU.PHP
 		<div class="w3-bar w3-hide-large w3-large">
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuPassag')"
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">PASSAGEIRO</a>
-			<a href="javascript:void(0)" onclick="w3_show_nav('menuMotor')"
-			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MOTORISTA</a>
+			<?php if (isset($_SESSION['usuario_cnh'])) { ?>
+				<a href="javascript:void(0)" onclick="w3_show_nav('menuMotor')"
+				class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MOTORISTA</a>
+			<?php } ?>
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuMinhas')"
 			   class="w3-bar-item w3-button w3-teal w3-hover-white w3-padding-16">MINHAS CARONAS</a>
 			<a href="javascript:void(0)" onclick="w3_show_nav('menuFeed')"
@@ -72,7 +76,9 @@ MENU.PHP
 				<h3 class="w3-border-dark-grey w3-padding">Minhas caronas</h3>
 			</div>
 			<a class="w3-bar-item w3-button" href='caronaPedi.php'>Pedidas pendentes</a>
-			<a class="w3-bar-item w3-button" href='caronaOfereci.php'>Oferecidas pendentes</a>
+			<?php if (isset($_SESSION['usuario_cnh'])) { ?>
+				<a class="w3-bar-item w3-button" href='caronaOfereci.php'>Oferecidas pendentes</a>
+			<?php } ?>
 			<a class="w3-bar-item w3-button" href='caronaAndamento.php'>Em andamento</a>
 		</div>
 		<div class="w3-bottom w3-padding">

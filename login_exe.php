@@ -37,7 +37,7 @@ Software de Carona
     mysqli_query($conn,'SET character_set_client=utf8');
     mysqli_query($conn,'SET character_set_results=utf8');
 
-    $sql = "SELECT Matricula, Nome, Email, Senha, Genero FROM Usuario WHERE Email = '$usuario_email' AND Senha = '$usuario_senha_md5'";
+    $sql = "SELECT * FROM Usuario WHERE Email = '$usuario_email' AND Senha = '$usuario_senha_md5'";
     
     if (!$result = mysqli_query($conn, $sql)) {
 ?>
@@ -49,6 +49,7 @@ Software de Carona
         		$_SESSION['usuario_matri'] = $row['Matricula'];
                 $_SESSION['usuario_nome'] = $row['Nome'];
                 $_SESSION['usuario_genero'] = $row['Genero'];
+                $_SESSION['usuario_cnh'] = $row['CNH'];
             }
             header("Location: oferecidasListar.php");
         } else {

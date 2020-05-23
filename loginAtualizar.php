@@ -65,7 +65,7 @@ Software de Carona
 				mysqli_query($conn,'SET character_set_client=utf8');
 				mysqli_query($conn,'SET character_set_results=utf8');
 
-                $sql = "SELECT * FROM Usuario WHERE Matricula = $matricula";
+                $sql = "SELECT Matricula, Genero, Nome, Email, Senha FROM Usuario WHERE Matricula = $matricula";
 				echo "<div class='w3-responsive w3-card-4'>";
 				 if ($result = mysqli_query($conn, $sql)) {
 						if (mysqli_num_rows($result) > 0) {
@@ -93,11 +93,6 @@ Software de Carona
 									<label class="w3-text-teal"><b>Email</b></label>
 									<input class="w3-input w3-border w3-light-grey" name="Email" type="email" pattern=".{10,250}"
 										title="Email entre 10 e 250 letras." value="<?= $row['Email']; ?>" required>
-                                    </p>
-                                    <p>
-									<label class="w3-text-teal"><b>Carteira de motorista</b></label>
-									<input class="w3-input w3-border w3-light-grey" name="CNH" type="text" pattern="[0-9]{11}$"
-										   title="CNH com somente números e com 11 dígitos." value="<?= $row['CNH']; ?>">
                                     </p>
 									<p>
                                     <label class="w3-text-deep-orange"><b>Nova senha</b></label>
