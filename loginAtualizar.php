@@ -23,7 +23,7 @@ Software de Carona
         }
     </style>
 </head>
-<body onload="w3_show_nav('menuMotor')">
+<body onload="w3_show_nav('menuPassag')">
 
 <?php require 'menu.php'; ?>
 

@@ -15,7 +15,7 @@ Software de Carona
 		.myMenu {margin-bottom:150px}
       </style>
 	</head>
-<body onload="w3_show_nav('menuMotor')">
+<body onload="w3_show_nav('menuPassag')">
 
 <?php require 'menu.php'; ?>
 
