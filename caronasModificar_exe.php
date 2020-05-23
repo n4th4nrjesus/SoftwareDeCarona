@@ -52,40 +52,98 @@
 
 		$cod = $_GET['Cod'];
 		$passageiro_matricula = $_SESSION['usuario_matri'];
-		$localPartida_Puc   = $_POST['localPartida_Puc'];
+		$localPartida_Puc = $_POST['localPartida_Puc'];
 		$localDestino_Puc = $_POST['localDestino_Puc'];
-		$localPartida_Personal   = $_POST['localPartida_Personal'];
+		$localPartida_Personal = $_POST['localPartida_Personal'];
 		$localDestino_Personal = $_POST['localDestino_Personal'];
+		$generoUsuario = $_SESSION['usuario_genero'];
+
 
 		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
             
 		} else {
+
 			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
-				$sql = "UPDATE Carona SET 
-						localPartida = '$localPartida_Personal', 
-						localDestino = '$localDestino_Personal'
-						WHERE Cod = $cod";
-				echo "<div class='w3-responsive w3-card-4'>";
+				if($generoUsuario == "F") {
+					$generoMotorista = $_POST['selectGenero'];
 
-				if (mysqli_query($conn, $sql)) {
-					echo "Carona Modificada";
-				} else {
+					if($generoMotorista != "Q") {
+						$sql = "UPDATE Carona SET	
+								localPartida = '$localPartida_Personal', 
+								localDestino = '$localDestino_Personal',
+								prefGenero = '$generoMotorista'
+								WHERE Cod = $cod";
+	
+					} else {
+						$sql = "UPDATE Carona SET	
+								localPartida = '$localPartida_Personal', 
+								localDestino = '$localDestino_Personal'
+								WHERE Cod = $cod";	
+					}
+					echo "<div class='w3-responsive w3-card-4'>";
+	
+					if (mysqli_query($conn, $sql)) {
+					echo "Carona Registrada";
+					} else {
 					echo "Erro: ".$sql."<br>".mysqli_error($conn);
-					echo "Carona não Modificada";
+					echo "Carona não registrada";
+					}	
+				} else {
+					$sql = "UPDATE Carona SET	
+							localPartida = '$localPartida_Personal', 
+							localDestino = '$localDestino_Personal'
+							WHERE Cod = '$cod'";
+
+					echo "<div class='w3-responsive w3-card-4'>";
+
+					if (mysqli_query($conn, $sql)) {
+					echo "Carona Registrada";
+					} else {
+					echo "Erro: ".$sql."<br>".mysqli_error($conn);
+					echo "Carona não registrada"; 
+					}
 				}
-			} else {
-				$sql = "UPDATE Carona SET 
-						localPartida = '$localPartida_Puc', 
-						localDestino = '$localDestino_Puc'
-						WHERE Cod = $cod";
-				echo "<div class='w3-responsive w3-card-4'>";
 
-				if (mysqli_query($conn, $sql)) {
-					echo "Carona Modificada";
-				} else {
+			} else {
+				if($generoUsuario == "F") {
+					$generoMotorista = $_POST['selectGenero'];
+
+					if($generoMotorista != "Q") {
+						$sql = "UPDATE Carona SET	
+								localPartida = '$localPartida_Puc', 
+								localDestino = '$localDestino_Puc',
+								prefGenero = '$generoMotorista'
+								WHERE Cod = '$cod'";
+	
+					} else {
+						$sql = "UPDATE Carona SET	
+								localPartida = '$localPartida_Puc', 
+								localDestino = '$localDestino_Puc'
+								WHERE Cod = '$cod'";	
+					}
+					echo "<div class='w3-responsive w3-card-4'>";
+	
+					if (mysqli_query($conn, $sql)) {
+					echo "Carona Registrada";
+					} else {
 					echo "Erro: ".$sql."<br>".mysqli_error($conn);
-					echo "Carona não Modificada";
+					echo "Carona não registrada";
+					}	
+				} else {
+					$sql = "UPDATE Carona SET	
+							localPartida = '$localPartida_Puc', 
+							localDestino = '$localDestino_Puc'
+							WHERE Cod = '$cod'";
+
+					echo "<div class='w3-responsive w3-card-4'>";
+
+					if (mysqli_query($conn, $sql)) {
+					echo "Carona Registrada";
+					} else {
+					echo "Erro: ".$sql."<br>".mysqli_error($conn);
+					echo "Carona não registrada"; 
+					}
 				}
 			}
 		}

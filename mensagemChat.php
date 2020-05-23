@@ -78,9 +78,11 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         $cod = $row['Cod'];
                         echo "<p class='w3-small' > ";
+                        echo "Local de Partida: ";
                         echo $row["LocalPartida"];
                         echo "</p> ";
                         echo "<p class='w3-small' > ";
+                        echo "Destino: ";
                         echo $row["LocalDestino"];
                         echo "</p> ";
                     }
@@ -142,7 +144,7 @@
                 <form class="w3-container" action="menssagemChat.php" method="post">
                     <input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
 
-                    <div id="escreverTesto">
+                    <div id="escreverTexto">
                         <label class="w3-text-teal"><h6><b>Insira a mensagem</b></h6></label>
                         <input id="inputTexto" class="w3-input w3-border w3-light-grey " name="mensagem_enviada" type="text"
                             title="Insira a mensagem."></p>
@@ -196,9 +198,9 @@
         </p>
     </footer>
 
-<!-- FIM PRINCIPAL -->
+
 </div>
-<!-- Inclui RODAPE.PHP  -->
+
 <?php require 'rodape.php';?>
 </body>
 </html>

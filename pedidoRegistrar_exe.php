@@ -60,6 +60,7 @@
 
 		if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
+			
 		} else {
 			
 			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
