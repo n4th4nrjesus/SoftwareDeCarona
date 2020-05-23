@@ -1,9 +1,7 @@
 <!-------------------------------------------------------------------------------
-Oficina Software de Carona
+Software de Carona
+
 RODAPE.PHP
-
-
-Novembro/2018
 ---------------------------------------------------------------------------------->
 
     <div id="id01" class="w3-modal w3-animate-opacity">
