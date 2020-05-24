@@ -61,7 +61,7 @@ INDEX.PHP
 					</form>
 				</div>
 				<div class="w3-padding-large w3-card-4 w3-light-grey w3-half">
-					<img src="./Imagens/LogoCinza1.png" width="300px">	
+					<div class="w3-center w3-padding-large"><img src="./Imagens/LogoCinza1.png" style="width: 300px"></div>
 					<p>
 						Integrantes do curso de BES da PUCPR criaram este software com o principal
 						objetivo de aumentar a interação entre os integrantes do curso de uma maneira
