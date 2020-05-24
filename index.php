@@ -61,7 +61,7 @@ INDEX.PHP
 					</form>
 				</div>
 				<div class="w3-padding-large w3-card-4 w3-light-grey w3-half">
-					<h1>Software de Carona</h1>
+					<img src="./Imagens/LogoCinza1.png" width="300px">	
 					<p>
 						Integrantes do curso de BES da PUCPR criaram este software com o principal
 						objetivo de aumentar a interação entre os integrantes do curso de uma maneira

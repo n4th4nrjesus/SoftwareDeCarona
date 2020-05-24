@@ -21,7 +21,7 @@ MENU.PHP
 	<!-- Top -->
 	<div class="w3-top">
 		<div class="w3-row w3-dark-grey w3-padding">
-			<div class="w3-padding-large w3-center" style="margin:4px 0 6px 0;"><b>Software de Carona</b></div>
+			<div class="w3-center"><img src="./Imagens/LogoBranca.png" height="56"/></div>
 		</div>
 		<div class="w3-bar w3-dark-grey w3-large" style="z-index:4;height:45px">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-teal w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
