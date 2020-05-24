@@ -103,6 +103,7 @@
                         echo "</td><td>";
                         echo $row["DataCriacao"];
                         echo "</td><td>";
+                        echo "</tr>";
 				?>
                         <a href='oferecidaConfirmar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar carona' width='32'></a>
                         </td>

@@ -40,16 +40,21 @@
                             mysqli_query($conn,'SET character_set_connection=utf8');
                             mysqli_query($conn,'SET character_set_client=utf8');
                             mysqli_query($conn,'SET character_set_results=utf8');
-                                    
+
+                            $usuarioMatri = $_SESSION['usuario_matri'];       
                             $cod = $_GET["Cod"];
                             $mensagemEnviada = trim($_POST['mensagemEnviada']);
+
+                            $sql = "SELECT m.fk_Chat_Cod as fkChatCod, ct.Cod as ChatCod
+                                    FROM Mensagem as m
+                                    WHERE fkChatCod = ChatCod";
                             
                             if (!$conn) {
                                 die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
                             } else {
                                 if ($mensagemEnviada != '') {
-                                    $sql = "INSERT INTO Mensagem (texto)
-                                            VALUES ('$mensagemEnviada')";
+                                    $sql = "INSERT INTO Mensagem (texto, fk_Chat_Cod, fk_Remetente_Matricula)
+                                            VALUES ('$mensagemEnviada',  , '$usuarioMatri')";
                                 } else {
                                     echo "Erro: ".$sql."<br>".mysqli_error($conn); 
                                 }
@@ -68,7 +73,7 @@
             </div>
 
             <div class="w3-responsive w3-card-4">
-                <input type="submit" value="Voltar">
+                <input type="button" value="Voltar" class="w3-btn w3-teal" onclick="window.location.href='mensagemChat.php'"></p>
             </div>               
 
                 <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">

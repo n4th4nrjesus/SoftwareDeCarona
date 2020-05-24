@@ -40,77 +40,56 @@
                             echo "Acesso em: ";
                             echo $data;
                             echo "</p> ";
-                        ?>
 
-                        <?php
                             $servername = "localhost:3307";
                             $username = "usu@SoftwareCarona";
                             $password = "caronadesoftware";
                             $database = "software_de_carona";
-                            $cod = $_GET["Cod"];
-                            
+
                             $conn = mysqli_connect($servername, $username, $password, $database);
-                            
 
-                            if (!$conn) {
-                                die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
-                            } else {
-                                $sql = "SELECT c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cod as Cod, u.Nome as Passageiro,
+                            mysqli_query($conn,"SET NAMES 'utf8'");
+                            mysqli_query($conn,"SET NAMES 'utf8'");
+                            mysqli_query($conn,'SET character_set_connection=utf8');
+                            mysqli_query($conn,'SET character_set_client=utf8');
+                            mysqli_query($conn,'SET character_set_results=utf8');
+                            $cod = $_GET["Cod"];
 
-                                        FROM Carona as c
-                                        INNER JOIN Usuario as u ON u.Matricula = c.fk_Passageiro_Matricula
-                                        INNER JOIN Usuario as u2 ON u2.Matricula = c.fk_Motorista_Matricula 
-                                        WHERE Cod = $cod";  
-                                
-                                if ($result = mysqli_query($conn, $sql)) {
+                            $sql = "SELECT Chat.fk_Carona_Cod
+                                    FROM Chat
+                                    WHERE Chat.fk_Carona_Cod = $cod";
 
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            
-                                            echo "<p class='w3-small' > ";
-                                            echo "Código da Carona: ";
-                                            echo $row['Passageiro'];
-                                            echo "</p> ";
-                                            echo "<p class='w3-small' > ";
-                                            echo "Local de Partida: ";
-                                            echo $row["LocalPartida"];
-                                            echo "</p> ";
-                                            echo "<p class='w3-small' > ";
-                                            echo "Destino: ";
-                                            echo $row["LocalDestino"];
-                                            echo "</p> ";
-                                        }
+                            if ($result = mysqli_query($conn, $sql)) {            
+                                if(mysqli_num_rows($result)>0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        $sql = "SELECT Chat.Cod as CodChat
+                                                FROM Chat
+                                                WHERE CodChat = $cod";
+                                        echo $row['CodChat'];
+                                    }
+                                } else {
+                                    if (!$conn) {
+                                        die("Connection failed: " . mysqli_connect_error());
+                                    } else {
+                                        $sql = "INSERT INTO Chat (datahora, fk_Carona_Cod)
+                                                VALUES ($data, $cod)";
                                     }
                                 }
+                            } else {
+                                echo "Erro executando SELECT: " . mysqli_error($conn);
                             }
+                            
+                            mysqli_close($conn);
+
                         ?>
+
                 </div>
 
                 <div class="w3-code cssHigh notranslate">
                     Mensagens:
 
                     <?php
-                        $conn =  mysqli_connect($servername, $username, $password, $database);
                     
-                        $sql = "SELECT m.texto as texto, m.datahora as datahora, m.fk_Passageiro_Matricula as fk_Passageiro_Matricula, m.fk_Motorista_Matricula as fk_Motorista_Matricula
-                        FROM Mensagem as m
-                        INNER JOIN Usuario as u ON u.Matricula = c.fk_Passageiro_Matricula
-                        INNER JOIN Usuario as u2 ON u2.Matricula = c.fk_Motorista_Matricula 
-                        WHERE Cod = $cod";
-
-                        if ($result = mysqli_query($conn, $sql)) {
-
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $cod = $row["Cod"];
-                                    echo "<tr>";
-                                    echo "<td>";
-                                    echo $row['texto'];
-                                    echo "</td><td>";
-                                    echo "<tr>";
-                                }
-                            }
-                        }
 
                     ?>
                 </div>
