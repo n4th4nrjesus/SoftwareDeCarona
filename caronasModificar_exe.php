@@ -64,7 +64,7 @@
             
 		} else {
 
-			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
+			if ($localPartida_Puc == NULL && $localDestino_Puc == "Escolha") {
 				if($generoUsuario == "F") {
 					$generoMotorista = $_POST['selectGenero'];
 

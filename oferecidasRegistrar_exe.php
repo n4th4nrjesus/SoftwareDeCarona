@@ -54,15 +54,15 @@
 		mysqli_query($conn,'SET character_set_results=utf8');
 
 		$motorista_matricula = $_SESSION['usuario_matri'];
-		$localPartida_Puc   = $_POST['localPartida_Puc'];
+		$localPartida_Puc = $_POST['localPartida_Puc'];
 		$localDestino_Puc = $_POST['localDestino_Puc'];
-		$localPartida_Personal   = $_POST['localPartida_Personal'];
+		$localPartida_Personal = $_POST['localPartida_Personal'];
 		$localDestino_Personal = $_POST['localDestino_Personal'];
 
 		if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 		} else {
-			if ($localPartida_Puc == NULL && $localDestino_Puc == NULL) {
+			if ($localPartida_Puc == NULL && $localDestino_Puc == "Escolha") {
 				$sql = "INSERT INTO Carona (fk_Motorista_Matricula, localPartida, localDestino, Finalizada, Cancelada) 
 						VALUES ('$motorista_matricula', '$localPartida_Personal','$localDestino_Personal', 0, 0)";
 				echo "<div class='w3-responsive w3-card-4'>";

@@ -68,11 +68,12 @@
                         <div id='optPuc_EndAtual' style="display:none">
                             <label class="w3-text-teal"><h6><b>Insira seu local atual</b></h6></label>
                             <input id="inputPuc_EndAtual" class="w3-input w3-border w3-light-grey" name="localPartida_Puc" type="text"
-                                title="Insira o endereço de partida."></p>
+                                title="Insira o endereço de partida.">
                         </div>
                         <div id="optPuc_Bloco" style="display: none">
                             <label class="w3-text-teal"><h6><b>Para qual Portão/Bloco deseja ir?</b></h6></label>
-                            <select name="localDestino_Puc" id="inputPuc_Bloco">                       
+                            <select name="localDestino_Puc" id="inputPuc_Bloco" class="w3-white w3-border w3-padding">    
+                                <option value="Escolha">Escolha</option>                   
                                 <optgroup label="Bloco">
                                     <option value="PUC-Bloco Amarelo">Bloco Amarelo</option>
                                     <option value="PUC-Bloco Azul">Bloco Azul</option>
@@ -91,7 +92,8 @@
 
                         <div id="optPersonal_Bloco" style="display: none">
                             <label class="w3-text-teal"><h6><b>Em qual Portão/Bloco você está?</b></h6></label>
-                            <select name="localPartida_Personal" id="inputPersonal_Bloco">                       
+                            <select name="localPartida_Personal" id="inputPersonal_Bloco" class="w3-white w3-border w3-padding">
+                                <option value="Escolha">Escolha</option>                    
                                 <optgroup label="Bloco">
                                     <option value="PUC-Bloco Amarelo">Bloco Amarelo</option>
                                     <option value="PUC-Bloco Azul">Bloco Azul</option>
@@ -110,7 +112,7 @@
                         <div id="optPersonal_Destino" style="display: none">
                             <label class="w3-text-teal"><h6><b>Insira o endereço de destino</b></h6></label>
                             <input id="inputPersonal_Destino" class="w3-input w3-border w3-light-grey " name="localDestino_Personal" type="text"
-                                title="Insira o endereço de destino."></p>
+                                title="Insira o endereço de destino.">
                         </div>
 
                         <?php
