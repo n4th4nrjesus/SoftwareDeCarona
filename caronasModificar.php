@@ -84,7 +84,7 @@
                                         title="Insira o endereço de destino."></p>
                                 </div>
 
-
+                                <div>
                                 <?php
                                     $servername = "localhost:3307";
                                     $username = "usu@SoftwareCarona";
@@ -125,8 +125,7 @@
                                                 <option value="M"> Masculino </option>
                                             </select> 
                                         </div>
-                                        </br>   
-
+                                <div>                        
                                 <?php
                                                 }
                                             }
@@ -138,6 +137,7 @@
                                         mysqli_close($conn);
 
                                 ?>
+                                </div>
 
 
                                 <div id="divButtons" style="display: none">
