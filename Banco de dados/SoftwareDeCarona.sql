@@ -32,7 +32,7 @@ CREATE TABLE Software_De_Carona.Postagem (
     Cod int PRIMARY KEY AUTO_INCREMENT,
     DataCriacao date NOT NULL,
     Texto varchar(500),
-    UriFoto varchar(500),
+    FotoBin blob,
     fk_Usuario_Matricula varchar(50)
 );
 

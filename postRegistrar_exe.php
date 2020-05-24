@@ -10,24 +10,23 @@ Software de Carona
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	  <style>
-		.w3-theme {color:#ffff !important;background-color:#380077 !important}
-		.w3-code{border-left:4px solid #380077}
+		.w3-theme {color:#ffff !important;background-color: teal !important}
+		.w3-code{border-left:4px solid teal}
 		.myMenu {margin-bottom:150px}
       </style>
 	</head>
 <body onload="w3_show_nav('menuFeed')">
-<!-- Inclui MENU.PHP  -->
+
 <?php require 'menu.php';?>
 
-<!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Registro de Turma</h1>
+  <h1 class="w3-xxlarge">Postar no feed</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
-  <!-- Acesso em:-->
+
 	<?php
 
 	date_default_timezone_set("America/Sao_Paulo");
@@ -38,7 +37,6 @@ Software de Carona
 	echo "</p> "
 	?>
 
-	<!-- Acesso ao BD-->
 	<?php
 		
 		$servername = "localhost:3307";
@@ -46,42 +44,41 @@ Software de Carona
 		$password = "caronadesoftware";
 		$database = "software_de_carona";
 		
-		
-		$codProf  = $_POST['codProf'];
-		$codDisc  = $_POST['codDisc'];
-		$ano      = $_POST['Ano'];
-		$sem      = $_POST['Semestre'];
-		
+		$usuario_matricula = $_SESSION['usuario_matri'];
+		$texto = $_POST['Texto'];
+		if ($_FILES['Imagem']['size'] == 0) {
+			$sql = "INSERT INTO postagem (texto, FotoBin, fk_Usuario_Matricula) 
+				VALUES ('$texto', NULL, '$usuario_matricula')";
+		} else {
+			$imagem = addslashes(file_get_contents($_FILES['Imagem']['tmp_name']));
+			$sql = "INSERT INTO postagem (texto, FotoBin, fk_Usuario_Matricula) 
+				VALUES ('$texto','$imagem', '$usuario_matricula')";
+		}
 
-		// Cria conexão
 		$conn = mysqli_connect($servername, $username, $password, $database);
 
-		// Verifica conexão
 		if (!$conn) {
 			die("falha na conexão com o Banco de Dados: " . mysqli_connect_error());
 		}
-		// Configura para trabalhar com caracteres acentuados do português
+
 		mysqli_query($conn,"SET NAMES 'utf8'");
 		mysqli_query($conn,"SET NAMES 'utf8'");
 		mysqli_query($conn,'SET character_set_connection=utf8');
 		mysqli_query($conn,'SET character_set_client=utf8');
 		mysqli_query($conn,'SET character_set_results=utf8');
 
-		// Faz Select na Base de Dados
-		$sql = "INSERT INTO turma (CodProfessor, CodDisc, Ano, Semestre) VALUES ('$codProf','$codDisc','$ano','$sem')";
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
 			echo "Um registro adicionado!";
 		} else {
 			echo "Erro executando INSERT: " . mysqli_error($conn);
 		}
-        echo "</div>";
-		mysqli_close($conn);  //Encerra conexao com o BD
-
+		echo "</div>";
+		
+		mysqli_close($conn);
 	?>
   </div>
 </div>
-
 
 <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
   <p><nav>
@@ -89,9 +86,8 @@ Software de Carona
   </nav></p>
 </footer>
 
-<!-- FIM PRINCIPAL -->
 </div>
-<!-- Inclui RODAPE.PHP  -->
+
 <?php require 'rodape.php';?>
 </body>
 </html>
