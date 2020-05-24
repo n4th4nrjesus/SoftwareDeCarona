@@ -67,8 +67,8 @@ CREATE TABLE Software_De_Carona.Mensagem (
     Cod int PRIMARY KEY AUTO_INCREMENT,
     texto varchar(144) NOT NULL,
     datahora timestamp NOT NULL,
-    fk_Passageiro_Matricula varchar(50),
-    fk_Motorista_Matricula varchar(50)
+    fk_Chat_Cod int,
+    fk_Remetente_Matricula varchar(50)
 );
 
 ALTER TABLE Software_De_Carona.Carona ADD CONSTRAINT FK_Carona_Passageiro
@@ -110,15 +110,15 @@ ALTER TABLE Software_De_Carona.Chat ADD CONSTRAINT FK_Chat_Carona
     FOREIGN KEY (fk_Carona_Cod)
     REFERENCES Software_De_Carona.Carona (Cod)
     ON UPDATE CASCADE ON DELETE SET NULL;
-
-ALTER TABLE Software_De_Carona.Mensagem ADD CONSTRAINT FK_Mensagem_Passageiro
-    FOREIGN KEY (fk_Passageiro_Matricula)
+ 
+ALTER TABLE Software_De_Carona.Mensagem ADD CONSTRAINT FK_Mensagem_Usuario
+    FOREIGN KEY (fk_Remetente_Matricula)
     REFERENCES Software_De_Carona.Usuario (Matricula)
     ON UPDATE CASCADE ON DELETE SET NULL;
- 
-ALTER TABLE Software_De_Carona.Mensagem ADD CONSTRAINT FK_Mensagem_Motorista
-    FOREIGN KEY (fk_Motorista_Matricula)
-    REFERENCES Software_De_Carona.Usuario (Matricula)
+
+ALTER TABLE Software_De_Carona.Mensagem ADD CONSTRAINT FK_Mensagem_Chat
+    FOREIGN KEY (fk_Chat_Cod)
+    REFERENCES Software_De_Carona.Chat (Cod)
     ON UPDATE CASCADE ON DELETE SET NULL;
 
 ALTER TABLE Software_De_Carona.Carona 
