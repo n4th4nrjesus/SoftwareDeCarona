@@ -16,7 +16,7 @@
       </style>
 	</head>
 
-    <body onload="w3_show_nav('menuPassag')">
+    <body onload="w3_show_nav('menuMinhas')">
     <?php require 'menu.php';?>
 
         <div class="w3-main w3-container" id="salvarMensagem" style="margin-left:270px;margin-top:117px;">
@@ -54,7 +54,7 @@
                             } else {
                                 if ($mensagemEnviada != '') {
                                     $sql = "INSERT INTO Mensagem (texto, fk_Chat_Cod, fk_Remetente_Matricula)
-                                            VALUES ('$mensagemEnviada',  , '$usuarioMatri')";
+                                            VALUES ('$mensagemEnviada', $cod , '$usuarioMatri')";
                                 } else {
                                     echo "Erro: ".$sql."<br>".mysqli_error($conn); 
                                 }

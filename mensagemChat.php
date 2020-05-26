@@ -22,7 +22,7 @@
         </style>
     </head>
 
-    <body onload="w3_show_nav('menuPassag')">
+    <body onload="w3_show_nav('menuMinhas')">
         <?php require 'menu.php'; ?>
 
         <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
@@ -55,11 +55,14 @@
                             mysqli_query($conn,'SET character_set_results=utf8');
                             $cod = $_GET["Cod"];
 
+                            $sql = mysqli_query($conn, "SELECT * FROM CHat WHERE Cod = $cod");
+
                             $sql = "SELECT Chat.fk_Carona_Cod
                                     FROM Chat
                                     WHERE Chat.fk_Carona_Cod = $cod";
 
-                            if ($result = mysqli_query($conn, $sql)) {            
+                            if ($result = mysqli_query($conn, $sql)) {    
+                                echo "echo";        
                                 if(mysqli_num_rows($result)>0) {
                                     while($row = mysqli_fetch_assoc($result)) {
                                         $sql = "SELECT Chat.Cod as CodChat
@@ -71,26 +74,43 @@
                                     if (!$conn) {
                                         die("Connection failed: " . mysqli_connect_error());
                                     } else {
-                                        $sql = "INSERT INTO Chat (datahora, fk_Carona_Cod)
-                                                VALUES ($data, $cod)";
+                                        $sql = "INSERT INTO Chat (fk_Carona_Cod)
+                                                VALUES ($cod)";
                                     }
                                 }
                             } else {
                                 echo "Erro executando SELECT: " . mysqli_error($conn);
                             }
-                            
                             mysqli_close($conn);
-
                         ?>
-
                 </div>
-
                 <div class="w3-code cssHigh notranslate">
-                    Mensagens:
-
                     <?php
-                    
-
+                        $sql = "SELECT m.fk_Remetente_Matricula as fk_Remetente_Matricula, m.texto as texto, m.Cod as MensagemCod, u.Nome as Remetente
+                        FROM Mensagem as m
+                        INNER JOIN Usuario u
+                        ON u.Matricula = m.fk_Remetente_Matricula 
+                        WHERE m.fk_Chat_Cod = '1'"; // alterar depois 1 é só teste
+                
+                        if ($result = mysqli_query($conn, $sql)) {
+                            echo "Mensagem:";
+                            echo "</p>";
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    
+                                    $cod = $row["MensagemCod"];
+                                    echo "<tr>";
+                                    echo "<td>";
+                                    echo $row["Remetente"];
+                                    echo ":                           ";
+                                    echo $row["texto"];
+                                    echo "</td><td>";
+                                    echo "</tr>";
+                                    echo "</p>";
+                                }
+                            }
+                        }
+                        mysqli_close($conn);    
                     ?>
                 </div>
 
