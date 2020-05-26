@@ -73,7 +73,7 @@
             </div>
 
             <div class="w3-responsive w3-card-4">
-                <input type="button" value="Voltar" class="w3-btn w3-teal" onclick="window.location.href='mensagemChat.php'"></p>
+                <input type="button" value="Voltar" class="w3-btn w3-teal" onclick="history.go(-1)"></p>
             </div>               
 
                 <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">

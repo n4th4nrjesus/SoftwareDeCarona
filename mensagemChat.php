@@ -55,49 +55,25 @@
                             mysqli_query($conn,'SET character_set_results=utf8');
                             $cod = $_GET["Cod"];
 
-                            $sql = mysqli_query($conn, "SELECT * FROM CHat WHERE Cod = $cod");
-
-                            $sql = "SELECT Chat.fk_Carona_Cod
-                                    FROM Chat
-                                    WHERE Chat.fk_Carona_Cod = $cod";
-
-                            if ($result = mysqli_query($conn, $sql)) {    
-                                echo "echo";        
-                                if(mysqli_num_rows($result)>0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        $sql = "SELECT Chat.Cod as CodChat
-                                                FROM Chat
-                                                WHERE CodChat = $cod";
-                                        echo $row['CodChat'];
-                                    }
-                                } else {
-                                    if (!$conn) {
-                                        die("Connection failed: " . mysqli_connect_error());
-                                    } else {
-                                        $sql = "INSERT INTO Chat (fk_Carona_Cod)
-                                                VALUES ($cod)";
-                                    }
-                                }
-                            } else {
-                                echo "Erro executando SELECT: " . mysqli_error($conn);
-                            }
                             mysqli_close($conn);
                         ?>
                 </div>
                 <div class="w3-code cssHigh notranslate">
                     <?php
+                      $conn = mysqli_connect($servername, $username, $password, $database);
+
+                        // para poder enviar a mensagem tem que apagar toda afuncionalidade de aparecer
                         $sql = "SELECT m.fk_Remetente_Matricula as fk_Remetente_Matricula, m.texto as texto, m.Cod as MensagemCod, u.Nome as Remetente
                         FROM Mensagem as m
                         INNER JOIN Usuario u
                         ON u.Matricula = m.fk_Remetente_Matricula 
-                        WHERE m.fk_Chat_Cod = '1'"; // alterar depois 1 é só teste
+                        WHERE m.fk_Chat_Cod = $cod";
                 
                         if ($result = mysqli_query($conn, $sql)) {
                             echo "Mensagem:";
                             echo "</p>";
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    
                                     $cod = $row["MensagemCod"];
                                     echo "<tr>";
                                     echo "<td>";
@@ -110,7 +86,9 @@
                                 }
                             }
                         }
-                        mysqli_close($conn);    
+                        $cod = $_GET["Cod"];
+                        // apagar até aqui
+                        mysqli_close($conn);      
                     ?>
                 </div>
 

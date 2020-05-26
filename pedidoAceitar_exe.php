@@ -52,15 +52,33 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-        $sql = "UPDATE Carona SET fk_Motorista_Matricula = $motorista_matricula WHERE Cod = $cod";
-		 
+		$sql = "UPDATE Carona SET fk_Motorista_Matricula = $motorista_matricula WHERE Cod = $cod";
+		
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
 				echo "Carona aceita com sucesso!";
 		} else {
 			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
-        echo "</div>";
+
+		if (!$conn) {
+			die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
+		} else {
+			if ($cod != '') {
+				$sql = "INSERT INTO Chat (fk_Carona_Cod)
+						VALUES ($cod)";
+			} else {
+				echo "Erro: ".$sql."<br>".mysqli_error($conn); 
+			}
+			echo "<div class='w3-responsive w3-card-4'>";
+
+			if (mysqli_query($conn, $sql)) {
+			} else {
+				echo "Erro: ".$sql."<br>".mysqli_error($conn);
+				echo "Chat não criado";
+			}			
+		}
+		echo "</div>";
 		mysqli_close($conn);
 
 	?>
