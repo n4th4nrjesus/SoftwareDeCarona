@@ -33,6 +33,7 @@ CREATE TABLE Software_De_Carona.Postagem (
     DataCriacao date NOT NULL,
     Texto varchar(500),
     FotoBin blob,
+    Excluida tinyint,
     fk_Usuario_Matricula varchar(50)
 );
 
