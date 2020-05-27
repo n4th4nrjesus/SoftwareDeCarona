@@ -23,7 +23,7 @@ Software de Carona
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Exclusão de Turma</h1>
+  <h1 class="w3-xxlarge">Exclusão do Postagem</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
@@ -46,8 +46,6 @@ Software de Carona
 		$password = "caronadesoftware";
 		$database = "software_de_carona";
 		
-		$id      = $_POST['Id'];
-		
 		// Cria conexão
 		$conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -61,9 +59,13 @@ Software de Carona
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
+			$cod = $_GET['Cod'];
 
 		// Faz Select na Base de Dados
-		$sql = "DELETE FROM turma WHERE codTurma = $id";
+		//$sql = "DELETE FROM Postagem WHERE codTurma = $cod";
+		$sql = "UPDATE Postagem SET 
+				Excluida = 1
+				where Cod = $cod";
 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {

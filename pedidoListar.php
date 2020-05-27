@@ -37,6 +37,13 @@
 
         <p class="w3-large">
         <p>
+        <!-- <div>
+            <select name="Filtro" id="Filtro" class="w3-white w3-border w3-padding">    
+                <option value="Escolha">Filtrar por</option>                               
+                    <option value="PUC-Bloco Amarelo">Padrão</option>
+                    <option value="PUC-Bloco Azul">Avaliação</option>
+            </select>
+        </div> -->
         <div class="w3-code cssHigh notranslate">
             <!-- Acesso em:-->
             <?php
