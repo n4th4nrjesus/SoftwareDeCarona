@@ -105,7 +105,8 @@
 								<br/><br/>
 								<div class="divBtns">
 									<input type="submit" value="Postar" class="w3-btn w3-teal" name="postRegistrar">
-									<input type="button" value="Cancelar" class="w3-btn w3-dark-grey" onclick="window.location.href='postListar.php'"></p>
+									<input type="button" value="Cancelar" class="w3-btn w3-dark-grey" onclick="window.location.href='postListar.php'">
+									<input type="button" value="Excluir Postagem" class="w3-btn w3-dark-grey" onclick="window.location.href='postExcluir.php'"></p>
 								</div>
 							</form>
 						</div>

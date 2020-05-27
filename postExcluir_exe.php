@@ -69,9 +69,9 @@ Software de Carona
 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
-				echo "Um registro excluído!";
+				echo "Postagem registro excluído!";
 		} else {
-			echo "Erro executando DELETE: " . mysqli_error($conn);
+			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
         echo "</div>";
 		mysqli_close($conn);  //Encerra conexao com o BD

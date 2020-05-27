@@ -63,7 +63,6 @@ Software de Carona
 
 
 		*/
-		arrumar o cod pq ele não esta lendo
 		$texto = $_POST['Texto'];
 		if ($_FILES['Imagem']['size'] == 0) {
 			$sql = "UPDATE postagem SET 
