@@ -33,7 +33,7 @@
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xxlarge">Pedidos de carona</h1>
+        <h1 class="w3-xxlarge">Histórico</h1>
 
         <p class="w3-large">
         <p>
@@ -73,14 +73,12 @@
             $matricula = $_SESSION['usuario_matri'];
             $genero = $_SESSION['usuario_genero'];
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cancelada as Cancelada
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.fk_Motorista_Matricula as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Finalizada as Finalizada
                     , c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Passageiro_Matricula 
-                    WHERE c.fk_Motorista_Matricula IS NULL
-                    AND c.Cancelada = 0
-                    AND u.Matricula != '$matricula'
-                    AND (c.prefGenero = '$genero' OR c.prefGenero IS NULL)
+                    WHERE c.Finalizada = 1
+                    AND (c.fk_Motorista_Matricula = '$matricula' OR c.fk_Passageiro_Matricula = '$matricula')
                     ORDER BY c.DataCriacao DESC";
             
             echo "<div class='w3-responsive w3-card-4'>";
@@ -91,7 +89,6 @@
 				echo "	  <th>Passageiro</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
-                echo "    <th>Data de Criação</th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
@@ -106,14 +103,7 @@
                         echo "</td><td>";
                         echo $row["LocalDestino"];
                         echo "</td><td>";
-                        echo $row["DataCriacao"];
-                        echo "</td><td>";
 
-				?>
-                        <a class="w3-button w3-teal" href='pedidoAceitar.php?Cod=<?php echo $cod; ?>'>Aceitar</a>
-                        </td>
-                        </tr>
-				 <?php
                     }
                 }
                 echo "</table>";
