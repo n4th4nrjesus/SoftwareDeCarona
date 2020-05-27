@@ -77,7 +77,8 @@
                     ON u.Matricula = c.fk_Motorista_Matricula 
                     WHERE c.fk_Passageiro_Matricula IS NULL
                     AND c.Cancelada = 0
-                    AND u.Matricula != '$matricula'";
+                    AND u.Matricula != '$matricula'
+                    ORDER BY c.DataCriacao DESC";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -104,7 +105,7 @@
                         echo $row["DataCriacao"];
                         echo "</td><td>";
 				?>
-                        <a href='oferecidaConfirmar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar carona' width='32'></a>
+                        <a class="w3-button w3-teal" href='OferecidaConfirmar.php?Cod=<?php echo $cod; ?>'>Aceitar</a>
                         </td>
                         </tr>
 				 <?php

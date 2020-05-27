@@ -37,13 +37,6 @@
 
         <p class="w3-large">
         <p>
-        <!-- <div>
-            <select name="Filtro" id="Filtro" class="w3-white w3-border w3-padding">    
-                <option value="Escolha">Filtrar por</option>                               
-                    <option value="PUC-Bloco Amarelo">Padrão</option>
-                    <option value="PUC-Bloco Azul">Avaliação</option>
-            </select>
-        </div> -->
         <div class="w3-code cssHigh notranslate">
             <!-- Acesso em:-->
             <?php
@@ -87,7 +80,8 @@
                     WHERE c.fk_Motorista_Matricula IS NULL
                     AND c.Cancelada = 0
                     AND u.Matricula != '$matricula'
-                    AND (c.prefGenero = '$genero' OR c.prefGenero IS NULL)";
+                    AND (c.prefGenero = '$genero' OR c.prefGenero IS NULL)
+                    ORDER BY c.DataCriacao DESC";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
@@ -116,7 +110,7 @@
                         echo "</td><td>";
 
 				?>
-                        <a href='pedidoAceitar.php?Cod=<?php echo $cod; ?>'><img src='imagens/Aceitar.png' title='Aceitar Carona' width='32'></a>
+                        <a class="w3-button w3-teal" href='pedidoAceitar.php?Cod=<?php echo $cod; ?>'>Aceitar</a>
                         </td>
                         </tr>
 				 <?php
