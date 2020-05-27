@@ -65,8 +65,8 @@
 			die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
 		} else {
 			if ($cod != '') {
-				$sql = "INSERT INTO Chat (fk_Carona_Cod)
-						VALUES ($cod)";
+				$sql = "INSERT INTO Chat (Cod, fk_Carona_Cod)
+						VALUES ($cod, $cod)";
 			} else {
 				echo "Erro: ".$sql."<br>".mysqli_error($conn); 
 			}
