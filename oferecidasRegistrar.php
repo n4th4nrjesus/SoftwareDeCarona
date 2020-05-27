@@ -55,7 +55,7 @@
                     <div class="w3-container w3-teal">
                         <h2>Informe os dados da sua carona</h2>
                     </div>
-                    <form class="w3-container" action="oferecidasRegistrar_exe.php" method="post">
+                    <form class="w3-container" action="oferecidasRegistrar_exe.php" method="post" name="FormCarona">
 						<input type="hidden" id="acaoForm" name="acaoForm" value="Carona">
                         
                         <div>
@@ -158,8 +158,7 @@
             document.getElementById('inputPersonal_Bloco').setAttribute("required", "required");
             document.getElementById('inputPersonal_Destino').setAttribute("required", "required");
             document.getElementById('btnPuc').remove();
-
-        }
+    }
      
 </script>
 
