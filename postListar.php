@@ -1,7 +1,6 @@
 <!DOCTYPE html>
     <!--
-     Software de Carona          
-     
+     Software de Carona
     -->
 <html>
 <head>
@@ -10,133 +9,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
-    .w3-theme {
-        color: #ffff !important;
-        background-color: #380077 !important
-    }
-
+    .w3-theme {color: #ffff !important;background-color: teal !important}
+    .myMenu {margin-bottom: 150px}
     .w3-code {
-        border-left: 4px solid #380077
+        border: 0;
+        border-radius: 7px;
     }
-
-    .myMenu {
-        margin-bottom: 150px
+    .post-image {
+        max-width: 100%;
+        height: auto;
     }
+    .ctaNovoPost > a {text-decoration: none;}
+    .ctaNovoPost:hover {
+        cursor: pointer;
+        color: white;
+        background-color: teal;
+    }
+    .box-postagem {display: flex;}
+    .box-postagem-texto > hr {border: 1px solid darkGrey;}
+    .box-postagem-texto > p {white-space: pre-wrap; overflow-wrap: break-word; font-family: sans-serif;}
+    .box-postagem-imagem {width: 65%;}
+    @media(max-width: 991.98px)
+        {.box-postagem div {width: 100% !important;}.box-postagem{display: block !important}}
 </style>
 </head>
 <body onload="w3_show_nav('menuFeed')">
-<!-- Inclui MENU.PHP  -->
+
 <?php require 'menu.php'; ?>
 
-<!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
     <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-        <h1 class="w3-xxlarge">Relação de Turmas</h1>
+        <h1 class="w3-xxlarge">Feed de postagens</h1>
 
         <p class="w3-large">
         <p>
-        <div class="w3-code cssHigh notranslate">
-            <!-- Acesso em:-->
-            <?php
-
-            date_default_timezone_set("America/Sao_Paulo");
-            $data = date("d/m/Y H:i:s", time());
-            echo "<p class='w3-small' > ";
-            echo "Acesso em: ";
-            echo $data;
-            echo "</p> "
-            ?>
-
-            <!-- Acesso ao BD-->
+        <div class="cssHigh notranslate">
             <?php
             $servername = "localhost:3307";
             $username = "usu@SoftwareCarona";
             $password = "caronadesoftware";
             $database = "software_de_carona";
 
-            // Cria conexão
             $conn = mysqli_connect($servername, $username, $password, $database);
 
-            // Verifica conexão
             if (!$conn) {
                 echo "</table>";
                 echo "</div>";
                 die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
             }
-			// Configura para trabalhar com caracteres acentuados do português
-			mysqli_query($conn,"SET NAMES 'utf8'");
+
+            mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,"SET NAMES 'utf8'");
 			mysqli_query($conn,'SET character_set_connection=utf8');
 			mysqli_query($conn,'SET character_set_client=utf8');
 			mysqli_query($conn,'SET character_set_results=utf8');
 
-            // Faz Select na Base de Dados
-            $sql = "SELECT t.codTurma, p.nome, d.nomeDisc, t.ano, t.semestre FROM Turma as t, Disciplina as d, Professor as P WHERE t.codDisc = d.codDisciplina AND t.codProfessor = p.codProfessor ORDER BY codTurma";
-            echo "<div class='w3-responsive w3-card-4'>";
+            $sql = "SELECT  u.Nome as NomeUsuario, 
+                            p.Texto as TextoPostagem, 
+                            p.FotoBin as FotoPostagem, 
+                            p.DataCriacao as DataCriacaoPostagem 
+                    FROM Postagem p
+                    INNER JOIN Usuario u
+                        ON p.fk_Usuario_Matricula = u.Matricula
+                    ORDER BY p.DataCriacao DESC";
+            
+            echo "<div class='w3-responsive'>";
             if ($result = mysqli_query($conn, $sql)) {
-                echo "<table class='w3-table-all'>";
-                echo "	<tr>";
-                echo "	  <th>Turma</th>";
-                echo "	  <th>Professor</th>";
-				echo "	  <th>Disciplina</th>";
-				echo "	  <th>Ano</th>";
-				echo "	  <th>Semestre</th>";
-				echo "	  <th> </th>";
-				echo "	  <th> </th>";
-                echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
-                    // Apresenta cada linha da tabela
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $cod = $row["codTurma"];
-                        echo "<tr>";
-                        echo "<td>";
-                        echo $cod;
-						echo "</td><td>";
-                        echo $row["nome"];
-                        echo "</td><td>";
-                        echo $row["nomeDisc"];
-						echo "</td><td>";	
-                        echo $row["ano"];
-						echo "</td><td>";
-                        echo $row["semestre"];
-                        echo "</td><td>";
-
-						//Atualizar e Excluir registro de prof
 				?>
-                        <a href='postAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Turma' width='32'></a>
-                        </td><td>
-                        <a href='postExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Turma' width='32'></a>
-                        </td>
-                        </tr>
-				 <?php
+                <div class="w3-responsive w3-code box-postagem">
+                    <div class="box-postagem-texto" style="width: <?= $row['FotoPostagem'] ? '35%' : '100%';?>">
+                        <h6 class="w3-text-grey w3-small">Publicado em: <?= $row['DataCriacaoPostagem'] ?></h6>
+                        <h3 class="w3-padding w3-text-dark-grey"><?= $row['NomeUsuario'] ?></h3>
+                        <hr class="w3-dark-grey"/>
+                        <p class="w3-text-dark-grey w3-padding"><?= $row['TextoPostagem'] ?></p>
+                    </div>
+                    <?php if($row['FotoPostagem']) { ?>
+                        <div class="box-postagem-imagem">
+                            <img class="post-image w3-padding" src="data:image/png;base64,<?= base64_encode($row['FotoPostagem'])?>" />
+                        </div>
+                    <?php } ?>
+                </div>  
+				<?php
                     }
+                } else {
+                    echo 
+                        "<h4 class='w3-center w3-padding-large w3-round-large ctaNovoPost'>
+                            <a href='postRegistrar.php'>
+                                Nenhum post existente até o momento! Que tal ser o primeiro a postar?
+                            </a>
+                        </h4>";
                 }
-                echo "</table>";
                 echo "</div>";
             } else {
                 echo "Erro executando SELECT: " . mysqli_error($conn);
             }
 
-            mysqli_close($conn);  //Encerra conexao com o BD
+            mysqli_close($conn);
 
             ?>
         </div>
     </div>
 
+<footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
+    <p>
+        <nav>
+            <a class="w3-button w3-teal"
+                onclick="document.getElementById('id01').style.display='block'">Sobre</a>
+        </nav>
+    </p>
+</footer>
 
-    <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
-        <p>
-            <nav>
-                <a class="w3-button w3-teal"
-                   onclick="document.getElementById('id01').style.display='block'">Sobre</a>
-            </nav>
-        </p>
-    </footer>
-
-<!-- FIM PRINCIPAL -->
 </div>
-<!-- Inclui RODAPE.PHP  -->
+
 <?php require 'rodape.php';?>
 </body>
 </html>

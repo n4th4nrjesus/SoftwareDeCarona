@@ -52,7 +52,7 @@ Software de Carona
 		} else {
 			$imagem = addslashes(file_get_contents($_FILES['Imagem']['tmp_name']));
 			$sql = "INSERT INTO postagem (texto, FotoBin, fk_Usuario_Matricula) 
-				VALUES ('$texto','$imagem', '$usuario_matricula')";
+				VALUES ('$texto', '$imagem', '$usuario_matricula')";
 		}
 
 		$conn = mysqli_connect($servername, $username, $password, $database);

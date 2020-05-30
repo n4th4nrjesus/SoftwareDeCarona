@@ -58,13 +58,15 @@
                     <form class="w3-container" enctype="multipart/form-data" action="postRegistrar_exe.php" method="post">
 						<p>
 						<label><h6 class="w3-text-teal"><b>Texto</b></h6></label>
-						<textarea class="w3-input w3-border w3-light-grey " name="Texto" rows="5" 
+						<textarea maxlength="500" class="w3-input w3-border w3-light-grey " name="Texto" rows="5" 
 							title="Texto da postagem" required></textarea>
+						<h6 class="w3-text-grey w3-small">Limite de 500 caracteres</h6>
 						</p>
 						<div class="w3-half">
 							<label><h6 class="w3-text-teal"><b>Imagem</b></h6></label>
 							<label class="w3-btn w3-dark-grey">
 								Selecione uma imagem
+								<input type="hidden" name="MAX_FILE_SIZE" value="16777215" />
 								<input type="file" id="Imagem" name="Imagem" accept="image/*"
 									onchange="validaImagem(this);">
 							</label>
@@ -124,11 +126,17 @@ function validaImagem(input) {
 		alert("Selecione um caminho de arquivo válido");
 	}
 	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function (e) {
-			document.getElementById('imagemSelecionada').setAttribute('src', e.target.result);
-		};
-		reader.readAsDataURL(input.files[0]);
+		var arquivoTam = input.files[0].size / 1024 / 1024;
+		if (arquivoTam < 16) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				document.getElementById('imagemSelecionada').setAttribute('src', e.target.result);
+			};
+			reader.readAsDataURL(input.files[0]);
+		} else {
+			input.value = '';
+			alert("O arquivo precisa ser uma imagem com menos de 16 MB");
+		}
 	} else
 		document.getElementById('imagemSelecionada').setAttribute('src', '#');
 }

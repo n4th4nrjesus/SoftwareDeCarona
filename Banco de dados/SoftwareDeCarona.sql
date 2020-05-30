@@ -33,7 +33,7 @@ CREATE TABLE Software_De_Carona.Postagem (
     Cod int PRIMARY KEY AUTO_INCREMENT,
     DataCriacao datetime NOT NULL,
     Texto varchar(500),
-    FotoBin blob,
+    FotoBin mediumblob,
     Excluida tinyint,
     fk_Usuario_Matricula varchar(50)
 );
@@ -72,6 +72,8 @@ CREATE TABLE Software_De_Carona.Mensagem (
     fk_Chat_Cod int,
     fk_Remetente_Matricula varchar(50)
 );
+
+SET GLOBAL max_allowed_packet=16777215;
 
 ALTER TABLE Software_De_Carona.Carona ADD CONSTRAINT FK_Carona_Passageiro
     FOREIGN KEY (fk_Passageiro_Matricula)
