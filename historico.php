@@ -73,22 +73,27 @@
             $matricula = $_SESSION['usuario_matri'];
             $genero = $_SESSION['usuario_genero'];
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.fk_Motorista_Matricula as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Finalizada as Finalizada
-                    , c.DataCriacao as DataCriacao
-                    FROM Carona c INNER JOIN Usuario u 
-                    ON u.Matricula = c.fk_Passageiro_Matricula 
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as MotoristaNome, c.fk_Motorista_Matricula as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Finalizada as Finalizada
+                    , c.DataFinalizacao as DataFinalizacao
+                    FROM Carona c 
+                    INNER JOIN Usuario u 
+                        ON u.Matricula = c.fk_Passageiro_Matricula 
+                    INNER JOIN Usuario u2
+                        ON u2.Matricula = c.fk_Motorista_Matricula
                     WHERE c.Finalizada = 1
                     AND (c.fk_Motorista_Matricula = '$matricula' OR c.fk_Passageiro_Matricula = '$matricula')
-                    ORDER BY c.DataCriacao DESC";
+                    ORDER BY c.DataFinalizacao DESC";
             
             echo "<div class='w3-responsive w3-card-4'>";
             if ($result = mysqli_query($conn, $sql)) {
 
                 echo "<table class='w3-table-all'>";
                 echo "	<tr>";
-				echo "	  <th>Passageiro</th>";
+                echo "	  <th>Passageiro</th>";
+                echo "	  <th>Motorista</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
+                echo "    <th>Data de Finalização</th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
                 if (mysqli_num_rows($result) > 0) {
@@ -98,10 +103,14 @@
                         echo "<tr>";
                         echo "<td>";
                         echo $row["Passageiro"];
+                        echo "<td>";
+                        echo $row["MotoristaNome"];
                         echo "</td><td>";
                         echo $row["LocalPartida"];
                         echo "</td><td>";
                         echo $row["LocalDestino"];
+                        echo "</td><td>";
+                        echo $row["DataFinalizacao"];
                         echo "</td><td>";
 
                     }

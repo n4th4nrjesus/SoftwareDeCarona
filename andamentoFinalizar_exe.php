@@ -56,6 +56,7 @@
 		$usuario_matricula = $_SESSION['usuario_matri'];
 		$Avaliacao = $_POST["Avaliacao"];
 		$Comentario = $_POST["Comentario"];
+		$DataAgora = time();
 
 		$conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -72,7 +73,8 @@
 					   VALUES ('$usuario_matricula', '$cod', '$Comentario', '$Avaliacao')";
 
 		$sql = "UPDATE Carona SET 
-				Finalizada = 1
+				Finalizada = 1,
+				DataFinalizacao = current_timestamp()
 				where Cod = $cod";
 
 		echo "<div class='w3-responsive w3-card-4'>";

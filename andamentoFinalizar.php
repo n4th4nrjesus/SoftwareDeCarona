@@ -80,7 +80,8 @@
 				mysqli_query($conn,'SET character_set_results=utf8');
 				
                 $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as Motorista, c.LocalPartida as LocalPartida, 
-                                c.LocalDestino as LocalDestino, c.fk_Passageiro_Matricula as PassageiroMatricula
+                                c.LocalDestino as LocalDestino, c.fk_Passageiro_Matricula as PassageiroMatricula,
+                                c.DataFinalizacao as DataFinalizacao
                     FROM Carona c 
                     INNER JOIN Usuario u 
                         ON u.Matricula = c.fk_Passageiro_Matricula 
