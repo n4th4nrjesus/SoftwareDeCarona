@@ -25,6 +25,15 @@ MENU.PHP
 		</div>
 		<div class="w3-bar w3-dark-grey w3-large" style="z-index:4;height:45px">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-teal w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
+			
+			<div style="display:" class="perfilMenu_Mobile">
+				<form action="login_sair_exe.php" style="float:right; width:90px; padding-right:10">
+						<input type="submit" value="Sair" class="w3-button w3-teal w3-hover-dark-grey"/>
+				</form>
+				<a style="float:right; padding:10px; width:175px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" href="loginAtualizar.php"><?= $_SESSION['usuario_nome'] ?></a>
+			</div>
+
+
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuPassag')">PASSAGEIRO</a>
 			<?php if (isset($_SESSION['usuario_cnh'])) { ?>
 				<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMotor')">MOTORISTA</a>
@@ -32,6 +41,7 @@ MENU.PHP
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuMinhas')">MINHAS CARONAS</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-teal w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuFeed')">FEED</a>
 		</div>
+
 	</div>
 
 	<!-- Sidebar -->
@@ -70,6 +80,7 @@ MENU.PHP
 			</div>
 			<a class="w3-bar-item w3-button" href='postListar.php'>Posts</a>
 			<a class="w3-bar-item w3-button" href='postRegistrar.php'>Novo post</a>
+			<a class="w3-bar-item w3-button" href=''>Meus posts</a>
 		</div>
 		<div id="menuMinhas" class="myMenu" >
 			<div class="w3-container w3-teal">
@@ -80,12 +91,36 @@ MENU.PHP
 				<a class="w3-bar-item w3-button" href='caronaOfereci.php'>Oferecidas pendentes</a>
 			<?php } ?>
 			<a class="w3-bar-item w3-button" href='caronaAndamento.php'>Em andamento</a>
+			<a class="w3-bar-item w3-button" href='historico.php'>Histórico</a>
+			
 		</div>
-		<div class="w3-bottom w3-padding">
-			<a href="loginAtualizar.php"><?= $_SESSION['usuario_nome'] ?></a>
-			<form action="login_sair_exe.php" style="display: inline-block;">
-				<input type="submit" value="Sair" 
-					class="w3-button w3-margin-left w3-dark-grey w3-hover-teal"/>
-			</form>
+		<div class="myMenu perfilMenu_Desktop" style="position:absolute; bottom:0; left:0; width:285px">
+			<div style="float:left; margin-left:4px; padding:5px; width:180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+				<a href="loginAtualizar.php"><?= $_SESSION['usuario_nome'] ?></a>
+			</div>
+			<div style="float:left;">
+				<form action="login_sair_exe.php">
+					<input type="submit" value="Sair" 
+						class="w3-button w3-dark-grey w3-hover-teal"/>
+				</form>
+			</div>	
 		</div>
+		
 	</div>
+
+	<style>
+			.perfilMenu_Desktop {
+				display:block;
+			}
+			.perfilMenu_Mobile {
+				display:none;
+			}
+		@media (max-width: 991.98px) {
+			.perfilMenu_Desktop {
+				display:none;
+			}
+			.perfilMenu_Mobile {
+				display:block;
+			}
+		}
+	</style>
