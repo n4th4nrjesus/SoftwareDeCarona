@@ -26,7 +26,7 @@
         background-color: teal;
     }
     .box-postagem {display: flex;}
-    .box-postagem-texto > hr {border: 1px solid darkGrey;}
+    .box-postagem-texto > hr {border: 1px solid teal;}
     .box-postagem-texto > p {white-space: pre-wrap; overflow-wrap: break-word; font-family: sans-serif;}
     .box-postagem-imagem {width: 65%;}
     @media(max-width: 991.98px)
@@ -79,7 +79,7 @@
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
 				?>
-                <div class="w3-responsive w3-code box-postagem">
+                <div class="w3-responsive w3-code w3-border w3-border-teal box-postagem">
                     <div class="box-postagem-texto" style="width: <?= $row['FotoPostagem'] ? '35%' : '100%';?>">
                         <h6 class="w3-text-grey w3-small">Publicado em: <?= $row['DataCriacaoPostagem'] ?></h6>
                         <h3 class="w3-padding w3-text-dark-grey"><?= $row['NomeUsuario'] ?></h3>

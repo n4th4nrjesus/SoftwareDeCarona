@@ -79,8 +79,8 @@ MENU.PHP
 				<h3 class="w3-border-dark-grey w3-padding">Feed</h3>
 			</div>
 			<a class="w3-bar-item w3-button" href='postListar.php'>Posts</a>
+			<a class="w3-bar-item w3-button" href='postMeu.php'>Meus posts</a>
 			<a class="w3-bar-item w3-button" href='postRegistrar.php'>Novo post</a>
-			<a class="w3-bar-item w3-button" href=''>Meus posts</a>
 		</div>
 		<div id="menuMinhas" class="myMenu" >
 			<div class="w3-container w3-teal">
