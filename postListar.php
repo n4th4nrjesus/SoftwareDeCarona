@@ -68,16 +68,19 @@
             $sql = "SELECT  u.Nome as NomeUsuario, 
                             p.Texto as TextoPostagem, 
                             p.FotoBin as FotoPostagem, 
-                            p.DataCriacao as DataCriacaoPostagem 
+                            p.DataCriacao as DataCriacaoPostagem,
+                            p.Cod as Cod
                     FROM Postagem p
                     INNER JOIN Usuario u
                         ON p.fk_Usuario_Matricula = u.Matricula
+                    WHERE p.Excluida IS NULL
                     ORDER BY p.DataCriacao DESC";
             
             echo "<div class='w3-responsive'>";
             if ($result = mysqli_query($conn, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $cod = $row['Cod']
 				?>
                 <div class="w3-responsive w3-code w3-border w3-border-teal box-postagem">
                     <div class="box-postagem-texto" style="width: <?= $row['FotoPostagem'] ? '35%' : '100%';?>">
@@ -92,6 +95,15 @@
                         </div>
                     <?php } ?>
                 </div>  
+
+                <div class="w3-bar">
+                    <a class="w3-button w3-bar-item" style="width:50%"> 
+                        <img src="Imagens/curtir.png" width="25px"></a>
+                    <a href="postComentarios.php?Cod=<?php echo $cod; ?>" class="w3-button w3-bar-item" style="width:50%">
+                        <img src="Imagens/comentar.png" width="25px"></a>
+                </div>
+                    
+                   
 				<?php
                     }
                 } else {

@@ -59,9 +59,10 @@
                                     echo "Erro: ".$sql."<br>".mysqli_error($conn); 
                                 }
                                 echo "<div class='w3-responsive w3-card-4'>";
-	
+                                
                                 if (mysqli_query($conn, $sql)) {
                                     echo "Mensagem Enviada";
+
                                 } else {
                                     echo "Erro: ".$sql."<br>".mysqli_error($conn);
                                     echo "Mensagem não Enviada";
@@ -72,14 +73,14 @@
                     </div>
             </div>
 
-            <div class="w3-responsive w3-card-4">
-                <input type="button" value="Voltar" class="w3-btn w3-teal" onclick="history.go(-1)"></p>
-            </div>               
+                <div class="w3-panel w3-padding-16 w3-center">
+                    <input type="button" value="Voltar" class="w3-button w3-teal" onclick="history.go(-1)"></p>
+                </div>   
 
                 <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
                         <p>
                             <nav>
-                                <a class="w3-button w3-teal w3-hover-white"
+                                <a  class="w3-button w3-teal w3-hover-white w3-center"
                                 onclick="document.getElementById('id01').style.display='block'">Sobre</a>
                             </nav>
                         </p>

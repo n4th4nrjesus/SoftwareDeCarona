@@ -62,12 +62,13 @@
                     <?php
                       $conn = mysqli_connect($servername, $username, $password, $database);
 
-                        // para poder enviar a mensagem tem que apagar toda afuncionalidade de aparecer
-                        $sql = "SELECT m.fk_Remetente_Matricula as fk_Remetente_Matricula, m.texto as texto, m.Cod as MensagemCod, u.Nome as Remetente
+
+                      $sql = "SELECT m.fk_Remetente_Matricula as fk_Remetente_Matricula, m.texto as texto, m.Cod as MensagemCod, u.Nome as Remetente, m.datahora as Horario
                         FROM Mensagem as m
                         INNER JOIN Usuario u
                         ON u.Matricula = m.fk_Remetente_Matricula 
-                        WHERE m.fk_Chat_Cod = $cod";
+                        WHERE m.fk_Chat_Cod = $cod
+                        ORDER BY Horario asc";
                 
                         if ($result = mysqli_query($conn, $sql)) {
                             echo "Mensagem:";
@@ -77,8 +78,12 @@
                                     $cod = $row["MensagemCod"];
                                     echo "<tr>";
                                     echo "<td>";
+                                    echo "<td>";
+                                    echo $row["Horario"];
+                                    echo ": ";
+                                    echo "<td>";
                                     echo $row["Remetente"];
-                                    echo ":                           ";
+                                    echo ":";
                                     echo $row["texto"];
                                     echo "</td><td>";
                                     echo "</tr>";
@@ -87,7 +92,7 @@
                             }
                         }
                         $cod = $_GET["Cod"];
-                        // apagar até aqui
+
                         mysqli_close($conn);      
                     ?>
                 </div>
