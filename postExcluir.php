@@ -10,19 +10,29 @@ Software de Carona
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        .w3-theme {
-            color: #ffff !important;
-            background-color: teal !important
-        }
-
-        .w3-code {
-            border-left: 4px solid teal
-        }
-
-        .myMenu {
-            margin-bottom: 150px
-        }
-    </style>
+		.w3-theme {color: #ffff !important;background-color: teal !important}
+		.myMenu {margin-bottom: 150px}
+		.w3-code {
+			border: 0;
+			border-radius: 7px;
+		}
+		.post-image {
+			max-width: 100%;
+			height: auto;
+		}
+		.ctaNovoPost > a {text-decoration: none;}
+		.ctaNovoPost:hover {
+			cursor: pointer;
+			color: white;
+			background-color: teal;
+		}
+		.box-postagem {display: flex;}
+		.box-postagem-texto > hr {border: 1px solid teal;}
+		.box-postagem-texto > p {white-space: pre-wrap; overflow-wrap: break-word; font-family: sans-serif;}
+		.box-postagem-imagem {width: 65%;}
+		@media(max-width: 991.98px)
+			{.box-postagem div {width: 100% !important;}.box-postagem{display: block !important}}
+</style>
 </head>
 <body onload="w3_show_nav('menuFeed')">
 
@@ -35,16 +45,6 @@ Software de Carona
 
         <p class="w3-large">
             <div class="w3-code cssHigh notranslate">
-
-                <?php
-
-                date_default_timezone_set("America/Sao_Paulo");
-                $data = date("d/m/Y H:i:s", time());
-                echo "<p class='w3-small' > ";
-                echo "Acesso em: ";
-                echo $data;
-                echo "</p> "
-                ?>
 
 				<?php
 				
@@ -66,28 +66,32 @@ Software de Carona
 				mysqli_query($conn,'SET character_set_client=utf8');
 				mysqli_query($conn,'SET character_set_results=utf8');
 
-				$sql = "SELECT Cod, texto, FotoBin FROM Postagem WHERE Cod = $cod"; 
+				$sql = "SELECT Cod, Texto, FotoBin, DataCriacao FROM Postagem WHERE Cod = $cod"; 
 
-				echo "<div class='w3-responsive w3-card-4'>";
-				 if ($result = mysqli_query($conn, $sql)) {
-						if (mysqli_num_rows($result) > 0) {
-							while ($row = mysqli_fetch_assoc($result)) {
+				echo "<div class='w3-responsive'>";
+				if ($result = mysqli_query($conn, $sql)) {
+					if (mysqli_num_rows($result) > 0) {
+						while ($row = mysqli_fetch_assoc($result)) {
 				?>
-								<form class="w3-container" action="postExcluir_exe.php?Cod=<?= $cod ?>" method="post" onsubmit="return check(this.form)">
-									<p>
-										<h><b><?php echo $row['texto']; ?> </h>
-									</p>
-									<p>
-										<h><b></b><?php echo $row['FotoBin']; ?></h>
-									</p>
-									<p>
-										<input type="submit" value="Excluir postagem" class="w3-btn w3-red" >
-										<input type="button" value="Voltar" class="w3-btn w3-theme" onclick="history.go(-1)">
-									</p>
-								</form>
+				<div class="w3-responsive w3-code w3-border w3-border-teal box-postagem">
+                    <div class="box-postagem-texto" style="width: <?= $row['FotoBin'] ? '35%' : '100%'; ?>">
+                        <h6 class="w3-text-grey w3-small">Publicado em: <?= $row['DataCriacao'] ?></h6>
+                        <hr class="w3-dark-grey"/>
+                        <p class="w3-text-dark-grey w3-padding"><?= $row['Texto'] ?></p>
+                    </div>
+                    <?php if($row['FotoBin']) { ?>
+                        <div class="box-postagem-imagem">
+                            <img class="post-image w3-padding" src="data:image/png;base64,<?= base64_encode($row['FotoBin'])?>" />
+                        </div>
+                    <?php } ?>
+                </div>
+				<form class="w3-container" action="postExcluir_exe.php?Cod=<?= $cod ?>" method="post" onsubmit="return check(this.form)">
+					<input type="submit" value="Excluir postagem" class="w3-btn w3-red" >
+					<input type="button" value="Voltar" class="w3-btn w3-theme" onclick="window.location.href='postListar.php'">
+				</form>
 			<?php 
-							}
 						}
+					}
 				}
 				else {
 					echo "Erro executando SELECT: " . mysqli_error($conn);
@@ -111,9 +115,8 @@ Software de Carona
     </p>
 	</footer>
 
-<!-- FIM PRINCIPAL -->
 </div>
-<!-- Inclui RODAPE.PHP  -->
+
 <?php require 'rodape.php';?>
 </body>
 </html>
