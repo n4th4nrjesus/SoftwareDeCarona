@@ -69,7 +69,7 @@ Software de Carona
 
 		echo "<div class='w3-responsive w3-card-4'>";
 		if ($result = mysqli_query($conn, $sql)) {
-			echo "Um registro adicionado!";
+			echo "Post registrado!";
 		} else {
 			echo "Erro executando INSERT: " . mysqli_error($conn);
 		}

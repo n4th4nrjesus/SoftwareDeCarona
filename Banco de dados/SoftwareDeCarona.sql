@@ -30,7 +30,7 @@ CREATE TABLE Software_De_Carona.Carona (
 DROP TABLE IF EXISTS Software_De_Carona.Postagem;
 CREATE TABLE Software_De_Carona.Postagem (
     Cod int PRIMARY KEY AUTO_INCREMENT,
-    DataCriacao date NOT NULL,
+    DataCriacao datetime NOT NULL,
     Texto varchar(500),
     FotoBin blob,
     Excluida tinyint,
@@ -126,7 +126,7 @@ ALTER TABLE Software_De_Carona.Carona
     ALTER DataCriacao SET DEFAULT NOW();
 
 ALTER TABLE Software_De_Carona.Postagem 
-    ALTER DataCriacao SET DEFAULT NOW();
+    ALTER DataCriacao SET DEFAULT current_timestamp();
 
 ALTER TABLE Software_De_Carona.AvaliacaoPostagem 
     ALTER DataCriacao SET DEFAULT NOW();
