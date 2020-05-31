@@ -26,8 +26,9 @@
         background-color: teal;
     }
     .box-postagem {display: flex;}
+    .box-postagem * {font-family: sans-serif;}
     .box-postagem-texto > hr {border: 1px solid teal;}
-    .box-postagem-texto > p {white-space: pre-wrap; overflow-wrap: break-word; font-family: sans-serif;}
+    .box-postagem-texto > p {white-space: pre-wrap; overflow-wrap: break-word;}
     .box-postagem-imagem {width: 65%;}
     @media(max-width: 991.98px)
         {.box-postagem div {width: 100% !important;}.box-postagem{display: block !important}}
@@ -83,10 +84,11 @@
                             </div>
                         <?php } ?>
 
-                        <div style="width:700px;" class="w3-responsive">
+                        <div class="w3-responsive">
                             <h4 class=" w3-text-dark-grey"><?= $row['NomeUsuario'] ?></h4>
                             <p class="w3-text-dark-grey"><?= $row['TextoPostagem'] ?></p>
                             <h6 class="w3-text-grey w3-small">Publicado em: <?= $row['DataCriacaoPostagem'] ?></h6>
+                            <hr style="border: 1px solid teal;">
                             <?php
                                 $servername = "localhost:3307";
                                 $username = "usu@SoftwareCarona";
@@ -112,7 +114,10 @@
                                         INNER JOIn Postagem p
                                             ON ap.fk_Postagem_Cod = p.Cod
                                         WHERE p.Cod = $cod
-                                        ORDER BY DataCriacao DESC";
+                                        AND ap.Comentario IS NOT NULL
+                                        AND ap.Comentario <> ''
+                                        GROUP BY ap.Cod
+                                        ORDER BY ap.DataCriacao ASC";
                 
                                 if(!$conn) {
                                     die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
@@ -120,16 +125,14 @@
                                     if ($result = mysqli_query($conn, $sql)) {
                                         if(mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>";
-                                                echo "<td>";
-                                                echo "<td>";
-                                                echo $row["Nome"];
-                                                echo ":";
-                                                echo "</td><td>";
-                                                echo "<td>";
-                                                echo $row["Comentario"];
-                                                echo "</td>";
-                                                echo "</tr>";
+                                                echo "
+                                                    <div>
+                                                        ".$row['Nome'].": ".$row['Comentario']."
+                                                        <p class='w3-text-grey w3-tiny' 
+                                                            style='margin: 0 0 10px 0 !important;'>"
+                                                            .$row['DataCriacao']."
+                                                        </p>
+                                                    </div>";
                                             }
                                         }
                                     } else {

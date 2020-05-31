@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-
-
 <html>
 	<head>
 
@@ -15,7 +13,7 @@
 		.myMenu {margin-bottom:150px}
       </style>
 	</head>
-<body onload="w3_show_nav('menuPassag')">
+<body onload="w3_show_nav('menuFeed')">
     <?php require 'menu.php';?>
 
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
@@ -39,24 +37,37 @@
                 $usuarioMatri = $_SESSION['usuario_matri'];
                 $comentario = trim($_POST['comentario']);
 
+                $Existente = 0;
+
+                $sqlSelect = "SELECT fk_Usuario_Matricula, fk_Postagem_Cod FROM AvaliacaoPostagem
+                    WHERE fk_Usuario_Matricula = '$usuarioMatri' AND fk_Postagem_Cod = $cod";
+                                
+                if ($result = mysqli_query($conn,$sqlSelect)) {
+                    $Existente = mysqli_num_rows($result) > 0 ? 1 : 0;
+                } else {
+                    echo "Erro executando SELECT: " . mysqli_error($conn);
+                } 
+
                 if(!$conn) {
                     die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
                 } else {
+                    $sql = "";
                     if ($comentario != '') {
-                        $sql = "INSERT INTO avaliacaopostagem (fk_Usuario_Matricula, fk_Postagem_Cod, Comentario)
-                                VALUES($usuarioMatri, $cod, '$comentario')";
-                    } else {
-                        echo "Erro: ".$sql."<br>".mysqli_error($conn); 
-                    } 
-                    echo "<div class='w3-responsive w3-card-4'>";
-                                
-                    if (mysqli_query($conn, $sql)) {
-                        echo "Comentario Enviado";
+                        $sql = $Existente == 0 ? 
+                        "INSERT INTO AvaliacaoPostagem(fk_Usuario_Matricula, fk_Postagem_Cod, Comentario, Curtida) 
+                        VALUES('$usuarioMatri', $cod, '$comentario', 0)" : 
+                        "UPDATE AvaliacaoPostagem SET Comentario = '$comentario', DataCriacao = current_timestamp()
+                        WHERE fk_Postagem_Cod = $cod AND fk_Usuario_Matricula = '$usuarioMatri'";
 
+                        if (!mysqli_query($conn,$sql)) {
+                            echo "Erro: ".$sql."<br>".mysqli_error($conn);
+                            echo "Comentário não enviado";
+                        } else
+                            echo $Existente == 0 ? "Comentário enviado" : "Comentário atualizado";
                     } else {
-                        echo "Erro: ".$sql."<br>".mysqli_error($conn);
-                        echo "Comentario não Enviado";
-                    }			
+                        echo "<div class='w3-responsive w3-card-4'>";  
+                        echo "Comentário vazio não enviado";
+                    }
                 }
                 mysqli_close($conn);
             ?>
@@ -64,20 +75,11 @@
                 <input type="button" value="Voltar" class="w3-button w3-teal" onclick="history.go(-1)"></p>
             </div>  
         </div>
-    </div>
-                         
-
-
-
-    <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
-        <p><nav>
-            <a class="w3-button w3-teal w3-hover-white" onclick="document.getElementById('id01').style.display='block'" >Sobre</a>
-        </nav></p>
-    </footer>
-
-    <!-- FIM PRINCIPAL -->
-    </div>
-    <!-- Inclui RODAPE.PHP  -->
+        <footer class="w3-panel w3-padding-32 w3-card-4 w3-light-grey w3-center">
+            <p><nav>
+                <a class="w3-button w3-teal w3-hover-white" onclick="document.getElementById('id01').style.display='block'" >Sobre</a>
+            </nav></p>
+        </footer>
     <?php require 'rodape.php';?>
 </body>
 </html>
