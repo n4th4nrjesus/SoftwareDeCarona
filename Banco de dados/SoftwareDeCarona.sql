@@ -132,7 +132,7 @@ ALTER TABLE Software_De_Carona.Postagem
     ALTER DataCriacao SET DEFAULT current_timestamp();
 
 ALTER TABLE Software_De_Carona.AvaliacaoPostagem 
-    ALTER DataCriacao SET DEFAULT NOW();
+    ALTER DataCriacao SET DEFAULT current_timestamp();
 
 ALTER TABLE Software_De_Carona.Carona 
     ALTER prefGenero SET DEFAULT NULL;
