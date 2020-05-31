@@ -10,48 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        .w3-theme {
-            color: #ffff !important;
-            background-color: #380077 !important
-        }
-
-        .w3-code {
-			border-left:4px solid teal
-        }
-
-        .myMenu {
-            margin-bottom: 150px
-        }
-
-        .ctaFeed > a {text-decoration: none;}
-        .ctaFeed:hover {
-        cursor: pointer;
-        color: white;
-        background-color: teal;
+        .w3-theme {color: #ffff !important; background-color: teal !important}
+        .w3-code {border-left:4px solid teal}
+        .myMenu {margin-bottom: 150px}
+        .ctaFeed {text-decoration: none;}
+        .ctaFeed>h4:hover {
+            cursor: pointer;
+            color: white;
+            background-color: teal;
         }
     </style>
 </head>
-<body onload="w3_show_nav('menuMinhas')">
+<body onload="w3_show_nav('menuFeed')">
 
 <?php require 'menu.php';?>
 
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-  <h1 class="w3-xxlarge">Curtir postagem</h1>
+  <h1 class="w3-xxlarge">Avaliação de postagem</h1>
 
   <p class="w3-large">
   <div class="w3-code cssHigh notranslate">
-
-	<?php
-
-	date_default_timezone_set("America/Sao_Paulo");
-	$data = date("d/m/Y H:i:s",time());
-	echo "<p class='w3-small' > ";
-	echo "Acesso em: ";
-	echo $data;
-	echo "</p> "
-	?>
 
 	<?php
 		
@@ -97,18 +77,18 @@
         }
         
         $sql = $Like == 1 && $Existente == 0 ? "INSERT INTO AvaliacaoPostagem(fk_Usuario_Matricula, fk_Postagem_Cod, Curtida) 
-                             VALUES('$usuario_matricula', $cod, $Like)"
-                          : "UPDATE AvaliacaoPostagem SET Curtida = $Like 
-                             WHERE fk_Postagem_Cod = $cod AND fk_Usuario_Matricula = '$usuario_matricula'";  
+                            VALUES('$usuario_matricula', $cod, $Like)"
+                          : "UPDATE AvaliacaoPostagem SET Curtida = $Like,
+                            DataCriacao = current_timestamp()
+                            WHERE fk_Postagem_Cod = $cod AND fk_Usuario_Matricula = '$usuario_matricula'";  
 
 		if ($result = mysqli_query($conn,$sql)) {
                 echo $Like == 1 ? "Postagem curtida!" : "Postagem descurtida!";
-                echo 
-                        "<h4 class='w3-center w3-padding-large w3-round-large ctaFeed'>
-                            <a href='postListar.php'>
-                                Voltar ao feed
-                            </a>
-                        </h4>";
+                echo "<a href='postListar.php' class='ctaFeed'>
+                        <h4 class='w3-center w3-padding-large w3-round-large'>
+                            Voltar ao feed
+                        </h4>
+                    </a>";
 		} else {
 			echo "Erro executando UPDATE: " . mysqli_error($conn);
 		}
