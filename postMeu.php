@@ -19,8 +19,8 @@
         max-width: 100%;
         height: auto;
     }
-    .ctaNovoPost > a {text-decoration: none;}
-    .ctaNovoPost:hover {
+    .ctaNovoPost {text-decoration: none;}
+    .ctaNovoPost>h4:hover {
         cursor: pointer;
         color: white;
         background-color: teal;
@@ -104,12 +104,11 @@
 				<?php
                     }
                 } else {
-                    echo 
-                        "<h4 class='w3-center w3-padding-large w3-round-large ctaNovoPost'>
-                            <a href='postRegistrar.php'>
-                                Você não postou nada até o momento! Que tal fazer seu primeiro post?
-                            </a>
-                        </h4>";
+                    echo "<a href='postListar.php' class='ctaNovoPost'>
+                        <h4 class='w3-center w3-padding-large w3-round-large'>
+                            Você não postou nada até o momento! Que tal fazer seu primeiro post?
+                        </h4>
+                    </a>";
                 }
                 echo "</div>";
             } else {

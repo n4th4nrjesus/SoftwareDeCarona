@@ -20,7 +20,7 @@
         height: auto;
     }
     .ctaNovoPost > a {text-decoration: none;}
-    .ctaNovoPost:hover {
+    .ctaNovoPost>h4:hover {
         cursor: pointer;
         color: white;
         background-color: teal;
@@ -80,7 +80,23 @@
             if ($result = mysqli_query($conn, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $cod = $row['Cod']
+                        $cod = $row['Cod'];
+                        $numCurtidas = '';
+                        $sqlCurtidas = "SELECT count(a.Cod) AS NumeroCurtidas 
+                                        FROM AvaliacaoPostagem a
+                                        INNER JOIN Postagem p
+                                            ON p.Cod = a.fk_Postagem_Cod
+                                        WHERE a.fk_Postagem_Cod = $cod
+                                        AND a.Curtida = 1
+                                        GROUP BY p.Cod";
+                    if ($resultCurtidas = mysqli_query($conn, $sqlCurtidas)) {
+                        if (mysqli_num_rows($resultCurtidas) > 0) {
+                            while ($rowCurtidas = mysqli_fetch_assoc($resultCurtidas)) {
+                                $numCurtidas = $rowCurtidas['NumeroCurtidas'];
+                            }
+                        }
+                    } else 
+                        echo "Erro executando SELECT: " . mysqli_error($conn);
 				?>
                 <div class="w3-responsive w3-code w3-border w3-border-teal box-postagem">
                     <div class="box-postagem-texto" style="width: <?= $row['FotoPostagem'] ? '35%' : '100%';?>">
@@ -98,7 +114,9 @@
 
                 <div class="w3-bar">
                     <a class="w3-button w3-bar-item" style="width:50%" href="postLike_exe.php?Cod=<?php echo $cod; ?>"> 
-                        <img src="Imagens/curtir.png" width="25px"></a>
+                        <img src="Imagens/curtir.png" width="25px"/>
+                        <span class="w3-text-grey w3-padding-large"><?= $numCurtidas ?></span>
+                    </a>
                     <a href="postComentarios.php?Cod=<?php echo $cod; ?>" class="w3-button w3-bar-item" style="width:50%">
                         <img src="Imagens/comentar.png" width="25px"></a>
                 </div>
@@ -107,12 +125,11 @@
 				<?php
                     }
                 } else {
-                    echo 
-                        "<h4 class='w3-center w3-padding-large w3-round-large ctaNovoPost'>
-                            <a href='postRegistrar.php'>
-                                Nenhum post existente até o momento! Que tal ser o primeiro a postar?
-                            </a>
-                        </h4>";
+                    echo "<a href='postListar.php' class='ctaNovoPost'>
+                            <h4 class='w3-center w3-padding-large w3-round-large'>
+                                Nenhum post existente até o momento! Que tal ser o primeiro a postar
+                            </h4>
+                        </a>";
                 }
                 echo "</div>";
             } else {
