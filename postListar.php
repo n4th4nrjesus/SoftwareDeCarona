@@ -97,7 +97,7 @@
                 </div>  
 
                 <div class="w3-bar">
-                    <a class="w3-button w3-bar-item" style="width:50%"> 
+                    <a class="w3-button w3-bar-item" style="width:50%" href="postLike_exe.php?Cod=<?php echo $cod; ?>"> 
                         <img src="Imagens/curtir.png" width="25px"></a>
                     <a href="postComentarios.php?Cod=<?php echo $cod; ?>" class="w3-button w3-bar-item" style="width:50%">
                         <img src="Imagens/comentar.png" width="25px"></a>
