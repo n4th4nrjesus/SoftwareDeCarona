@@ -53,8 +53,8 @@ CREATE TABLE Software_De_Carona.AvaliacaoPostagem (
     fk_Postagem_Cod int,
     Cod int PRIMARY KEY AUTO_INCREMENT,
     Comentario varchar(250),
-    Agradecimento tinyint,
-    DataCriacao date NOT NULL
+    Curtida tinyint,
+    DataCriacao datetime NOT NULL
 );
 
 DROP TABLE IF EXISTS Software_De_Carona.Chat;

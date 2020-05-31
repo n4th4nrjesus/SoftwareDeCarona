@@ -83,19 +83,72 @@
                             </div>
                         <?php } ?>
 
-                        <div style="width:300px" class="w3-responsive">
+                        <div style="width:320px; height:300px" class="w3-responsive">
                             <h4 class=" w3-text-dark-grey"><?= $row['NomeUsuario'] ?></h4>
                             <p class="w3-text-dark-grey"><?= $row['TextoPostagem'] ?></p>
                             <h6 class="w3-text-grey w3-small">Publicado em: <?= $row['DataCriacaoPostagem'] ?></h6>
-                            <p>Comentários</p>
+                            <?php
+                                $servername = "localhost:3307";
+                                $username = "usu@SoftwareCarona";
+                                $password = "caronadesoftware";
+                                $database = "software_de_carona";
+                
+                                $conn = mysqli_connect($servername, $username, $password, $database);
+                
+                                mysqli_query($conn,"SET NAMES 'utf8'");
+                                mysqli_query($conn,"SET NAMES 'utf8'");
+                                mysqli_query($conn,'SET character_set_connection=utf8');
+                                mysqli_query($conn,'SET character_set_client=utf8');
+                                mysqli_query($conn,'SET character_set_results=utf8');
+                                $cod = $_GET['Cod'];
 
-                            <div style="position: absolute;" class="w3-responsive">
-                                <input class="w3-input" type="text" style="float:left; width:80%">
-                                <a style="float:left; position:absolute;" href=""><img src="Imagens/enviarMensagem.png" width="35px"></a>
+
+                                $sql = "SELECT  u.Nome as Nome,
+                                                ap.Comentario as Comentario,
+                                                p.Cod as Cod,
+                                                ap.DataCriacao as DataCriacao
+                                        FROM Avaliacaopostagem ap
+                                        INNER JOIN Usuario u
+                                            ON ap.fk_Usuario_Matricula = u.Matricula
+                                        INNER JOIn Postagem p
+                                            ON ap.fk_Postagem_Cod = p.Cod
+                                        WHERE p.Cod = $cod
+                                        ORDER BY DataCriacao DESC";
+                
+                                if(!$conn) {
+                                    die("Falha na conexão com o Banco de Dados: " . mysqli_connect_error());
+                                } else {
+                                    if ($result = mysqli_query($conn, $sql)) {
+                                        if(mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                echo "<table>";
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo "<td>";
+                                                echo $row["Nome"];
+                                                echo ": ";
+                                                echo "<td>";
+                                                echo $row["Comentario"];
+                                                echo "</td><td>";
+                                                echo "</tr>";
+                                                echo "</table>";
+                                            }
+                                        }
+                                    } else {
+                                        echo "Erro executando SELECT: " . mysqli_error($conn);
+                                    }
+                                }
+
+                            ?>
+
+                            <div style="position: absolute;">
+                                <form action="comentarioEnviar.php?Cod=<?php echo $cod; ?>" method="post">
+                                    <input class="w3-input" type="text" name="comentario" style="float:left; width:65%">
+                                    <input type="submit" class="w3-button w3-teal" style="float:right; width:30%">                                
+                                </form>
                             </div>
 
                         </div>
-                        
 
 
 
