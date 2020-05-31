@@ -65,7 +65,8 @@
 			mysqli_query($conn,'SET character_set_client=utf8');
             mysqli_query($conn,'SET character_set_results=utf8');
             
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Cancelada as Cancelada
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, 
+                    c.Cancelada as Cancelada, c.DataCriacao as DataCriacao
                     FROM Carona c INNER JOIN Usuario u 
                     ON u.Matricula = c.fk_Passageiro_Matricula 
                     WHERE c.fk_Motorista_Matricula IS NULL
@@ -77,9 +78,9 @@
 
                 echo "<table class='w3-table-all'>";
                 echo "	<tr>";
-				echo "	  <th>Código</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
+                echo "    <th>Data Criação</th>";
                 echo "	  <th> </th>";
                 echo "	  <th> </th>";
                 echo "	</tr>";
@@ -87,12 +88,12 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         $cod = $row['Cod'];
                         echo "<tr>";
-                        echo "<td>";
-                        echo $cod;
                         echo "</td><td>";
                         echo $row["LocalPartida"];
                         echo "</td><td>";
                         echo $row["LocalDestino"];
+                        echo "</td><td>";
+                        echo $row["DataCriacao"];
                         echo "</td><td>";
 
 				?>

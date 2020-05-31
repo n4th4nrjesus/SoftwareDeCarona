@@ -73,8 +73,9 @@
             $matricula = $_SESSION['usuario_matri'];
             $genero = $_SESSION['usuario_genero'];
 
-            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as MotoristaNome, c.fk_Motorista_Matricula as Motorista, c.LocalPartida as LocalPartida, c.LocalDestino as LocalDestino, c.Finalizada as Finalizada
-                    , c.DataFinalizacao as DataFinalizacao
+            $sql = "SELECT c.Cod as Cod, u.Nome as Passageiro, u2.Nome as MotoristaNome, c.fk_Motorista_Matricula as Motorista, c.LocalPartida as LocalPartida,
+                    c.LocalDestino as LocalDestino, c.Finalizada as Finalizada, c.DataFinalizacao as DataFinalizacao,
+                    c.DataCriacao as DataCriacao
                     FROM Carona c 
                     INNER JOIN Usuario u 
                         ON u.Matricula = c.fk_Passageiro_Matricula 
@@ -93,6 +94,7 @@
                 echo "	  <th>Motorista</th>";
 				echo "	  <th>Local de partida</th>";
                 echo "	  <th>Local de destino</th>";
+                echo "	  <th>Data de Criação</th>";
                 echo "    <th>Data de Finalização</th>";
 				echo "	  <th> </th>";
                 echo "	</tr>";
@@ -109,6 +111,8 @@
                         echo $row["LocalPartida"];
                         echo "</td><td>";
                         echo $row["LocalDestino"];
+                        echo "</td><td>";
+                        echo $row["DataCriacao"];
                         echo "</td><td>";
                         echo $row["DataFinalizacao"];
                         echo "</td><td>";
