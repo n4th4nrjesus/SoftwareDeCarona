@@ -83,7 +83,7 @@
                             </div>
                         <?php } ?>
 
-                        <div style="width:320px; height:300px" class="w3-responsive">
+                        <div style="width:700px;" class="w3-responsive">
                             <h4 class=" w3-text-dark-grey"><?= $row['NomeUsuario'] ?></h4>
                             <p class="w3-text-dark-grey"><?= $row['TextoPostagem'] ?></p>
                             <h6 class="w3-text-grey w3-small">Publicado em: <?= $row['DataCriacaoPostagem'] ?></h6>
@@ -101,7 +101,6 @@
                                 mysqli_query($conn,'SET character_set_client=utf8');
                                 mysqli_query($conn,'SET character_set_results=utf8');
                                 $cod = $_GET['Cod'];
-
 
                                 $sql = "SELECT  u.Nome as Nome,
                                                 ap.Comentario as Comentario,
@@ -121,17 +120,16 @@
                                     if ($result = mysqli_query($conn, $sql)) {
                                         if(mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
-                                                echo "<table>";
                                                 echo "<tr>";
                                                 echo "<td>";
                                                 echo "<td>";
                                                 echo $row["Nome"];
-                                                echo ": ";
+                                                echo ":";
+                                                echo "</td><td>";
                                                 echo "<td>";
                                                 echo $row["Comentario"];
-                                                echo "</td><td>";
+                                                echo "</td>";
                                                 echo "</tr>";
-                                                echo "</table>";
                                             }
                                         }
                                     } else {
@@ -141,9 +139,9 @@
 
                             ?>
 
-                            <div style="position: absolute;">
+                            <div class="w3-container">
                                 <form action="comentarioEnviar.php?Cod=<?php echo $cod; ?>" method="post">
-                                    <input class="w3-input" type="text" name="comentario" style="float:left; width:65%">
+                                    <input class="w3-input" type="text" name="comentario" style="float:left; width:68%">
                                     <input type="submit" class="w3-button w3-teal" style="float:right; width:30%">                                
                                 </form>
                             </div>
