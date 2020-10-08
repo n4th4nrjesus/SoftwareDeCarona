@@ -72,11 +72,9 @@
 				die("Connection failed: " . mysqli_connect_error());
 				
 			} else {
-				
+				$generoMotorista = $_POST['selectGenero'];
 				if ($localPartida_Puc == NULL && $localDestino_Puc == "Escolha") {
 					if($generoUsuario == "F") {
-						$generoMotorista = $_POST['selectGenero'];
-
 						if($generoMotorista != "Q") {
 							$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero, Finalizada) 
 									VALUES ('$passageiro_matricula', '$localPartida_Personal', '$localDestino_Personal', '$generoMotorista', 0)";
@@ -108,8 +106,6 @@
 
 				} else {
 					if($generoUsuario == "F") {
-						$generoMotorista = $_POST['selectGenero'];
-
 						if($generoMotorista != "Q") {
 							$sql = "INSERT INTO Carona (fk_Passageiro_Matricula, localPartida, localDestino, prefGenero, Finalizada, Cancelada) 
 									VALUES ('$passageiro_matricula', '$localPartida_Puc', '$localDestino_Puc', '$generoMotorista', 0, 0)";
