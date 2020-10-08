@@ -60,15 +60,11 @@
 		if ($localDestino_Puc == "Escolha" && $localPartida_Personal == "Escolha") {
 			if($localPartida_Puc == NULL && $localDestino_Puc == "Escolha") {
 			?>
-			<script>
-				alert("Selecione uma partida válida.");
-			</script>
+				<script>alert("Selecione uma partida válida.");</script>
 			<?php } else { ?>
-			<script>
-				alert("Selecione um destino válido.");	
-			</script>
+				<script>alert("Selecione um destino válido.");</script>
 			<?php } ?>
-			<script> window.location.href="pedidoRegistrar.php" </script>
+				<script> window.location.href="pedidoRegistrar.php" </script>
 			<?php
 		} else {
 		
